@@ -1,4 +1,4 @@
-# WebTechnologies-StudentNotes
+# Tehnologii Web - Aplicatie pentru gestionarea notitelor unui student
 1.	Pentru inceput, vom avea o prima pagina care va cuprinde formularul de login (autentificare) folosind contul institutional cu terminatia „@stud.ase.ro”, urmat de un buton „Login” care va face trecerea in contul studentului, urmand sa-si gestioneze notitele de la curs/seminar. 
 2.	In cazul in care contul nu este inregistrat in baza de date, vom avea un buton „Inregistrare” sub butonul de „Login”. 
 3.	In urma apasarii acestui buton, se va deschide un formular de inregistrare unde studentului i se vor cere anumite date personale, cum ar fi: numele, prenumele complet, facultatea de care apartine, mail-ul institutional si parola pe care doreste sa o aiba.
