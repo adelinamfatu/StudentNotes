@@ -1,0 +1,124 @@
+#courseNavigation {
+    position: relative;
+    top:30px;
+    left:30%;
+}
+
+#cursurilemele {
+    font-size: 36px;
+    display: flex;
+    display: inline-block;
+}
+
+
+#addCourse {
+    position: relative;
+    background-color: #0a0141;
+    font-size: 20px;
+    padding: 3px 10px;
+    left: 20px;
+    border: none;
+    color: #f1f1f1;
+}
+
+
+#removeCourse {
+    position: relative;
+    background-color: #0a0141;
+    font-size: 20px;
+    padding: 3px 13px;
+    left: 20px;
+    border: none;
+    color: #f1f1f1;
+}
+
+
+
+#editShow {
+    position:relative;
+    top:46px;
+    left:25%;
+}
+
+#namealph {
+    position: relative;
+    display: inline-block;
+    background-color: #3498DB;
+    color: white;
+    font-size: 20px;
+    border: none;
+    padding: 16px 21px;
+}
+
+#date {
+    position: relative;
+    display: inline-block;
+    background-color: #3498DB;
+    color: white;
+    padding: 16px 26px;
+    font-size: 20px;
+    border: none;
+    left:10px;
+}
+
+
+* {
+    box-sizing: border-box;
+  }
+  
+  form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+  }
+  
+  form.example button {
+    float: left;
+    width: 20%;
+    padding: 8px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  form.example button:hover {
+    background: #0b7dda;
+  }
+  
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+
+
+#coursesList {
+    top:50px;
+    left:20%;
+    position: relative;
+}
+
+.courseName {
+    position: relative;
+    background-color: #dadada;
+    color: rgb(0, 0, 0);
+    padding: 10px 26px;
+    font-size: 16px;
+    border: none;
+    display: block;
+}
+
+
+
+
+
+
+

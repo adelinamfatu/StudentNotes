@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="selectedCourseIndex.css">
+</head>
+<body>
+<div id="navigation">
+<button onclick="saveCourseFunction()" id="saveCourse">Salvare</button>
+<button onclick="deleteCourseFunction()" id="deleteCourse">Stergere</button>
+<div class="insert">
+  <button onclick="insertInCourseFunction()" class="insertbtn">Inserare &#8595;</button>
+  <div id="insert" class="insertContent">
+    <a href="#image">Imagine</a>
+    <a href="#doc">Document</a>
+  </div>
+</div>
+<button onclick="shareCourseFunction()" id="shareCourse">Distribuire</button>
+</div>
+
+
+<div id="document"><p>
+    Aplicație web pentru gestionarea notițelor de curs/seminar
+</p>
+
+
+</div>
+<script>
+
+
+
+
+
+
+
+function insertInCourseFunction() {
+  document.getElementById("insert").classList.toggle("show");
+}
+
+window.onclick = function(event) {
+  if (!event.target.matches('.insertbtn')) {
+    var dropdowns = document.getElementsByClassName("insertContent");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>

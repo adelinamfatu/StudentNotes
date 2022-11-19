@@ -1,0 +1,100 @@
+body {
+    background-color: rgb(225, 225, 225);
+}
+#navigation {
+    position:relative;
+    top:30px;
+    left:20%;
+}
+
+#saveCourse {
+    position: relative;
+    display: inline-block;
+    background-color: #3498DB;
+    color: white;
+    padding: 16px 30px;
+    font-size: 16px;
+    border: none;
+}
+
+#deleteCourse {
+    position: relative;
+    display: inline-block;
+    background-color: #3498DB;
+    color: white;
+    padding: 16px 30px;
+    font-size: 16px;
+    border: none;
+    left: 10px;
+}
+
+#shareCourse {
+    position: relative;
+    display: inline-block;
+    background-color: #3498DB;
+    color: white;
+    padding: 16px 30px;
+    font-size: 16px;
+    border: none;
+    left: 30px;
+
+}
+  .insert {
+    position: relative;
+    display: inline-block;
+    left: 20px;
+
+  }
+
+.insertbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px 30px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    left: 10px;
+
+  }
+  
+  .insertbtn:hover, .insertbtn:focus {
+    background-color: #2980B9;
+  }
+
+  
+  .insertContent {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .insertContent a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .insert a:hover {background-color: #ddd;}
+  
+  .show {display: block;}
+
+
+
+#document {
+    position: relative;
+    left: 40px;
+    top: 60px;
+    height: 1000px;
+    width: 1000px;
+    background-color:white;
+    padding: 10px;
+    box-shadow: 20px 20px 50px 15px grey;
+}
+
+
+

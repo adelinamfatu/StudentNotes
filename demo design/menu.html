@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styleMenu.css">
+</head>
+<body>
+<div id="navigation">
+<button onclick="openCourseFunction()" id="cursuri">Cursuri</button>
+<button onclick="openCourseFunction2()" id="seminare">Seminare</button>
+<div class="menu">
+  <button onclick="menuFunction()" class="menubtn">Nume Student &#8595;</button>
+  <div id="menu" class="menuContent">
+    <a href="#profil">Profil</a>
+    <a href="#grupuri">Grupuri</a>
+    <a href="#mesaje">Mesaje</a>
+    <a href="#logout">Logout</a>
+  </div>
+</div>
+</div>
+<script>
+
+
+
+
+
+
+
+function menuFunction() {
+  document.getElementById("menu").classList.toggle("show");
+}
+
+window.onclick = function(event) {
+  if (!event.target.matches('.menubtn')) {
+    var dropdowns = document.getElementsByClassName("menuContent");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>
