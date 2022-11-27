@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "sequelizer": "^1.1.4"
+  }
+}
