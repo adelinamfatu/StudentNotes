@@ -28,3 +28,6 @@
 -	Profil 
 -	Mesaje
 -	Delogare
+16. Schema initiala a bazei de date:
+
+![Notite student](https://user-images.githubusercontent.com/102324614/203779173-7796b58f-81c6-4357-bd47-0f609ca854b6.jpg)
