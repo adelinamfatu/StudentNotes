@@ -1,30 +1,38 @@
-const sequelize = require("../sequelize");
-const { DataTypes } = require("sequelize");
+const { Sequelize, sequelize } = require("../create-tables");
 
-const User = sequelize.define("User", {
-    Id: {
-        type: DataTypes.INTEGER,
+const User = sequelize.define("user", {
+    id: {
+        type: Sequelize.INTEGER,
         primaryKey : true,
         autoIncrement: true
     }, 
-    HashPassword: {
-        type: DataTypes.STRING
+    hashPassword: {
+        type: Sequelize.STRING
     },
-    Email: {
-        type: DataTypes.STRING,
-        unique: true
+    email: {
+        type: Sequelize.STRING,
+        unique: true,
+        validate: {
+            isEmail: true
+        }
     },
-    Surname: {
-        type: DataTypes.STRING
+    surname: {
+        type: Sequelize.STRING,
+        validate: {
+            isUppercase: true
+        }
     },
-    Name: {
-        type: DataTypes.STRING
+    name: {
+        type: Sequelize.STRING,
+        validate: {
+            isUppercase: true
+        }
     },
-    Faculty: {
-        type: DataTypes.STRING
+    faculty: {
+        type: Sequelize.STRING
     },
-    Field: {
-        type: DataTypes.STRING
+    field: {
+        type: Sequelize.STRING
     }
 });
 

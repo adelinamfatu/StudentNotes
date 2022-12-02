@@ -1,21 +1,17 @@
-const sequelize = require("../sequelize");
-const { DataTypes } = require("sequelize");
+const { Sequelize, sequelize } = require("../create-tables");
 
-const Subject = sequelize.define("Subject", {
-    Name: {
-        type: DataTypes.STRING,
+const Subject = sequelize.define("subject", {
+    title: {
+        type: Sequelize.STRING,
         primaryKey : true
     }, 
-    IsCourse: {
-        type: DataTypes.TINYINT(1),
+    isCourse: {
+        type: Sequelize.TINYINT(1),
         primaryKey : true
     },
-    Tag: {
-        type: DataTypes.STRING,
+    tag: {
+        type: Sequelize.STRING,
         unique: true
-    },
-    UserId: {
-        type: DataTypes.INTEGER
     }
 });
 

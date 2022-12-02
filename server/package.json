@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "sequelizer": "^1.1.4",
+    "express": "^4.18.2",
+    "sequelize": "^6.26.0",
+    "sequelize-cli": "^6.5.2",
     "sqlite3": "^5.1.2"
   }
 }
