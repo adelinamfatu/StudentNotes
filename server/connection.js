@@ -7,6 +7,7 @@ const app = express();
 
 const { sequelize, Sequelize } = require("./create-tables");
 
+//Database relations
 User.hasMany(Subject, {
     foreignKey: {
         name: "userId"
@@ -28,6 +29,20 @@ User.hasMany(Note, {
     }
 })
 
+//Routes
+const userRouter = require("./routes/user-routes");
+const subjectRouter = require("./routes/subject-routes");
+const noteRouter = require("./routes/note-routes");
+
+app.use(express.json());
+app.use("/users", userRouter);
+app.use("/notes", noteRouter);
+app.use("/subjects", subjectRouter);
+app.use((error, req, res, next) => {
+    console.warn(error);
+    res.status(500).json({ message: 'Server error'})
+});
+
 app.listen(8000, async () => {
     try {
       await sequelize.authenticate();
@@ -37,3 +52,5 @@ app.listen(8000, async () => {
       console.warn(error);
     }
   });
+
+module.exports = app;

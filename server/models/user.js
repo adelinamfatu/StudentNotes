@@ -18,15 +18,9 @@ const User = sequelize.define("user", {
     },
     surname: {
         type: Sequelize.STRING,
-        validate: {
-            isUppercase: true
-        }
     },
     name: {
         type: Sequelize.STRING,
-        validate: {
-            isUppercase: true
-        }
     },
     faculty: {
         type: Sequelize.STRING
