@@ -24,7 +24,7 @@ class Register extends React.Component {
                         
                 </form>
                 <button>Înregistrează-te</button>
-                <button className="btn_link" onClick={() => this.props.onFormSwitch('login')}>Ai deja un cont ? Autentifică-te aici !</button>
+                <button className="btn_link" onClick={() => this.props.onFormSwitch('login')}>Ai deja un cont? Autentifică-te aici!</button>
         
             </div>
         )}

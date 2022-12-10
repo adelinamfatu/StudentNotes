@@ -1,12 +1,11 @@
 import React, { useState} from 'react';
 
-import logo from './logo.svg';
 import './App.css';
-import './Login-Register.css';
-import Login from './Login';
-import Register from './Register';
+import './style/Login-Register.css';
+import Login from './components/Login';
+import Register from './components/Register';
 
-import image from "./images/img1.png"; 
+import image from "./images/login-img.png"; 
 
 
 function App() {
