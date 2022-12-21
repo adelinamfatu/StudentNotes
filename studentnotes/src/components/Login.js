@@ -10,9 +10,11 @@ class Login extends React.Component {
                     <label>Email:</label>
                     <input type="email" placeholder="email@stud.ase.ro" id="email" name="email" />
                     <label>Parolă:</label>
-                    <input type="parola" id="parola" name="parola" />    
+                    <input type="password" id="password" name="password" />   
+
+                    <button>Conectează-te</button> 
                 </form>
-                <button>Conectează-te</button>
+                
                 <button className="btn_link" onClick={() => this.props.onFormSwitch('register')}>Nu ai un cont? Înregistrează-te aici!</button>
         
             </div>
