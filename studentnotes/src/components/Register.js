@@ -25,7 +25,7 @@ class Register extends React.Component {
                     <label>Parolă:</label>
                     <input type="password" id="psw_1" name="psw_1" 
                     pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[#?!@$%^&*]).{8,}" 
-                    title="Trebuie să conțină cel puțin o cifră, o literă mare, o literă mică, un caracter special și  minim 8 caractere." required/>
+                    title="Trebuie să conțină cel puțin o cifră, o literă mare, o literă mică, un caracter special și minim 8 caractere." required/>
 
                     <label>Confirmă parola:</label>
                     <input type="password" id="psw_2" name="psw_2" 

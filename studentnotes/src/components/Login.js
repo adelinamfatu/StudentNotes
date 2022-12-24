@@ -8,9 +8,14 @@ class Login extends React.Component {
                 <label className="autentificare">AUTENTIFICARE</label>
                 <form className="login">
                     <label>Email:</label>
-                    <input type="email" placeholder="email@stud.ase.ro" id="email" name="email" />
+                    <input type="email" placeholder="email@stud.ase.ro" id="email" name="email"
+                    pattern="([A-Z][a-z]*).{2,}"
+                    title="Trebuie să conțină minim 2 litere și să înceapă cu literă mare." required/>
+                    
                     <label>Parolă:</label>
-                    <input type="password" id="password" name="password" />   
+                    <input type="password" id="password" name="password" 
+                    pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[#?!@$%^&*]).{8,}" 
+                    title="Trebuie să conțină cel puțin o cifră, o literă mare, o literă mică, un caracter special și minim 8 caractere." required/>   
 
                     <button>Conectează-te</button> 
                 </form>
