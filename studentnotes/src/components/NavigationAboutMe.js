@@ -1,6 +1,6 @@
 import React from 'react';
-import {AboutMeMenu} from './AboutMeMenu.js';
-import './NavigationAboutMe.css';
+import '../style/NavigationAboutMe.css';
+
 class NavigationAboutMe extends React.Component {
     render() {
         return (
