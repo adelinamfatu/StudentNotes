@@ -14,7 +14,19 @@ export const listOfCourses = [
     //third item
     {
        title: 'PSI',
-       id: 0, 
+       id: 2, 
        type: 'CURS'
-    } //index 2
+    } ,//index 2
+
+    {
+        title: 'MM',
+        id: 3, 
+        type: 'CURS'
+     },
+
+     {
+        title: 'ECONOMETRIE',
+        id: 4, 
+        type: 'CURS'
+     }
 ]
