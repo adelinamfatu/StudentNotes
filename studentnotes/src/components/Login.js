@@ -9,8 +9,8 @@ class Login extends React.Component {
                 <form className="login">
                     <label>Email:</label>
                     <input type="email" placeholder="email@stud.ase.ro" id="email" name="email"
-                    pattern="([A-Z][a-z]*).{2,}"
-                    title="Trebuie să conțină minim 2 litere și să înceapă cu literă mare." required/>
+                    pattern="(?=.*[0-9]+@stud.ase.ro).{18,}"
+                    title="Trebuie introdus mail-ul instituțional (cu terminația '@stud.ase.ro')." required/>
                     
                     <label>Parolă:</label>
                     <input type="password" id="password" name="password" 
