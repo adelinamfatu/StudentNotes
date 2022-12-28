@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .Profile {
+    background-size: "cover";
+    height: 100vh;
+    width: 100%;
+    margin-top: 0px;
+    font-size:50px;
+    background-repeat:no-repeat;
+    background-image: linear-gradient(79deg,#8EC3B0, #9ED5C5 50%, #DEF5E5);
+
+  }
+  
+
+
+.content {
+    display: grid;
+    display: flex;
+   position: fixed;
+   justify-content: center;
+   left: 139px;
+   top: 150px;
+   width: 1320px;
+   height: 528px;
+   background-color: rgb(255, 255, 255);
+}
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
