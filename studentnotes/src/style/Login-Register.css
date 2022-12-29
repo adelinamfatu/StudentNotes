@@ -6,22 +6,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(79deg,#8EC3B0, #9ED5C5 50%, #DEF5E5);
+    background-image: url('../images/background-img.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
   }
   
-  img {
-    position: absolute;
-    min-height: 100vh;
-  }
-  
-  h1 {
+h1 {
     text-align: center;
     border: 4px solid black; 
     color: #DEF5E5;
     background-color: #24A19C;
     text-shadow: 4px 4px black;
     font-size: 30px;
-  }
+}
   
 
 .form, .register, .login {

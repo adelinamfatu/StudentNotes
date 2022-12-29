@@ -5,8 +5,6 @@ import './style/Login-Register.css';
 import Login from './components/Login';
 import Register from './components/Register';
 
-import image from "./images/login-img.png"; 
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,13 +22,11 @@ function App() {
 
   return (
   <div className="App">
-    <img src={image}></img>
     {
-      currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm}/>
-      
+      currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm}/>       
     }
-  </div>
 
+  </div>
   );
 }
 

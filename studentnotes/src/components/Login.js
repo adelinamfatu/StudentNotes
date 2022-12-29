@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 
 class Login extends React.Component {
     render() {
@@ -22,9 +21,11 @@ class Login extends React.Component {
                 </form>
                 
                 <button className="btn_link" onClick={() => this.props.onFormSwitch('register')}>Nu ai un cont? Înregistrează-te aici!</button>
-                {/* <Link to="/register" variant = "body2">Not have an account ? Sign up here</Link> */}
+                
             </div>
         )}
+        
 }
+
 
 export default Login;
