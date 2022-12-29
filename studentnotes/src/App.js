@@ -7,6 +7,13 @@ import Register from './components/Register';
 
 import image from "./images/login-img.png"; 
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -20,6 +27,7 @@ function App() {
     <img src={image}></img>
     {
       currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm}/>
+      
     }
   </div>
 
