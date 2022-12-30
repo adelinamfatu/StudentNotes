@@ -46,12 +46,12 @@ h1 {
 }
 
 .inregistrare, .autentificare {
-    text-align: right;
+    text-align: center;
     padding: 40px;
     font-size: 25px;
     font-family: Roboto, sans-serif;
     text-shadow: 2px 2px #24A19C;
-  display: block;
+    display: block;
 }
 
 label {
@@ -60,7 +60,7 @@ label {
     display: block;
 }
    
-input {
+input, select {
     margin: 5px;
     padding: 10px;
     border: 1px solid #107774;

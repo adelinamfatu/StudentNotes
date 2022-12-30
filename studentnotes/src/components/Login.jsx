@@ -71,11 +71,15 @@ const Login = () => {
                 <form className="login" onSubmit={submit}>
                     <label>Email:</label>
                     <input type="email" placeholder="email@stud.ase.ro" id="email" name="email"
+                    pattern="(?=.*[0-9]+@stud.ase.ro).{18,}"
+                    title="Trebuie introdus mail-ul instituțional (cu terminația '@stud.ase.ro')." required
                     ref={emailRef}
                     />
                     
                     <label>Parolă:</label>
                     <input type="password" id="password" name="password" 
+                    pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[#?!@$%^&*]).{8,}"
+                    title="Parolă incorectă" required
                     ref={passRef}
                     />   
                     

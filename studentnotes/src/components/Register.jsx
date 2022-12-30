@@ -8,6 +8,7 @@ const Register = () => {
     const confPassRef = useRef(null);
     const nameRef = useRef(null);
     const surnameRef = useRef(null);
+    const uniRef = useRef(null);
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
     const verifyRegisterInformation = () => {
@@ -16,6 +17,7 @@ const Register = () => {
         var surname = nameRef.current.value;
         var password = passRef.current.value;
         var confPass = confPassRef.current.value;
+        var uni = uniRef.current.value;
 
         if(password === confPass) 
         {
@@ -101,24 +103,46 @@ const Register = () => {
                 <form className="register">
                     <label htmlFor="nume">Nume:</label>
                     <input type="text" id="nume" name="nume" 
-                    pattern="([A-Z][a-z]*).{2,}"
+                    pattern="([A-Z][a-z]).{2,}"
                     title="Trebuie să conțină minim 2 litere și să înceapă cu literă mare." required
                     ref={surnameRef}
                     />
 
                     <label>Prenume:</label>
                     <input type="text" id="prenume" name="prenume" 
-                    pattern="([A-Z][a-z]*).{2,}"
+                    pattern="([A-Z][a-z]).{2,}"
                     title="Trebuie să conțină minim 2 litere și să înceapă cu literă mare." required
                     ref={nameRef}
                     />
 
                     <label>Email:</label>
                     <input type="email" placeholder="email@stud.ase.ro" id="email" name="email" 
-                    pattern="(?=.*[0-9]+@stud.ase.ro).{16,}"
+                    pattern="(?=.*[0-9]+@stud.ase.ro).{18,}"
                     title="Trebuie introdus mail-ul instituțional (cu terminația '@stud.ase.ro')." required
                     ref={emailRef}
                     />
+
+                    <label>Facultate și Specializare:</label>
+                    <select name="uni" id="uni" ref={uniRef}>
+                        <optgroup label="Facultatea de Cibernetică, Statistică și Informatică Economică">
+                            <option>Cibernetică Economică</option>
+                            <option>Statistică și Previziune Economică</option>
+                            <option>Informatică Economică - lb. română</option>
+                            <option>Informatică Economică - lb. engleză</option>
+                        </optgroup>
+
+                        <optgroup label="Facultatea de Finanțe, Asigurări, Bănci și Burse de Valori">
+                            <option>Finanţe şi bănci</option>
+                            <option>Finanţe şi bănci - lb. engleză</option>
+                        </optgroup>
+
+                        <optgroup label="Facultatea de Contabilitate și Informatică de Gestiune">
+                            <option>Contabilitate şi informatică de gestiune</option>
+                            <option>Contabilitate şi informatică de gestiune - lb. engleză</option>
+                        </optgroup>
+                        
+                    </select>
+        
 
                     <label>Parolă:</label>
                     <input type="password" id="psw_1" name="psw_1" 
