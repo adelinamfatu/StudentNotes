@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import Profile from './components/Profile';
 import Groups from './components/Groups';
-import Cursuri from './components/Cursuri';
-import Seminare from './components/Seminare';
+import Cursuri from './components/Courses';
+import Seminare from './components/Seminars';
 import Login from './components/Login';
 import Register from './components/Register';
 import './App.css';
@@ -24,14 +24,10 @@ function App() {
         <Route path="/seminare" element={<Seminare />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/grupuri" element={<Groups />} />
-
-
       </Routes>
     </Router>
-    
     </div>
   );
 }
-
 
 export default App;
