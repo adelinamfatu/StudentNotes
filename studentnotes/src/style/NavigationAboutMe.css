@@ -9,13 +9,15 @@
     height: 70%;
     background-color: #8EC3B0;
     box-shadow: -5px 10px 15px rgba(43, 43, 43, 0.25);
+    background-image: url('../images/background_about_me.jpg');
+
 }
 
 .aboutMe-list {
     align-items: top;
     font-size: 12px;
     padding-top: 20px;
-    padding-left: 5px;
+    padding-left: 10px;
     line-height: 10px;
     /*list-style: none;*/
     justify-content: flex-start;
@@ -27,10 +29,11 @@
 
 .aboutMe-links {
     text-decoration: none;
-    color: #fff;
+    color: rgb(0, 0, 0);
     padding: 10px 20px;
     white-space: nowrap;
     font-family: 'Karla', sans-serif;
+    background-color: #d7d7d7;
 }
 
 .aboutMe-links:hover {
