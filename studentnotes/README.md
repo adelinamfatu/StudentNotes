@@ -13,3 +13,11 @@
     b) sqlite - database file
     c) routes - REST routes
     d) connection.js - managing database sync 
+
+# Starting the project:
+1. Server
+    a) cd server
+    b) node connection / nodemon connection
+2. Client
+    a) cd studentnotes
+    b) npm start

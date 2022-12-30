@@ -12,14 +12,14 @@ router.get("/", async (req, res, next) => {
     }
 });
 
-//get a user
-router.get("/:id", async (req, res, next) => {
+//get a user by email
+router.get("/:email", async (req, res, next) => {
     try {
-      const user = await User.findByPk(req.params.id)
+      const user = await User.findByPk(req.params.email)
       if (user) {
         res.status(200).json(user);
       } else {
-        return res.status(404).json({error: `User with id ${req.params.id} not found`});
+        return res.status(404).json({error: `User with email ${req.params.email} not found`});
       }
     } catch (error) {
       next(error);
@@ -37,13 +37,13 @@ router.post("/add", async(req, res, next) => {
 });
 
 //update a user
-router.put("/edit/:id", async(req, res, next) => {
+router.put("/edit/:email", async(req, res, next) => {
     try {
-      const user = await User.findByPk(req.params.id);
+      const user = await User.findByPk(req.params.email);
       if(user) {
         await user.update(req.body);
       } else {
-        return res.status(404).json({error: `User with id ${req.params.id} not found`});
+        return res.status(404).json({error: `User with email ${req.params.email} not found`});
       }
     }catch(error) {
       next(error);

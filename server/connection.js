@@ -10,7 +10,7 @@ const { sequelize, Sequelize } = require("./create-tables");
 //Database relations
 User.hasMany(Subject, {
     foreignKey: {
-        name: "userId"
+        name: "userEmail"
     }
 });
 Subject.hasMany(Note, {
@@ -25,7 +25,7 @@ Subject.hasMany(Note, {
 });
 User.hasMany(Note, {
     foreignKey: {
-        name: "userId"
+        name: "userEmail"
     }
 })
 
@@ -35,6 +35,14 @@ const subjectRouter = require("./routes/subject-routes");
 const noteRouter = require("./routes/note-routes");
 
 app.use(express.json());
+app.use(function (req, res, next) {
+
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 app.use("/users", userRouter);
 app.use("/notes", noteRouter);
 app.use("/subjects", subjectRouter);

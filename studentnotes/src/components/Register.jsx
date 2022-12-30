@@ -8,7 +8,7 @@ const Register = () => {
                 <h1>StudyTime</h1> 
                 <label className="inregistrare">ÎNREGISTRARE</label>
                 <form className="register">
-                    <label for="nume">Nume:</label>
+                    <label htmlFor="nume">Nume:</label>
                     <input type="text" id="nume" name="nume" 
                     pattern="([A-Z][a-z]*).{2,}"
                     title="Trebuie să conțină minim 2 litere și să înceapă cu literă mare." required/>
