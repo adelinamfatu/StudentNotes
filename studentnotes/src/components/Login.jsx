@@ -18,23 +18,31 @@ const Login = () => {
         if(email.includes("@stud.ase.ro")) {
             var password = passRef.current.value;
             if(password.length >= 8 
-                || specialChars.test(password)
-                || /[A-Z]/.test(password)
-                || /[a-z]/.test(password)
-                || /[0-9]/.test(password)) 
+                && specialChars.test(password)
+                && /[A-Z]/.test(password)
+                && /[a-z]/.test(password)
+                && /[0-9]/.test(password)) 
             {
                 var response = makeRequest(email);
                 var json = JSON.parse(response);
-                if(password === json["hashPassword"]) 
+                if(json.hasOwnProperty("error"))
                 {
-                    navigateToCourses();
-                    //toast de succes
+                    //toast de eroare - nu exista utilizatorul
                 }
                 else
                 {
-                    //toast de eroare - a gresit parola
-                    //golire input de parola, nu si de email
+                    if(password === json["hashPassword"]) 
+                    {
+                        navigateToCourses();
+                        //toast de succes
+                    }
+                    else
+                    {
+                        //toast de eroare - a gresit parola
+                        //golire input de parola, nu si de email
+                    }
                 }
+                
             }
             else
             {
