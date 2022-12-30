@@ -1,5 +1,5 @@
 import React from "react";
-import './CourseItem.css';
+import '../style/Courses.css';
 
 
 class CourseItem extends React.Component {
