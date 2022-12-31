@@ -1,24 +1,68 @@
 import React from 'react';
 import { useRef } from 'react';
+import { useNavigate } from "react-router-dom";
 import '../style/Login-Register.css'
 
 const Register = () => {
+
+    const faculties = [
+        {
+            faculty: "Facultatea de Cibernetică, Statistică și Informatică Economică",
+            field: "Cibernetică Economică"
+        },
+        {
+            faculty: "Facultatea de Cibernetică, Statistică și Informatică Economică",
+            field: "Statistică și Previziune Economică"
+        },
+        {
+            faculty: "Facultatea de Cibernetică, Statistică și Informatică Economică",
+            field: "Informatică Economică - lb. engleză"
+        },
+        {
+            faculty: "Facultatea de Cibernetică, Statistică și Informatică Economică",
+            field: "Informatică Economică"
+        },
+        {
+            faculty: "Facultatea de Finanțe, Asigurări, Bănci și Burse de Valori",
+            field: "Finanţe şi bănci"
+        },
+        {
+            faculty: "Facultatea de Finanțe, Asigurări, Bănci și Burse de Valori",
+            field: "Finanţe şi bănci - lb. engleză"
+        },
+        {
+            faculty: "Facultatea de Contabilitate și Informatică de Gestiune",
+            field: "Contabilitate şi informatică de gestiune - lb. engleză"
+        },
+        {
+            faculty: "Facultatea de Contabilitate și Informatică de Gestiune",
+            field: "Contabilitate şi informatică de gestiune"
+        },
+    ]
+
+    const navigate = useNavigate();
+
+    const navigateToLogin = () => {
+        navigate('/login');
+      };
+
     const emailRef = useRef(null);
     const passRef = useRef(null);
     const confPassRef = useRef(null);
     const nameRef = useRef(null);
     const surnameRef = useRef(null);
-    const uniRef = useRef(null);
+    const fieldRef = useRef(null);
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
     const verifyRegisterInformation = () => {
         var email = emailRef.current.value;
         var name = nameRef.current.value;
-        var surname = nameRef.current.value;
+        var surname = surnameRef.current.value;
         var password = passRef.current.value;
         var confPass = confPassRef.current.value;
-        var uni = uniRef.current.value;
-
+        var field = fieldRef.current.value;
+        var faculty = faculties.filter(fac => fac["field"] === field)[0].faculty;
+        
         if(password === confPass) 
         {
             var response = makeRequest(email);
@@ -29,12 +73,16 @@ const Register = () => {
                 {
                     if(verifyPassword(password)) 
                     {
-                        json = "{" +
-                            "'email':'" + "'" + email + "'," +
-                            "'hashPassword':" + "'" + password +"'," +
-                            "'name':" + "'" + name + "'," +
-                            "'surname':" + "'" + surname + "'}" 
+                        json = '{' +
+                            '"email":' + '"' + email + '",' +
+                            '"hashPassword":' + '"' + password + '",' +
+                            '"name":' + '"' + name + '",' +
+                            '"surname":' + '"' + surname + '",' + 
+                            '"field":' + '"' + field + '",' +
+                            '"faculty":' + '"' + faculty + 
+                            '"}'; 
                         sendRequest(json);
+                        navigateToLogin();
                     }
                 }
             }
@@ -91,8 +139,13 @@ const Register = () => {
     function sendRequest(json) {
         var url = "http://localhost:8000/users/add";
         var request = new XMLHttpRequest();
-        request.open("POST", url, false); 
+        request.open("POST", url, true); 
+        request.setRequestHeader('Content-Type', 'application/json');
         request.send(json);
+    }
+
+    const preventDefault = (event) => {
+        event.preventDefault();
     }
 
         return (
@@ -100,7 +153,7 @@ const Register = () => {
                 <div className='RegisterContent'>
                 <h1>StudyTime</h1> 
                 <label className="inregistrare">ÎNREGISTRARE</label>
-                <form className="register">
+                <form className="register" onSubmit={preventDefault}>
                     <label htmlFor="nume">Nume:</label>
                     <input type="text" id="nume" name="nume" 
                     pattern="([A-Z][a-z]).{2,}"
@@ -122,12 +175,12 @@ const Register = () => {
                     ref={emailRef}
                     />
 
-                    <label>Facultate și Specializare:</label>
-                    <select name="uni" id="uni" ref={uniRef}>
+                    <label>Facultate și specializare:</label>
+                    <select name="uni" id="uni" ref={fieldRef}>
                         <optgroup label="Facultatea de Cibernetică, Statistică și Informatică Economică">
                             <option>Cibernetică Economică</option>
                             <option>Statistică și Previziune Economică</option>
-                            <option>Informatică Economică - lb. română</option>
+                            <option>Informatică Economică</option>
                             <option>Informatică Economică - lb. engleză</option>
                         </optgroup>
 
@@ -166,8 +219,5 @@ const Register = () => {
             </div>
             
         )}
-
-        
-
 
 export default Register;
