@@ -32,7 +32,6 @@ const Login = () => {
                 {
                     toast.error('Nu există niciun utilizator cu adresa de email introdusă',
                     {position:toast.POSITION.TOP_RIGHT})
-                    //toast de eroare - nu exista utilizatorul
                 }
                 else
                 {
@@ -40,14 +39,12 @@ const Login = () => {
                     {
                         navigateToCourses();
                         toast.success('Logarea s-a realizat cu succes!',
-                    {position:toast.POSITION.TOP_RIGHT})
-                        //toast de succes
+                        {position:toast.POSITION.TOP_RIGHT})
                     }
                     else
                     {
                         toast.error('Parola introdusă este greșită!',
-                    {position:toast.POSITION.TOP_RIGHT})
-                        //toast de eroare - a gresit parola
+                        {position:toast.POSITION.TOP_RIGHT})
                         //golire input de parola, nu si de email
                     }
                 }
@@ -57,7 +54,6 @@ const Login = () => {
             {
                 toast.error('Datele introduse nu sunt corecte!',
                     {position:toast.POSITION.TOP_RIGHT})
-                //toast de eroare - nu a introdus datele corect
             }
         }
     }
