@@ -1,6 +1,8 @@
 import { React, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import '../style/Login-Register.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const emailRef = useRef(null);
@@ -10,7 +12,9 @@ const Login = () => {
     const navigate = useNavigate();
 
     const navigateToCourses = () => {
-        navigate('/cursuri');
+        setTimeout(() => {
+            navigate('/cursuri')
+          }, 3000);
       };
 
     const verifyLoginInformation = () => {
@@ -21,12 +25,13 @@ const Login = () => {
                 && specialChars.test(password)
                 && /[A-Z]/.test(password)
                 && /[a-z]/.test(password)
-                && /[0-9]/.test(password)) 
-            {
+                && /[0-9]/.test(password))  {
                 var response = makeRequest(email);
                 var json = JSON.parse(response);
                 if(json.hasOwnProperty("error"))
                 {
+                    toast.error('Nu există niciun utilizator cu adresa de email introdusă',
+                    {position:toast.POSITION.TOP_RIGHT})
                     //toast de eroare - nu exista utilizatorul
                 }
                 else
@@ -34,10 +39,14 @@ const Login = () => {
                     if(password === json["hashPassword"]) 
                     {
                         navigateToCourses();
+                        toast.success('Logarea s-a realizat cu succes!',
+                    {position:toast.POSITION.TOP_RIGHT})
                         //toast de succes
                     }
                     else
                     {
+                        toast.error('Parola introdusă este greșită!',
+                    {position:toast.POSITION.TOP_RIGHT})
                         //toast de eroare - a gresit parola
                         //golire input de parola, nu si de email
                     }
@@ -46,6 +55,8 @@ const Login = () => {
             }
             else
             {
+                toast.error('Datele introduse nu sunt corecte!',
+                    {position:toast.POSITION.TOP_RIGHT})
                 //toast de eroare - nu a introdus datele corect
             }
         }
@@ -84,6 +95,7 @@ const Login = () => {
                     />   
                     
                     <button onClick={verifyLoginInformation} className="btn">Conectează-te</button>
+                     <ToastContainer />
                 </form>
                 <a href='/register' className="btn_link">Nu ai un cont? Înregistrează-te aici!</a>
         

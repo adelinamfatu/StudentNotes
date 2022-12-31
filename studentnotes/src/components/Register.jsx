@@ -2,6 +2,8 @@ import React from 'react';
 import { useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import '../style/Login-Register.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 
@@ -89,11 +91,15 @@ const Register = () => {
             else
             {
                 //toast de eroare - utilizatorul exista deja
+                toast.error('Utilizator existent!',
+                {position:toast.POSITION.TOP_RIGHT})
             }
         }
         else
         {
             //toast - eroare - parolele nu se potrivesc
+            toast.error('Parolele nu corespund!',
+            {position:toast.POSITION.TOP_RIGHT})
         }
     }
 
@@ -101,13 +107,17 @@ const Register = () => {
     {
         if(/[0-9]/.test(name) || /[0-9]/.test(surname))
         {
+            toast.error('Numele și prenumele nu pot conține cifre!',
+            {position:toast.POSITION.TOP_RIGHT})
             return false;
             //toast de eroare - numele sau prenumele nu pot contine cifre
         }
         else
         {
-            if(/[a-z]/.test(name[0]) || /[a-z]/.test(name[0]))
+            if(/[a-z]/.test(name[0]) || /[a-z]/.test(surname[0]))
             {
+                toast.error('Numele și prenumele nu pot începe cu literă mică!',
+                {position:toast.POSITION.TOP_RIGHT})
                 return false;
                 //toast de eroare - numele sau prenumele nu pot incepe cu litera mica
             }
@@ -212,7 +222,8 @@ const Register = () => {
                     />
                     
                     <button type="submit" className='btn' onClick={verifyRegisterInformation}>Înregistrează-te</button>
-                        
+                     <ToastContainer />
+
                 </form>
                 <a href='/' className="btn_link">Ai deja un cont? Autentifică-te aici!</a>
                 </div>

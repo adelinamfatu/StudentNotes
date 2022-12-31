@@ -1,7 +1,6 @@
 import Profile from './components/Profile';
 import Groups from './components/Groups';
-import Cursuri from './components/Courses';
-import Seminare from './components/Seminars';
+import Notes from './components/Notes';
 import Login from './components/Login';
 import Register from './components/Register';
 import './App.css';
@@ -20,8 +19,7 @@ function App() {
           <Route path="/" element={<Navigate to="login" />} />
           <Route path="/login" element={< Login/>} />
           <Route path="/register" element={< Register/>} />
-          <Route path="/cursuri" element={< Cursuri/>} />
-          <Route path="/seminare" element={<Seminare />} />
+          <Route path="/cursuri" element={< Notes/>} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/grupuri" element={<Groups />} />
         </Routes>
