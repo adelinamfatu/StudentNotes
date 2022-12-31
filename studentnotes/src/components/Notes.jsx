@@ -1,5 +1,4 @@
 import React from "react";
-import CourseItem from "./CourseItem";
 import { listOfCourses } from "./CoursesList";
 import NavigationBar from "./NavigationBar";
 import NavigationAboutMe from "./NavigationAboutMe";

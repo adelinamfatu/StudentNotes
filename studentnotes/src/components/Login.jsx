@@ -13,7 +13,7 @@ const Login = () => {
 
     const navigateToCourses = () => {
         setTimeout(() => {
-            navigate('/cursuri')
+            navigate('/notes')
           }, 2000);
       };
 
