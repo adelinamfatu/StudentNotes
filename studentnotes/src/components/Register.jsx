@@ -122,6 +122,7 @@ const Register = () => {
                 //toast de eroare - numele sau prenumele nu pot incepe cu litera mica
             }
         }
+        
         return true;
     }
 
