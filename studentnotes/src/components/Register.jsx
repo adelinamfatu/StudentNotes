@@ -90,14 +90,12 @@ const Register = () => {
             }
             else
             {
-                //toast de eroare - utilizatorul exista deja
                 toast.error('Utilizator existent!',
                 {position:toast.POSITION.TOP_RIGHT})
             }
         }
         else
         {
-            //toast - eroare - parolele nu se potrivesc
             toast.error('Parolele nu corespund!',
             {position:toast.POSITION.TOP_RIGHT})
         }
@@ -110,7 +108,6 @@ const Register = () => {
             toast.error('Numele și prenumele nu pot conține cifre!',
             {position:toast.POSITION.TOP_RIGHT})
             return false;
-            //toast de eroare - numele sau prenumele nu pot contine cifre
         }
         else
         {
@@ -119,7 +116,6 @@ const Register = () => {
                 toast.error('Numele și prenumele nu pot începe cu literă mică!',
                 {position:toast.POSITION.TOP_RIGHT})
                 return false;
-                //toast de eroare - numele sau prenumele nu pot incepe cu litera mica
             }
         }
         
