@@ -6,7 +6,7 @@ class NavigationBar extends React.Component {
         return (
             <nav className='NavigationBar'>
                 <div className='navigation-list'>
-                <a id='numeStudent'> NumeStudent</a>
+                <a id='numeStudent'>NumeStudent</a>
                 </div>
             </nav>
         )

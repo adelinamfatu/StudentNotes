@@ -3,18 +3,21 @@ import { useNavigate } from "react-router-dom";
 import '../style/Login-Register.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useContext } from 'react';
+import { LoginContext } from '../App';
 
 const Login = () => {
+    const [loggedIn, setLoggedIn] = useContext(LoginContext);
     const emailRef = useRef(null);
     const passRef = useRef(null);
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-    var isAuthenticated = false;
 
     const navigate = useNavigate();
 
-    const navigateToCourses = () => {
+    const navigateToNotes = () => {
+        setLoggedIn(true);
         setTimeout(() => {
-            navigate('/notes')
+            navigate('/notes');
           }, 2000);
       };
 
@@ -38,8 +41,7 @@ const Login = () => {
                 {
                     if(password === json["hashPassword"]) 
                     {
-                        isAuthenticated = true;
-                        navigateToCourses();
+                        navigateToNotes();
                         toast.success('Logarea s-a realizat cu succes!',
                         {position:toast.POSITION.TOP_RIGHT})
                     }
@@ -93,7 +95,7 @@ const Login = () => {
                     />   
                     
                     <button onClick={verifyLoginInformation} className="btn">Conectează-te</button>
-                     <ToastContainer />
+                    <ToastContainer />
                 </form>
                 <a href='/register' className="btn_link">Nu ai un cont? Înregistrează-te aici!</a>
         

@@ -5,26 +5,32 @@ import Login from './components/Login';
 import Register from './components/Register';
 import './App.css';
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Routes,
   Route,
   Navigate
  } from "react-router-dom";
 
+import { createContext, useState } from 'react';
+
+export const LoginContext = createContext();
+
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+  
   return (
-    <div className="App">
-      <Router>
+    <LoginContext.Provider value={[loggedIn, setLoggedIn]}>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to="login" />} />
-          <Route path="/login" element={< Login/>} />
-          <Route path="/register" element={< Register/>} />
-          <Route path="/notes" element={< Notes/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/register" element={<Register/>} />
+          <Route path="/notes" element={<Notes/>} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/groups" element={<Groups />} />
         </Routes>
-      </Router>
-    </div>
+      </BrowserRouter>
+    </LoginContext.Provider>
   );
 }
 
