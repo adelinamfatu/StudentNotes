@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import '../style/Login-Register.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useContext } from 'react';
-import { LoginContext } from '../App';
+import { useContext, useEffect } from 'react';
+import { AuthenticationContext, EmailContext } from '../App';
 
 const Login = () => {
-    const [loggedIn, setLoggedIn] = useContext(LoginContext);
+    const [loggedIn, setLoggedIn] = useContext(AuthenticationContext);
+    const [username, setUsername] = useContext(EmailContext);
     const emailRef = useRef(null);
     const passRef = useRef(null);
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
@@ -18,8 +19,8 @@ const Login = () => {
         setLoggedIn(true);
         setTimeout(() => {
             navigate('/notes');
-          }, 2000);
-      };
+        }, 2000);
+    };
 
     const verifyLoginInformation = () => {
         var email = emailRef.current.value;
@@ -41,6 +42,7 @@ const Login = () => {
                 {
                     if(password === json["hashPassword"]) 
                     {
+                        setUsername(email);
                         navigateToNotes();
                         toast.success('Logarea s-a realizat cu succes!',
                         {position:toast.POSITION.TOP_RIGHT})

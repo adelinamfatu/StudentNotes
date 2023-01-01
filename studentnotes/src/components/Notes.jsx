@@ -4,10 +4,10 @@ import NavigationBar from "./NavigationBar";
 import NavigationAboutMe from "./NavigationAboutMe";
 import '../style/Notes.css';
 import { useContext } from "react";
-import { LoginContext } from "../App";
+import { AuthenticationContext, EmailContext } from "../App";
 
 const Notes = () => {
-    const [loggedIn, setLoggedIn] = useContext(LoginContext);
+    const [loggedIn, setLoggedIn] = useContext(AuthenticationContext);
 
     const addNote = () => {
       
