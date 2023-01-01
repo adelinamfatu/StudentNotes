@@ -8,6 +8,7 @@ const Login = () => {
     const emailRef = useRef(null);
     const passRef = useRef(null);
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    var isAuthenticated = false;
 
     const navigate = useNavigate();
 
@@ -37,6 +38,7 @@ const Login = () => {
                 {
                     if(password === json["hashPassword"]) 
                     {
+                        isAuthenticated = true;
                         navigateToCourses();
                         toast.success('Logarea s-a realizat cu succes!',
                         {position:toast.POSITION.TOP_RIGHT})
