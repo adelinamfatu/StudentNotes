@@ -3,16 +3,21 @@ import { listOfCourses } from "./CoursesList";
 import NavigationBar from "./NavigationBar";
 import NavigationAboutMe from "./NavigationAboutMe";
 import '../style/Notes.css';
-import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Notes = () => {
     var fullName = null;
     var field = null;
     var faculty = null;
+    const navigate = useNavigate();
     window.addEventListener('load', onLoad);
 
     function onLoad() {
         var user = localStorage.getItem('user');
+        if(!user) {
+            navigate('/login');
+        }
+
         var userJSON = JSON.parse(user);
         var url = "http://localhost:8000/users/" + userJSON["user"].email;
         
@@ -25,18 +30,6 @@ const Notes = () => {
         faculty = json["faculty"];
         field = json["field"];
     }
-
-    useEffect(() => {
-        /*var url = "http://localhost:8000/users/" + username;
-        console.log(username);
-        var request = new XMLHttpRequest();
-        request.open("GET", url, false); 
-        request.send(null);
-        var json = JSON.parse(request.responseText);
-        fullName = json["surname"] + " " + json["name"];
-        faculty = json["faculty"];
-        field = json["field"];*/
-    })
 
     const addNote = () => {
       

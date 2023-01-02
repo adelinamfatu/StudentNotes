@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import '../style/Profile.css';
 import NavigationAboutMe from "./NavigationAboutMe";
 import NavigationBar from "./NavigationBar";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
     window.addEventListener('load', addData);
@@ -9,9 +10,14 @@ const Profile = () => {
     const [fullName, setFullName] = useState('');
     const [faculty, setFaculty] = useState('');
     const [field, setField] = useState('');
+    const navigate = useNavigate();
 
     function addData() {
         var user = localStorage.getItem('user');
+        if(!user) {
+            navigate('/login');
+        }
+
         var userJSON = JSON.parse(user)
         var url = "http://localhost:8000/users/" + userJSON["user"].email;
         
@@ -41,7 +47,7 @@ const Profile = () => {
                         </div>
                         <div>
                             <label id="mail">Email: </label>
-                            <input type="text" value={fullName} readOnly></input> 
+                            <input type="text" value={email} readOnly></input> 
                         </div>
                         <div>
                             <label id="faculty">Facultate: </label>
