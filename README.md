@@ -7,7 +7,7 @@
 6.	Vom avea un meniu in partea de sus a paginii pe orizontal ce va contine butoanele: 
 -	Cursuri
 -	Seminarii
--	Numele studentului+sageata in jos. 
+-	Numele studentului + sageata in jos. 
 7.	Primul buton va fi „Cursuri”. In urma apasarii acestui buton, studentul va fi redirectionat pe o pagina ce va contine denumirea tuturor cursurilor adaugate de el sub forma de lista. Deasupra listei va fi un titlu „Cursurile mele”. In dreptul acestui titlu, vor exista 2 butoane „+” si „-” care vor permite adaugarea unui nou curs, respectiv stergerea unui curs din lista.
 8.	Al doilea buton va fi „Seminarii”. In urma apasarii acestui buton, studentul va fi redirectionat pe o pagina ce va contine denumirea tuturor seminariilor adaugate de el sub forma de lista. Deasupra listei va fi un titlu „Seminariile mele”. In dreptul acestui titlu, vor exista 2 butoane „+” si „-” care vor permite adaugarea unui nou seminar, respectiv stergerea unui seminar din lista.
 9.	Intre titlu si lista vor exista 2 butoane si un label dispuse orizontal: 
@@ -26,8 +26,6 @@
 15.	Pe fiecare pagina, in partea de sus-dreapta va exista un buton-meniu ce va contine numele studentului si o sageata in jos. La apasarea butonului se va deschide meniul care va contine butoanele: 
 -	Grupuri -> in cazul in care studentul vrea sa organizeze grupuri de studiu
 -	Profil 
--	Mesaje
--	Delogare
 16. Schema initiala a bazei de date:
 
 ![Notite student](https://user-images.githubusercontent.com/102324614/203779173-7796b58f-81c6-4357-bd47-0f609ca854b6.jpg)
