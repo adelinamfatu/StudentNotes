@@ -8,12 +8,12 @@
   
   .CourseDex {
     background-size: "cover";
-    height: 100vh;
+    height: 110vh; 
     width: 100%;
     margin-top: 0px;
     font-size:50px;
     background-repeat:no-repeat;
-    background-image: linear-gradient(79deg,#8EC3B0, #9ED5C5 50%, #DEF5E5);
+    background-image: linear-gradient(75deg,#ddf3e6, #99dbad 50%, #ddf3e6);
 
   }
   
@@ -26,13 +26,6 @@
     font-size: 30px;
   }
 
-  .listOfCourses {
-    top: 170px;
-    left: 0%;
-    width: 1320px;
-    height: 528px;
-    background-color: rgb(255, 255, 255);
-  }
   
 
 .courseItem {
@@ -50,20 +43,16 @@
 
 
 .cursuri {
-    display: grid;
-    display: flex;
-   position: fixed;
-   justify-content: center;
-   left: 139px;
-   top: 150px;
+   padding-top: 100px;
+   padding-left: 120px;
 }
  
 
  #cursurilemele {
-     font-size: 26px;
+     font-size: 30px;
      display: flex;
      display: inline-block;
-     padding: 7px;
+     padding: 10px;
      letter-spacing: 4px;
  }
  
@@ -115,46 +104,50 @@
  #namealph {
      position: relative;
      display: inline-block;
-     background-color: #239793;
-     color: white;
-     font-size: 20px;
+     background-color: #0a0141;
+     color: #f1f1f1;
+     font-size: 15px;
      border: none;
-     padding: 16px 21px;
-     left: 3%;
      cursor: pointer;
+    padding: 3px 10px;
+    
+    
+     
  }
  
  #date {
      position: relative;
      display: inline-block;
-     background-color: #239793;
-     color: white;
-     padding: 16px 26px;
-     font-size: 20px;
+     background-color: #0a0141;
+     color: #f1f1f1;
+     padding: 3px 10px;
+     font-size: 15px;
      border: none;
-     left: 56px;
+     left: 20px;
      cursor: pointer;
  }
  
- 
- * {
+* {
      box-sizing: border-box;
      
-   }
+   }  
+
+ text {
+  font-size: 20px;
+ }  
    
  .courseName {
      position: relative;
-     background-color: #dadada;
+     background-color: #DEF5E5;
      color: rgb(0, 0, 0);
      padding: 10px 26px;
-     font-size: 16px;
-     left: 30px;
+     font-size: 25px;
      border: none;
      display: block;
-     top: 22px;
      cursor: pointer;
-     width: 600px;
+     width: 50%;
      margin: 2px auto;
+     top: 30px;
     }
 
 

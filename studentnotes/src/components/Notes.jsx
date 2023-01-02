@@ -49,18 +49,19 @@ const Notes = () => {
                 />
                 <NavigationAboutMe />
                 <div className="cursuri"> 
-                    <div className='listOfCourses'>
-                        <h1 id="cursurilemele">Cursurile mele</h1> 
-                        <button onClick={addNote} id="addCurs">+</button>
-                        <button onClick={deleteNote} id="removeCurs">-</button>
-                        <button onClick={showAlphabetically} id="namealph">Nume</button>
-                        <button onClick={showByDate} id="date">Data</button>
-                        <div>
-                            {listOfCourses.map(item => (
-                                <a className="courseName">{item.title}</a>
-                            ))}
-                        </div> 
-                    </div>
+                    <h1 id="cursurilemele">Cursurile mele</h1>
+                    <button onClick={addNote} id="addCurs">+</button>
+                    <button onClick={deleteNote} id="removeCurs">-</button>
+                        <div className='listOfCourses'>
+                            <text>Filtrare după: </text>
+                            <button onClick={showAlphabetically} id="namealph">Nume</button>
+                            <button onClick={showByDate} id="date">Dată</button>
+                            <div>
+                                {listOfCourses.map(item => (
+                                    <a className="courseName">{item.title}</a>
+                                ))}
+                            </div> 
+                        </div>
                 </div>
             </div>  
         )                   

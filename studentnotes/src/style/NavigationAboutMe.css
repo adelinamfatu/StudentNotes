@@ -1,25 +1,22 @@
 .NavigationAboutMe{
     display: flex;
-    position: fixed;
-    top: 150px;
-    left: 5.9%;
-    justify-content: space-between;
-    transform: translate(-50%);
-    width: 100px;
-    height: 70%;
-    background-color: #8EC3B0;
+    position: absolute;
+    top: 80px;
+    width: 120px;
+    height: 100%;
     box-shadow: -5px 10px 15px rgba(43, 43, 43, 0.25);
-    background-image: url('../images/background_about_me.jpg');
+    border-right: 3px solid black;
+    background-image: url('../images/background_navbar.jpg');
 
 }
 
 .aboutMe-list {
+    position: absolute;
     align-items: top;
     font-size: 12px;
-    padding-top: 20px;
+    padding-top: 35px;
     padding-left: 10px;
     line-height: 10px;
-    /*list-style: none;*/
     justify-content: flex-start;
     gap: 50px;
     text-align: center;
@@ -29,11 +26,13 @@
 
 .aboutMe-links {
     text-decoration: none;
-    color: rgb(0, 0, 0);
-    padding: 10px 20px;
+    color:#DEF5E5;
+    padding: 15px 20px;
     white-space: nowrap;
-    font-family: 'Karla', sans-serif;
-    background-color: #d7d7d7;
+    font-family: Roboto, sans-serif;
+    background-color:#24A19C;
+    font-size: 15px;
+    text-align: center;
 }
 
 .aboutMe-links:hover {

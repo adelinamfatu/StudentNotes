@@ -163,14 +163,14 @@ const Register = () => {
                 <form className="register" onSubmit={preventDefault}>
                     <label htmlFor="nume">Nume:</label>
                     <input type="text" id="nume" name="nume" 
-                    pattern="([A-Z][a-z]).{2,}"
+                    pattern="([A-Z][a-z]).{0,}"
                     title="Trebuie să conțină minim 2 litere și să înceapă cu literă mare." required
                     ref={surnameRef}
                     />
 
                     <label>Prenume:</label>
                     <input type="text" id="prenume" name="prenume" 
-                    pattern="([A-Z][a-z]).{2,}"
+                    pattern="([A-Z][a-z]).{0,}"
                     title="Trebuie să conțină minim 2 litere și să înceapă cu literă mare." required
                     ref={nameRef}
                     />
