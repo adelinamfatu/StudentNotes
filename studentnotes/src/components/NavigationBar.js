@@ -10,9 +10,9 @@ class NavigationBar extends React.Component {
         return (
             <nav className='NavigationBar'>
                 <div className='navigation-list'>
-                    <p id='studentName'>{this.props.fullName}</p>
-                    <p id='studentFaculty'>{this.props.faculty}</p>
-                    <p id='studentField'>{this.props.field}</p>
+                    <p id='studentName'>Nume student</p>
+                    <p id='studentFaculty'>Facultate</p>
+                    <p id='studentField'>Specializare</p>
                 </div>
             </nav>
         )

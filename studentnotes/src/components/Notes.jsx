@@ -4,24 +4,38 @@ import NavigationBar from "./NavigationBar";
 import NavigationAboutMe from "./NavigationAboutMe";
 import '../style/Notes.css';
 import { useContext, useEffect } from "react";
-import { AuthenticationContext, EmailContext } from "../App";
 
 const Notes = () => {
-    const [loggedIn, setLoggedIn] = useContext(AuthenticationContext);
-    const [username, setUsername] = useContext(EmailContext);
     var fullName = null;
     var field = null;
     var faculty = null;
+    window.addEventListener('load', onLoad);
+
+    function onLoad() {
+        var user = localStorage.getItem('user');
+        var userJSON = JSON.parse(user);
+        var url = "http://localhost:8000/users/" + userJSON["user"].email;
+        
+        var request = new XMLHttpRequest();
+        request.open("GET", url, false); 
+        request.setRequestHeader("x-access-token", userJSON["user"].token);
+        request.send(null);
+        var json = JSON.parse(request.responseText);
+        fullName = json["surname"] + " " + json["name"];
+        faculty = json["faculty"];
+        field = json["field"];
+    }
 
     useEffect(() => {
-        var url = "http://localhost:8000/users/" + username;
+        /*var url = "http://localhost:8000/users/" + username;
+        console.log(username);
         var request = new XMLHttpRequest();
         request.open("GET", url, false); 
         request.send(null);
         var json = JSON.parse(request.responseText);
         fullName = json["surname"] + " " + json["name"];
         faculty = json["faculty"];
-        field = json["field"];
+        field = json["field"];*/
     })
 
     const addNote = () => {

@@ -23,6 +23,9 @@ const User = sequelize.define("user", {
     },
     field: {
         type: Sequelize.STRING
+    },
+    token: {
+        type: Sequelize.STRING
     }
 });
 

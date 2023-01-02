@@ -67,37 +67,27 @@ const Register = () => {
         
         if(password === confPass) 
         {
-            var response = makeRequest(email);
-            var json = JSON.parse(response);
-            if(json.hasOwnProperty("error"))
+            if(verifyNames(name, surname)) 
             {
-                if(verifyNames(name, surname)) 
+                if(verifyPassword(password)) 
                 {
-                    if(verifyPassword(password)) 
-                    {
-                        json = '{' +
-                            '"email":' + '"' + email + '",' +
-                            '"hashPassword":' + '"' + password + '",' +
-                            '"name":' + '"' + name + '",' +
-                            '"surname":' + '"' + surname + '",' + 
-                            '"field":' + '"' + field + '",' +
-                            '"faculty":' + '"' + faculty + 
-                            '"}'; 
-                        sendRequest(json);
-                        navigateToLogin();
-                    }
+                    var json = '{' +
+                        '"email":' + '"' + email + '",' +
+                        '"hashPassword":' + '"' + password + '",' +
+                        '"name":' + '"' + name + '",' +
+                        '"surname":' + '"' + surname + '",' + 
+                        '"field":' + '"' + field + '",' +
+                        '"faculty":' + '"' + faculty + 
+                        '"}'; 
+                    sendRequest(json);
+                    navigateToLogin();
                 }
-            }
-            else
-            {
-                toast.error('Utilizator existent!',
-                {position:toast.POSITION.TOP_RIGHT})
             }
         }
         else
         {
             toast.error('Parolele nu corespund!',
-            {position:toast.POSITION.TOP_RIGHT})
+                {position:toast.POSITION.TOP_RIGHT})
         }
     }
 
@@ -106,7 +96,7 @@ const Register = () => {
         if(/[0-9]/.test(name) || /[0-9]/.test(surname))
         {
             toast.error('Numele și prenumele nu pot conține cifre!',
-            {position:toast.POSITION.TOP_RIGHT})
+                {position:toast.POSITION.TOP_RIGHT})
             return false;
         }
         else
@@ -114,7 +104,7 @@ const Register = () => {
             if(/[a-z]/.test(name[0]) || /[a-z]/.test(surname[0]))
             {
                 toast.error('Numele și prenumele nu pot începe cu literă mică!',
-                {position:toast.POSITION.TOP_RIGHT})
+                    {position:toast.POSITION.TOP_RIGHT})
                 return false;
             }
         }

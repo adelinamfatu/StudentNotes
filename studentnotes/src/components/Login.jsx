@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import '../style/Login-Register.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useContext, useEffect } from 'react';
-import { AuthenticationContext, EmailContext } from '../App';
+import { useState } from 'react';
+import axios from 'axios';
 
 const Login = () => {
-    const [loggedIn, setLoggedIn] = useContext(AuthenticationContext);
-    const [username, setUsername] = useContext(EmailContext);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [user, setUser] = useState()
     const emailRef = useRef(null);
     const passRef = useRef(null);
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
@@ -16,60 +17,56 @@ const Login = () => {
     const navigate = useNavigate();
 
     const navigateToNotes = () => {
-        setLoggedIn(true);
         setTimeout(() => {
             navigate('/notes');
         }, 2000);
     };
 
+    const persistToken = async e => {
+        const user = { email : username, hashPassword : password };
+        await axios.post(
+          "http://localhost:8000/users/login",
+          user
+        )
+        .then(function(response) {
+            if(response.data) {
+                setUser(response.data);
+                localStorage.setItem('user', JSON.stringify(response.data));
+                navigateToNotes();
+                toast.success('Logarea s-a realizat cu succes!',
+                    {position:toast.POSITION.TOP_RIGHT});
+            }
+        })
+        .catch(function(error) {
+            var message = error.response.data;
+            if(message === "Invalid Credentials") {
+                toast.error('Datele introduse nu sunt corecte!',
+                    {position:toast.POSITION.TOP_RIGHT});
+            }
+        });
+      };
+
     const verifyLoginInformation = () => {
         var email = emailRef.current.value;
-        if(email.includes("@stud.ase.ro")) {
+        if(email.includes("@stud.ase.ro")) 
+        {
             var password = passRef.current.value;
             if(password.length >= 8 
                 && specialChars.test(password)
                 && /[A-Z]/.test(password)
                 && /[a-z]/.test(password)
-                && /[0-9]/.test(password))  {
-                var response = makeRequest(email);
-                var json = JSON.parse(response);
-                if(json.hasOwnProperty("error"))
+                && /[0-9]/.test(password))  
                 {
-                    toast.error('Nu există niciun utilizator cu adresa de email introdusă',
-                    {position:toast.POSITION.TOP_RIGHT})
+                    setPassword(password);
+                    setUsername(email);
+                    persistToken();
                 }
                 else
-                {
-                    if(password === json["hashPassword"]) 
-                    {
-                        setUsername(email);
-                        navigateToNotes();
-                        toast.success('Logarea s-a realizat cu succes!',
-                        {position:toast.POSITION.TOP_RIGHT})
-                    }
-                    else
-                    {
-                        toast.error('Parola introdusă este greșită!',
-                        {position:toast.POSITION.TOP_RIGHT})
-                        //golire input de parola, nu si de email
-                    }
-                }
-                
-            }
-            else
-            {
-                toast.error('Datele introduse nu sunt corecte!',
+                {   
+                    toast.error('Datele introduse nu sunt corecte!',
                     {position:toast.POSITION.TOP_RIGHT})
-            }
+                }
         }
-    }
-
-    function makeRequest(email) {
-        var url = "http://localhost:8000/users/" + email;
-        var request = new XMLHttpRequest();
-        request.open("GET", url, false); 
-        request.send(null);
-        return request.responseText;
     }
 
     const submit = (event) => {

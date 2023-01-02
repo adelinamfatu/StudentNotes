@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
+var bcrypt = require('bcryptjs');
+var jwt = require("jsonwebtoken");
+require('dotenv').config()
+const auth = require("../middleware/auth");
 
 //get all users
 router.get("/", async (req, res, next) => {
@@ -13,7 +17,7 @@ router.get("/", async (req, res, next) => {
 });
 
 //get a user by email
-router.get("/:email", async (req, res, next) => {
+router.get("/:email", auth, async (req, res, next) => {
     try {
       const user = await User.findByPk(req.params.email)
       if (user) {
@@ -29,11 +33,68 @@ router.get("/:email", async (req, res, next) => {
 //add a user
 router.post("/add", async(req, res, next) => {
     try {
-      const user = await User.create(req.body);
+      const { email, hashPassword, name, surname, faculty, field } = req.body;
+      encryptedPassword = await bcrypt.hash(hashPassword, 10);
+      
+      const user = await User.create({
+        email, 
+        hashPassword: encryptedPassword,
+        name,
+        surname,
+        faculty,
+        field
+      });
+
+      const token = jwt.sign(
+        { email },
+        process.env.JWT_SECRET_KEY,
+        {
+          expiresIn: "2h",
+        }
+      );
+      // save user token
+      user.token = token;
+      
       res.status(200).json(user);
     } catch (error) {
       next(error);
     }
+});
+
+router.post("/login", async (req, res) => 
+{
+  try 
+  {
+    const { email, hashPassword } = req.body;
+    console.log("Parola: ", hashPassword);
+
+    if (!(email && hashPassword)) {
+      res.status(400).send("All input is required");
+    }
+    const user = await User.findByPk(email);
+
+    if (user && (await bcrypt.compare(hashPassword, String(user.hashPassword)))) 
+    {
+      const token = jwt.sign(
+        { email },
+        process.env.JWT_SECRET_KEY,
+        {
+          expiresIn: "2h",
+        }
+      );
+
+      user.token = token;
+
+      res.status(200).json({user});
+    }
+    res.status(400).send("Invalid Credentials");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.post("/welcome", auth, (req, res) => {
+  res.status(200).send("Welcome 🙌 ");
 });
 
 //update a user
