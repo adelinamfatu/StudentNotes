@@ -65,7 +65,31 @@ const Register = () => {
         var field = fieldRef.current.value;
         var faculty = faculties.filter(fac => fac["field"] === field)[0].faculty;
         
-        if(password === confPass) 
+
+          if(verifyNames(name, surname)) 
+            {
+                if(verifyPassword(password)) 
+                {
+                    if(password === confPass) {
+                        var json = '{' +
+                        '"email":' + '"' + email + '",' +
+                        '"hashPassword":' + '"' + password + '",' +
+                        '"name":' + '"' + name + '",' +
+                        '"surname":' + '"' + surname + '",' + 
+                        '"field":' + '"' + field + '",' +
+                        '"faculty":' + '"' + faculty + 
+                        '"}'; 
+                    sendRequest(json);
+                    navigateToLogin();
+                    }
+                    else {
+                        toast.error('Parolele nu corespund!',
+                        {position:toast.POSITION.TOP_RIGHT})
+                    }
+                }
+            }
+            
+       /* if(password === confPass) 
         {
             if(verifyNames(name, surname)) 
             {
@@ -88,7 +112,7 @@ const Register = () => {
         {
             toast.error('Parolele nu corespund!',
                 {position:toast.POSITION.TOP_RIGHT})
-        }
+        }*/
     }
 
     function verifyNames(name, surname) 

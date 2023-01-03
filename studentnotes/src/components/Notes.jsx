@@ -59,18 +59,18 @@ const Notes = () => {
                     <h1 id="cursurilemele">Cursurile mele</h1>
                     <button onClick={addNote} id="addCurs">+</button>
                     <button onClick={deleteNote} id="removeCurs">-</button>
-                        <div className='listOfCourses'>
-                            <text>Filtrare după: </text>
-                            <button onClick={showAlphabetically} id="namealph">Nume</button>
-                            <button onClick={showByDate} id="date">Dată</button>
-                            <div>
-                                {listOfCourses.map(item => (
-                                    <a className="courseName">{item.title}</a>
-                                ))}
-                            </div> 
-                        </div>
+                    <div id='namedatabtn'>
+                    <text>Filtrare după: </text>
+                        <button onClick={showAlphabetically} id="namealph">Nume</button>
+                        <button onClick={showByDate} id="date">Dată</button>
+                    </div>
+                    <div className='listOfCourses'>
+                        {listOfCourses.map(item => (
+                            <a className="courseName">{item.title}</a>
+                        ))}
+                    </div> 
                 </div>
-            </div>  
+            </div>
         )                   
 }
 export default Notes;
