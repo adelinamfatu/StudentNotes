@@ -2,26 +2,16 @@ import { React, useState } from "react";
 import '../style/NavigationBar.css';
 import logo from '../images/brain.png'
 import logout from '../images/logout.png'
-//import { useNavigate } from "react-router-dom";
 
 
 const NavigationBar = () => {
-    // constructor(props) {
-    //     super(props);
-    // }
     window.addEventListener('load', addData);
-    const [email, setEmail] = useState('');
     const [fullName, setFullName] = useState('');
     const [faculty, setFaculty] = useState('');
     const [field, setField] = useState('');
-    //const navigate = useNavigate();
 
     function addData() {
         var user = localStorage.getItem('user');
-        // if(!user) {
-        //     navigate('/login');
-        // }
-
         var userJSON = JSON.parse(user)
         var url = "http://localhost:8000/users/" + userJSON["user"].email;
         
@@ -37,7 +27,7 @@ const NavigationBar = () => {
         console.log();
     }
 
-    const delogare = () => {
+    const logoutUser = () => {
         localStorage.removeItem("user");
       }
 
@@ -49,12 +39,10 @@ const NavigationBar = () => {
                     <p id='studentFaculty'>{faculty}</p>
                     <p id='studentField'>{field}</p>
                 </div>
-                <a href='/login' onClick={delogare}><img src={logout} id='imgLogout' /></a>
-                <a href='/login' className="btn_logout" onClick={delogare}>Delogare</a>
-                
+                <a href='/login' onClick={logoutUser}><img src={logout} id='imgLogout' /></a>
+                <a href='/login' className="btn_logout" onClick={logoutUser}>Delogare</a>
             </nav>
         )
 }
-
 
 export default NavigationBar;

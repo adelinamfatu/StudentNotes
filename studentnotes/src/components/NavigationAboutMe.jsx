@@ -11,7 +11,6 @@ const NavigationAboutMe = () => {
             </div>
         </nav>
         )
-    
 }
 
 export default NavigationAboutMe;

@@ -4,6 +4,7 @@ import NavigationBar from "./NavigationBar";
 import NavigationAboutMe from "./NavigationAboutMe";
 import '../style/Notes.css';
 import { useNavigate } from "react-router-dom";
+import addData from "./NavigationBar"
 
 const Notes = () => {
     var fullName = null;
@@ -49,14 +50,10 @@ const Notes = () => {
 
         return (  
             <div className='CourseDex'> 
-                <NavigationBar 
-                    fullName = {fullName}
-                    field = {field}
-                    faculty = {faculty}
-                />
+                <NavigationBar />
                 <NavigationAboutMe />
                 <div className="cursuri"> 
-                    <h1 id="cursurilemele">Cursurile mele</h1>
+                    <h1 id="cursurilemele">Materiile mele</h1>
                     <button onClick={addNote} id="addCurs">+</button>
                     <button onClick={deleteNote} id="removeCurs">-</button>
                     <div id='namedatabtn'>
