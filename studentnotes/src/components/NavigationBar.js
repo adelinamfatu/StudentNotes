@@ -3,12 +3,18 @@ import '../style/NavigationBar.css';
 import logo from '../images/brain.png'
 import logout from '../images/logout.png'
 
+
 class NavigationBar extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
+
+    delogare() {
+        localStorage.removeItem("user");
+      }
 
     render() {
+        
         return (
             <nav className='NavigationBar'>
                 <img src={logo} id='imgLogo' />
@@ -17,11 +23,15 @@ class NavigationBar extends React.Component {
                     <p id='studentFaculty'>Facultate</p>
                     <p id='studentField'>Specializare</p>
                 </div>
-                <a href='/login'><img src={logout} id='imgLogout' /></a>
-                <a href='/login' className="btn_logout">Delogare</a>
+                <a href='/login' onClick={this.delogare}><img src={logout} id='imgLogout' /></a>
+                <a href='/login' className="btn_logout" onClick={this.delogare}>Delogare</a>
+                
             </nav>
         )
     }
 }
+
+
+
 
 export default NavigationBar;
