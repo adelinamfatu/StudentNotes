@@ -56,7 +56,8 @@ const Register = () => {
     const fieldRef = useRef(null);
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
-    const verifyRegisterInformation = () => {
+    const verifyRegisterInformation = () => 
+    {
         var email = emailRef.current.value;
         var name = nameRef.current.value;
         var surname = surnameRef.current.value;
@@ -65,12 +66,12 @@ const Register = () => {
         var field = fieldRef.current.value;
         var faculty = faculties.filter(fac => fac["field"] === field)[0].faculty;
         
-
           if(verifyNames(name, surname)) 
             {
                 if(verifyPassword(password)) 
                 {
-                    if(password === confPass) {
+                    if(password === confPass) 
+                    {
                         var json = '{' +
                         '"email":' + '"' + email + '",' +
                         '"hashPassword":' + '"' + password + '",' +
@@ -79,40 +80,15 @@ const Register = () => {
                         '"field":' + '"' + field + '",' +
                         '"faculty":' + '"' + faculty + 
                         '"}'; 
-                    sendRequest(json);
-                    navigateToLogin();
+                        sendRequest(json);
                     }
-                    else {
+                    else 
+                    {
                         toast.error('Parolele nu corespund!',
-                        {position:toast.POSITION.TOP_RIGHT})
+                            {position:toast.POSITION.TOP_RIGHT})
                     }
                 }
             }
-            
-       /* if(password === confPass) 
-        {
-            if(verifyNames(name, surname)) 
-            {
-                if(verifyPassword(password)) 
-                {
-                    var json = '{' +
-                        '"email":' + '"' + email + '",' +
-                        '"hashPassword":' + '"' + password + '",' +
-                        '"name":' + '"' + name + '",' +
-                        '"surname":' + '"' + surname + '",' + 
-                        '"field":' + '"' + field + '",' +
-                        '"faculty":' + '"' + faculty + 
-                        '"}'; 
-                    sendRequest(json);
-                    navigateToLogin();
-                }
-            }
-        }
-        else
-        {
-            toast.error('Parolele nu corespund!',
-                {position:toast.POSITION.TOP_RIGHT})
-        }*/
     }
 
     function verifyNames(name, surname) 
@@ -132,7 +108,6 @@ const Register = () => {
                 return false;
             }
         }
-        
         return true;
     }
 
@@ -146,15 +121,9 @@ const Register = () => {
         { 
             return true;
         }
+        toast.error('Parola nu corespunde formatului!',
+            {position:toast.POSITION.TOP_RIGHT})
         return false;
-    }
-
-    function makeRequest(email) {
-        var url = "http://localhost:8000/users/" + email;
-        var request = new XMLHttpRequest();
-        request.open("GET", url, false); 
-        request.send(null);
-        return request.responseText;
     }
     
     function sendRequest(json) {
@@ -162,6 +131,17 @@ const Register = () => {
         var request = new XMLHttpRequest();
         request.open("POST", url, true); 
         request.setRequestHeader('Content-Type', 'application/json');
+        request.onreadystatechange = () => 
+        { 
+            if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                navigateToLogin();
+            }
+            else if(request.readyState === XMLHttpRequest.DONE && request.status != 200)
+            {
+                toast.error('Nu s-a putut crea contul',
+                    {position:toast.POSITION.TOP_RIGHT});
+            }
+        }
         request.send(json);
     }
 
