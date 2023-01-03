@@ -1,10 +1,6 @@
 .NavigationBar {
     display: flex;
     position: absolute;
-    /*top: 70px;
-    left: 50%;
-    justify-content: space-between;
-    transform: translate(-50%); */
     padding-top: 0px;
     padding-bottom: 0px;
     padding-left: 25px;
@@ -19,11 +15,24 @@
 
 }
 
-#numeStudent {
-    padding-left: 100px;
+#imgLogo {
+    height: 75px;
+    width: 90px;
+}
+
+#imgLogout {
+    height: 40px;
+    width: 40px;
+}
+
+
+.btn_logout {
+    color:black;
 }
 
 .navigation-list {
+    padding-left: 50px;
+    padding-right: 50px;
     list-style: none;
     justify-content: end;
     display: grid;

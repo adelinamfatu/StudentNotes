@@ -51,11 +51,15 @@ h1 {
   font-size: 30px;
 }
 
-#name, #mail, #faculty, #field {
+#lname, #lmail, #lfaculty, #lfield {
   text-align: center;
   font-size: 25px;
   color: black;
   text-shadow: 4px 4px #24A19C;
+}
+
+#iname, #imail, #ifaculty, #ifield {
+  width: 30%;
 }
 
 

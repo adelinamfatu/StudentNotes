@@ -42,20 +42,20 @@ const Profile = () => {
 
                     <div id="student">
                         <div>
-                            <label id="name">Nume complet: </label> 
-                            <input type="text" value={fullName} readOnly></input>    
+                            <label id="lname">Nume complet: </label> 
+                            <input id="iname" type="text" value={fullName} readOnly></input>    
                         </div>
                         <div>
-                            <label id="mail">Email: </label>
-                            <input type="text" value={email} readOnly></input> 
+                            <label id="lmail">Email: </label>
+                            <input id="imail" type="text" value={email} readOnly></input> 
                         </div>
                         <div>
-                            <label id="faculty">Facultate: </label>
-                            <input type="text" value={faculty} readOnly></input> 
+                            <label id="lfaculty">Facultate: </label>
+                            <input id="ifaculty" type="text" value={faculty} readOnly></input> 
                         </div>
                         <div>
-                            <label id="field">Specializare</label>
-                            <input type="text" value={field} readOnly></input> 
+                            <label id="lfield">Specializare</label>
+                            <input id="ifield" type="text" value={field} readOnly></input> 
                         </div>
                     </div>
                 </div>
