@@ -6,7 +6,7 @@
     text-align: center;
   }
   
-  .Notes {
+  .AddNote {
     background-size: "cover";
     height: 110vh; 
     width: 100%;
@@ -34,20 +34,20 @@
 
   
 
-.allNotes {
+.newNote {
    padding-top: 100px;
-   padding-left: 120px;
+   padding-left: 0px;
 }
  
 
 
-
- #addCurs {
+ #salveaza {
      position: relative;
      background-color: #0a0141;
-     font-size: 20px;
+     font-size: 17px;
      padding: 3px 10px;
-     left: 20px;
+     margin-left: 10px;
+     margin-right: 10px;
      border: none;
      color: #f1f1f1;
      cursor: pointer;
@@ -56,7 +56,7 @@
 
  }
 
- #addCurs:hover {
+ #salveaza:hover {
      background-color: #8EC3B0;
      color: #000;
      border:rgb(0, 0, 0) 2px;
@@ -64,12 +64,13 @@
  }
  
  
- #removeCurs {
+ #renunta {
      position: relative;
      background-color: #0a0141;
-     font-size: 20px;
+     font-size: 17px;
      padding: 3px 13px;
-     left: 23px;
+     margin-left: 10px;
+     margin-right: 10px;
      border: none;
      color: #f1f1f1;
      cursor: pointer;
@@ -79,53 +80,11 @@
  
 
  
- #removeCurs:hover {
+ #renunta:hover {
      background-color: #8EC3B0;
      color: #000;
      border:rgb(0, 0, 0) 2px;
      font-size: 25px;
  }
- 
- 
- 
- #namealph {
-     position: relative;
-     display: inline-block;
-     background-color: #0a0141;
-     color: #f1f1f1;
-     font-size: 15px;
-     border: none;
-     cursor: pointer;
-    padding: 3px 10px;
-    border-radius: 5px;  
-    margin: 0px 10px 0px 10px; 
- 
- }
- 
- #date {
-     position: relative;
-     display: inline-block;
-     background-color: #0a0141;
-     color: #f1f1f1;
-     padding: 3px 10px;
-     font-size: 15px;
-     border: none;
-     cursor: pointer;   
-    border-radius: 5px;
- }
- 
-* {
-     box-sizing: border-box;
-     
-   }  
-
- text {
-  font-size: 20px;
- }  
-   
-
- 
- 
- 
  
  

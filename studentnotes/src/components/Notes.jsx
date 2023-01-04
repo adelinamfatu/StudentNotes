@@ -1,11 +1,9 @@
-import React from "react";
-import { listOfCourses } from "./CoursesList";
 import NavigationBar from "./NavigationBar";
 import NavigationAboutMe from "./NavigationAboutMe";
-import '../style/Subject.css';
+import '../style/Notes.css';
 import { useNavigate } from "react-router-dom";
 
-const Subject = () => {
+const Notes = () => {
     var fullName = null;
     var field = null;
     var faculty = null;
@@ -31,11 +29,11 @@ const Subject = () => {
         field = json["field"];
     }
 
-    const addSubject = () => {
-      
+    const addNote = () => {
+        navigate('/addnote');
     };
 
-    const deleteSubject = () => {
+    const deleteNote = () => {
 
     }
 
@@ -48,21 +46,21 @@ const Subject = () => {
     }
 
         return (  
-            <div className='CourseDex'> 
+            <div className='Notes'> 
                 <NavigationBar />
                 <NavigationAboutMe />
-                <div className="cursuri"> 
-                    <h1 id="cursurilemele">Materiile mele</h1>
-                    <button onClick={addSubject} id="addCurs">+</button>
-                    <button onClick={deleteSubject} id="removeCurs">-</button>
-
-                    <div className='listOfCourses'>
-                        {listOfCourses.map(item => (
-                            <a className="courseName">{item.title}</a>
-                        ))}
-                    </div> 
+                <div className="allNotes"> 
+                    <h1 id="notitelemele">Notițele mele</h1>
+                    <button onClick={addNote} id="addCurs">+</button>
+                    <button onClick={deleteNote} id="removeCurs">-</button>
+                    <div id='namedatabtn'>
+                    <text>Filtrare după: </text>
+                        <button onClick={showAlphabetically} id="namealph">Nume</button>
+                        <button onClick={showByDate} id="date">Dată</button>
+                    </div>
+ 
                 </div>
             </div>
         )                   
 }
-export default Subject;
+export default Notes;

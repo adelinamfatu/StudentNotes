@@ -1,11 +1,9 @@
-import React from "react";
-import { listOfCourses } from "./CoursesList";
 import NavigationBar from "./NavigationBar";
 import NavigationAboutMe from "./NavigationAboutMe";
-import '../style/Subject.css';
+import '../style/AddNote.css';
 import { useNavigate } from "react-router-dom";
 
-const Subject = () => {
+const AddNote = () => {
     var fullName = null;
     var field = null;
     var faculty = null;
@@ -31,38 +29,26 @@ const Subject = () => {
         field = json["field"];
     }
 
-    const addSubject = () => {
-      
+    const discardNote = () => {
+        navigate('/notes');
     };
 
-    const deleteSubject = () => {
+    const saveNote = () => {
 
     }
-
-    const showAlphabetically = () => {
-
-    }
-
-    const showByDate = () => {
-
-    }
-
         return (  
-            <div className='CourseDex'> 
+            <div className='AddNote'> 
                 <NavigationBar />
                 <NavigationAboutMe />
-                <div className="cursuri"> 
-                    <h1 id="cursurilemele">Materiile mele</h1>
-                    <button onClick={addSubject} id="addCurs">+</button>
-                    <button onClick={deleteSubject} id="removeCurs">-</button>
+                <div className="newNote"> 
+                    <h1>Notiță nouă</h1>
+                    <div>
+                    <button onClick={discardNote} id="renunta">Renunță</button>
+                    <button onClick={saveNote} id="salveaza">Salvează</button>
+                    </div>
 
-                    <div className='listOfCourses'>
-                        {listOfCourses.map(item => (
-                            <a className="courseName">{item.title}</a>
-                        ))}
-                    </div> 
                 </div>
             </div>
         )                   
 }
-export default Subject;
+export default AddNote;

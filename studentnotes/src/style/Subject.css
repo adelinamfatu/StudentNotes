@@ -6,7 +6,7 @@
     text-align: center;
   }
   
-  .Notes {
+  .CourseDex {
     background-size: "cover";
     height: 110vh; 
     width: 100%;
@@ -34,7 +34,21 @@
 
   
 
-.allNotes {
+.courseItem {
+     position: relative;
+     background-color: #dadada;
+     color: rgb(0, 0, 0);
+     padding: 10px 6px;
+     width: 100px;
+     font-size: 16px;
+     border: none;
+     display: block;
+     align-items: center;
+}
+
+
+
+.cursuri {
    padding-top: 100px;
    padding-left: 120px;
 }
@@ -86,43 +100,27 @@
      font-size: 25px;
  }
  
- 
- 
- #namealph {
-     position: relative;
-     display: inline-block;
-     background-color: #0a0141;
-     color: #f1f1f1;
-     font-size: 15px;
-     border: none;
-     cursor: pointer;
-    padding: 3px 10px;
-    border-radius: 5px;  
-    margin: 0px 10px 0px 10px; 
- 
- }
- 
- #date {
-     position: relative;
-     display: inline-block;
-     background-color: #0a0141;
-     color: #f1f1f1;
-     padding: 3px 10px;
-     font-size: 15px;
-     border: none;
-     cursor: pointer;   
-    border-radius: 5px;
- }
+
  
 * {
      box-sizing: border-box;
      
    }  
 
- text {
-  font-size: 20px;
- }  
-   
+ .courseName {
+     position: relative;
+     background-color: #DEF5E5;
+     color: rgb(0, 0, 0);
+     padding: 10px 26px;
+     font-size: 25px;
+     border: none;
+     display: block;
+     cursor: pointer;
+     width: 50%;
+     margin: 2px auto;
+     top: 30px;
+    }
+
 
  
  
