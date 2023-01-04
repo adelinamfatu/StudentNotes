@@ -1,16 +1,15 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import '../style/NavigationBar.css';
 import logo from '../images/brain.png'
 import logout from '../images/logout.png'
 
 
 const NavigationBar = () => {
-    window.addEventListener('load', addData);
     const [fullName, setFullName] = useState('');
     const [faculty, setFaculty] = useState('');
     const [field, setField] = useState('');
 
-    function addData() {
+    useEffect(() => {
         var user = localStorage.getItem('user');
         var userJSON = JSON.parse(user)
         var url = "http://localhost:8000/users/" + userJSON["user"].email;
@@ -25,7 +24,7 @@ const NavigationBar = () => {
         setField(json["field"]);
 
         console.log();
-    }
+    })
 
     const logoutUser = () => {
         localStorage.removeItem("user");
