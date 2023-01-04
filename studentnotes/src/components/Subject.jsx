@@ -4,9 +4,8 @@ import NavigationBar from "./NavigationBar";
 import NavigationAboutMe from "./NavigationAboutMe";
 import '../style/Notes.css';
 import { useNavigate } from "react-router-dom";
-import addData from "./NavigationBar"
 
-const Notes = () => {
+const Subject = () => {
     var fullName = null;
     var field = null;
     var faculty = null;
@@ -70,4 +69,4 @@ const Notes = () => {
             </div>
         )                   
 }
-export default Notes;
+export default Subject;

@@ -5,9 +5,9 @@ const NavigationAboutMe = () => {
     return (
         <nav className='NavigationAboutMe'>
             <div className='aboutMe-list'>
-                <a href='/profile' className='aboutMe-links'> Profil</a>
-                <a href='/notes' className='aboutMe-links'> Notite</a>
-                <a href='/groups' className='aboutMe-links'> Grupuri</a>
+                <a href='/profile' className='aboutMe-links'>Profil</a>
+                <a href='/subjects' className='aboutMe-links'>Materii</a>
+                <a href='/groups' className='aboutMe-links'>Grupuri</a>
             </div>
         </nav>
         )

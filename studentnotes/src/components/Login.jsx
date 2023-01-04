@@ -14,9 +14,9 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const navigateToNotes = () => {
+    const navigateToSubject = () => {
         setTimeout(() => {
-            navigate('/notes');
+            navigate('/subjects');
         }, 2000);
     };
 
@@ -30,7 +30,7 @@ const Login = () => {
             if(response.data) {
                 setUser(response.data);
                 localStorage.setItem('user', JSON.stringify(response.data));
-                navigateToNotes();
+                navigateToSubject();
                 toast.success('Logarea s-a realizat cu succes!',
                     {position:toast.POSITION.TOP_RIGHT});
             }
@@ -60,7 +60,7 @@ const Login = () => {
                 else
                 {   
                     toast.error('Datele introduse nu sunt corecte!',
-                    {position:toast.POSITION.TOP_RIGHT})
+                        {position:toast.POSITION.TOP_RIGHT})
                 }
         }
     }
