@@ -7,8 +7,6 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const Login = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
     const [user, setUser] = useState()
     const emailRef = useRef(null);
     const passRef = useRef(null);
@@ -22,8 +20,8 @@ const Login = () => {
         }, 2000);
     };
 
-    const persistToken = async e => {
-        const user = { email : username, hashPassword : password };
+    const persistToken = async (email, password) => {
+        const user = { email : email, hashPassword : password };
         await axios.post(
           "http://localhost:8000/users/login",
           user
@@ -57,9 +55,7 @@ const Login = () => {
                 && /[a-z]/.test(password)
                 && /[0-9]/.test(password))  
                 {
-                    setPassword(password);
-                    setUsername(email);
-                    persistToken();
+                    persistToken(email, password);
                 }
                 else
                 {   
