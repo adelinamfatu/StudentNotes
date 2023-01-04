@@ -39,13 +39,6 @@ const Subject = () => {
 
     }
 
-    const showAlphabetically = () => {
-
-    }
-
-    const showByDate = () => {
-
-    }
 
         return (  
             <div className='CourseDex'> 
