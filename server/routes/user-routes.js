@@ -52,7 +52,6 @@ router.post("/add", async(req, res, next) => {
           expiresIn: "2h",
         }
       );
-      // save user token
       user.token = token;
       
       res.status(200).json(user);

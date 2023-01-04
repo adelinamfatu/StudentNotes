@@ -1,13 +1,13 @@
 const { Sequelize, sequelize } = require("../create-tables");
 
 const Subject = sequelize.define("subject", {
-    title: {
-        type: Sequelize.STRING,
-        primaryKey : true
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey : true,
+        autoIncrement: true
     }, 
-    isCourse: {
-        type: Sequelize.TINYINT(1),
-        primaryKey : true
+    title: {
+        type: Sequelize.STRING
     },
     tag: {
         type: Sequelize.STRING,

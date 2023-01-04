@@ -2,14 +2,14 @@ const express = require("express");
 const router = express.Router();
 const Subject = require("../models/subject");
 
-//get all subjects
-router.get("/", async (req, res, next) => {
-    try {
-      const subjects = await Subject.findAll();
-      res.status(200).json(subjects);
-    } catch (error) {
-      next(error);
-    }
+//get all subjects by user
+router.get("/:email", async (req, res, next) => {
+  try {
+    const subjects = await Subject.findAll({ where: { userEmail: req.params.email }});
+    res.status(200).json(subjects);
+  } catch (error) {
+    next(error);
+  }
 });
 
 //get a subject

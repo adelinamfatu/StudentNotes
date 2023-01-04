@@ -16,12 +16,7 @@ User.hasMany(Subject, {
 });
 Subject.hasMany(Note, {
     foreignKey: {
-        name: "subjectTitle"
-    }
-});
-Subject.hasMany(Note, {
-    foreignKey: {
-        name: "subjectIsCourse"
+        name: "subjectId"
     }
 });
 User.hasMany(Note, {
@@ -40,7 +35,6 @@ app.use(function (req, res, next) {
 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    //res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     res.setHeader('Access-Control-Allow-Headers', '*');
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();

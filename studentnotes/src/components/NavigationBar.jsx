@@ -3,7 +3,6 @@ import '../style/NavigationBar.css';
 import logo from '../images/brain.png'
 import logout from '../images/logout.png'
 
-
 const NavigationBar = () => {
     const [fullName, setFullName] = useState('');
     const [faculty, setFaculty] = useState('');
