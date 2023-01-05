@@ -45,7 +45,9 @@ const Register = () => {
     const navigate = useNavigate();
 
     const navigateToLogin = () => {
-        navigate('/login');
+        setTimeout(() => {
+            navigate('/login');
+        }, 2000);
       };
 
     const emailRef = useRef(null);
@@ -81,6 +83,8 @@ const Register = () => {
                         '"faculty":' + '"' + faculty + 
                         '"}'; 
                         sendRequest(json);
+                        toast.success('Înregistrare realizată cu succes!',
+                            {position:toast.POSITION.TOP_RIGHT})
                     }
                     else 
                     {
