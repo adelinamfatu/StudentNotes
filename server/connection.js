@@ -5,6 +5,10 @@ const auth = require("./middleware/auth");
 
 const express = require("express");
 const app = express();
+const cors = require('cors');
+app.use(cors({
+    origin: '*'
+  }));
 
 const { sequelize, Sequelize } = require("./create-tables");
 

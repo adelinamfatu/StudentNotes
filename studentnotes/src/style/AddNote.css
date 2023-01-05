@@ -63,7 +63,7 @@
      font-size: 25px;
  }
  
- 
+
  #renunta {
      position: relative;
      background-color: #0a0141;
@@ -77,16 +77,13 @@
      border-radius: 10px;
 
  }
- 
 
- 
  #renunta:hover {
      background-color: #8EC3B0;
      color: #000;
      border:rgb(0, 0, 0) 2px;
      font-size: 25px;
  }
-
 
  #lSubject, #lAbbr {
   text-align: center;

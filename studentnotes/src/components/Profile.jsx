@@ -1,36 +1,36 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import '../style/Profile.css';
 import NavigationAboutMe from "./NavigationAboutMe";
 import NavigationBar from "./NavigationBar";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-    window.addEventListener('load', addData);
     const [email, setEmail] = useState('');
     const [fullName, setFullName] = useState('');
     const [faculty, setFaculty] = useState('');
     const [field, setField] = useState('');
     const navigate = useNavigate();
 
-    function addData() {
+    useEffect(() => {
         var user = localStorage.getItem('user');
         if(!user) {
             navigate('/login');
         }
-
-        var userJSON = JSON.parse(user)
-        var url = "http://localhost:8000/users/" + userJSON["user"].email;
-        
-        var request = new XMLHttpRequest();
-        request.open("GET", url, false); 
-        request.setRequestHeader("x-access-token", userJSON["user"].token);
-        request.send(null);
-        var json = JSON.parse(request.responseText);
-        setFullName(json["surname"] + " " + json["name"]);
-        setFaculty(json["faculty"]);
-        setField(json["field"]);
-        setEmail(json["email"]);
-    }
+        else {
+            var userJSON = JSON.parse(user)
+            var url = "http://localhost:8000/users/" + userJSON["user"].email;
+            
+            var request = new XMLHttpRequest();
+            request.open("GET", url, false); 
+            request.setRequestHeader("x-access-token", userJSON["user"].token);
+            request.send(null);
+            var json = JSON.parse(request.responseText);
+            setFullName(json["surname"] + " " + json["name"]);
+            setFaculty(json["faculty"]);
+            setField(json["field"]);
+            setEmail(json["email"]);
+        }
+    });
 
         return (
             <div className='Profile'>

@@ -13,16 +13,17 @@ const Subject = () => {
         if(!user) {
             navigate('/login');
         }
-
-        var userJSON = JSON.parse(user);
-        var url = "http://localhost:8000/subjects/" + userJSON["user"].email;
-        
-        /*var request = new XMLHttpRequest();
-        request.open("GET", url, false); 
-        request.setRequestHeader("x-access-token", userJSON["user"].token);
-        request.send(null);
-        var json = JSON.parse(request.responseText);
-        console.log(json);*/
+        else {
+            /*var userJSON = JSON.parse(user);
+            var url = "http://localhost:8000/subjects/" + userJSON["user"].email;
+            
+            var request = new XMLHttpRequest();
+            request.open("GET", url, false); 
+            request.setRequestHeader("x-access-token", userJSON["user"].token);
+            request.send(null);
+            var json = JSON.parse(request.responseText);
+            console.log(json);*/
+        }
     })
 
     const addSubject = () => {

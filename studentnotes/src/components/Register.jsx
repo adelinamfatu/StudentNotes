@@ -133,7 +133,7 @@ const Register = () => {
     function sendRequest(json) {
         var url = "http://localhost:8000/users/add";
         var request = new XMLHttpRequest();
-        request.open("POST", url, true); 
+        request.open("POST", url, false); 
         request.setRequestHeader('Content-Type', 'application/json');
         request.onreadystatechange = () => 
         { 
