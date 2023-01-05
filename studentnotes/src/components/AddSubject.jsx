@@ -47,6 +47,18 @@ const AddSubject = () => {
                     <button onClick={saveNote} id="salveaza">Salvează</button>
                     </div>
 
+                    <div id="subject">
+                        <div>
+                            <label id="lSubject">Denumire materie:  
+                                <input id="iSubject" type="text"></input> 
+                            </label>   
+                        </div>
+                        <div>
+                            <label id="lAbbr">Prescurtare denumire: 
+                                <input id="iAbbr" type="text"></input> 
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         )                   
