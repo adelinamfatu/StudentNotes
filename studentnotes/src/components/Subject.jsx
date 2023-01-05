@@ -26,14 +26,12 @@ const Subject = () => {
     })
 
     const addSubject = () => {
-      
+      navigate('/addsubject');
     };
 
     const deleteSubject = () => {
 
     }
-
-
         return (  
             <div className='CourseDex'> 
                 <NavigationBar />

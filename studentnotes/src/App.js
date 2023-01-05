@@ -14,6 +14,7 @@ import {
   Route,
   Navigate
  } from "react-router-dom";
+import AddSubject from './components/AddSubject';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/subjects" element={<Subject/>} />
             <Route path="/notes" element={<Notes/>} />
             <Route path="/addnote" element={<AddNote/>} />
+            <Route path="/addsubject" element={<AddSubject/>} />
             <Route path="/profile" element={<Profile/>} />
             <Route path="/groups" element={<Groups/>} />
           </Routes>
