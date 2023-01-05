@@ -42,11 +42,36 @@ const AddSubject = () => {
                 <NavigationAboutMe />
                 <div className="newNote"> 
                     <h1>Materie nouă</h1>
-                    <div>
+                    {/* <div>
                     <button onClick={discardNote} id="renunta">Renunță</button>
-                    <button onClick={saveNote} id="salveaza">Salvează</button>
-                    </div>
+                    <button onClick={saveNote} id="salveaza" type="submit">Salvează</button>
+                    </div> */}
 
+                    <form id="subject">
+                        <button onClick={discardNote} id="renunta">Renunță</button>
+                        <button onClick={saveNote} id="salveaza" type="submit">Salvează</button>
+
+                        <div>
+                            <label id="lSubject">Denumire materie:  
+                                <input id="iSubject" type="text" 
+                                    pattern="([A-Z][a-z]+$)"
+                                    title="Trebuie să conțină minim 2 litere și să înceapă cu literă mare." 
+                                    required>
+                                </input> 
+                            </label>   
+                        </div>
+                        <div>
+                            <label id="lAbbr">Prescurtare denumire: 
+                                <input id="iAbbr" type="text" 
+                                    pattern="([A-Z][A-Z]+$)"
+                                    title="Minim 2 litere. Doar litere mari."
+                                    required>
+                                </input> 
+                            </label>
+                        </div>
+
+                        
+                    </form>
                 </div>
             </div>
         )                   

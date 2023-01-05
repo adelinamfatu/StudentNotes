@@ -86,5 +86,23 @@
      border:rgb(0, 0, 0) 2px;
      font-size: 25px;
  }
+
+
+ #lSubject, #lAbbr {
+  text-align: center;
+  font-size: 25px;
+  color: black;
+  text-shadow: 4px 4px #24A19C;
+}
+
+#iSubject {
+  width: 30%;
+}
+
+#subject {
+  padding-top: 30px;
+}
+
+
  
  
