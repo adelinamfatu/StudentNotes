@@ -10,19 +10,19 @@ const NavigationBar = () => {
 
     useEffect(() => {
         var user = localStorage.getItem('user');
-        var userJSON = JSON.parse(user)
-        var url = "http://localhost:8000/users/" + userJSON["user"].email;
-        
-        var request = new XMLHttpRequest();
-        request.open("GET", url, false); 
-        request.setRequestHeader("x-access-token", userJSON["user"].token);
-        request.send(null);
-        var json = JSON.parse(request.responseText);
-        setFullName(json["surname"] + " " + json["name"]);
-        setFaculty(json["faculty"]);
-        setField(json["field"]);
-
-        console.log();
+        if(user) {
+            var userJSON = JSON.parse(user)
+            var url = "http://localhost:8000/users/" + userJSON["user"].email;
+            
+            var request = new XMLHttpRequest();
+            request.open("GET", url, false); 
+            request.setRequestHeader("x-access-token", userJSON["user"].token);
+            request.send(null);
+            var json = JSON.parse(request.responseText);
+            setFullName(json["surname"] + " " + json["name"]);
+            setFaculty(json["faculty"]);
+            setField(json["field"]);
+        }
     })
 
     const logoutUser = () => {
