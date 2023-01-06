@@ -1,13 +1,22 @@
-import { React, useEffect } from "react";
-import { listOfCourses } from "./CoursesList";
+import { React, useEffect, useState } from "react";
 import NavigationBar from "./NavigationBar";
 import NavigationAboutMe from "./NavigationAboutMe";
 import '../style/Subject.css';
 import { useNavigate } from "react-router-dom";
 
+function List({items}) {
+    return (
+        <>
+            {items.map(item => (
+                <a className="courseName" key={item.id}>{item.title}</a>))
+            }
+        </>
+    )
+}
+
 const Subject = () => {
     const navigate = useNavigate();
-    var subjects;
+    const [subjects, setSubjects] = useState();
 
     useEffect(() => {
         var user = localStorage.getItem('user');
@@ -22,9 +31,9 @@ const Subject = () => {
             request.open("GET", url, false); 
             request.setRequestHeader("x-access-token", userJSON["user"].token);
             request.send(null);
-            subjects = JSON.parse(request.responseText);
+            setSubjects(JSON.parse(request.responseText));
         }
-    })
+    }, [])
 
     const addSubject = () => {
       navigate('/addsubject');
@@ -41,12 +50,10 @@ const Subject = () => {
                     <h1 id="cursurilemele">Materiile mele</h1>
                     <button onClick={addSubject} id="addCurs">+</button>
                     <button onClick={deleteSubject} id="removeCurs">-</button>
-
-                    <div className='listOfCourses'>
-                        {listOfCourses.map(item => (
-                            <a className="courseName">{item.title}</a>
-                        ))}
-                    </div> 
+                
+                    <div className='listOfSubjects'>
+                        {subjects && <List items={subjects}/>}
+                    </div>
                 </div>
             </div>
         )                   
