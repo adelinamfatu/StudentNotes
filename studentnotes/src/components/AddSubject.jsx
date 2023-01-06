@@ -61,7 +61,6 @@ const AddSubject = () => {
                 //request-urile merg corect dar toast-ul nu se afiseaza - cred ca nu stiu eu sa il folosesc bine
                 toast.success('Materie creata cu succes',
                     {position:toast.POSITION.TOP_RIGHT});
-                console.log("succes");
             }
             else if(request.readyState === XMLHttpRequest.DONE && request.status != 200) {
                 toast.error('Materia exista deja',

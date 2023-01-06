@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const Subject = () => {
     const navigate = useNavigate();
+    var subjects;
 
     useEffect(() => {
         var user = localStorage.getItem('user');
@@ -14,15 +15,14 @@ const Subject = () => {
             navigate('/login');
         }
         else {
-            /*var userJSON = JSON.parse(user);
+            var userJSON = JSON.parse(user);
             var url = "http://localhost:8000/subjects/" + userJSON["user"].email;
             
             var request = new XMLHttpRequest();
             request.open("GET", url, false); 
             request.setRequestHeader("x-access-token", userJSON["user"].token);
             request.send(null);
-            var json = JSON.parse(request.responseText);
-            console.log(json);*/
+            subjects = JSON.parse(request.responseText);
         }
     })
 
