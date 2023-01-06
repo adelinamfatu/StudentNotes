@@ -1,0 +1,22 @@
+.CreateNote {
+    position: absolute;
+    align-items: center;
+    background-color: rgb(245, 244, 244);
+    height: auto;
+    width: auto;
+    left: 350px;
+    border: 1px solid black;
+    border-radius: 20px;
+
+}
+
+#titlu {
+    font-size: 20px;
+    padding: 10px;
+}
+
+#titleinput {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+}
+
