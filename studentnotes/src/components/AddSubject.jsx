@@ -50,17 +50,23 @@ const AddSubject = () => {
     }
 
     function sendSubject(userJSON, json) {
-        console.log(json);
-        console.log(userJSON["user"].token);
         var url = "http://localhost:8000/subjects/add";
         var request = new XMLHttpRequest();
         request.open("POST", url, true); 
+        request.setRequestHeader("Content-Type", "application/json");
         request.setRequestHeader("x-access-token", userJSON["user"].token);
         request.onreadystatechange = () => 
         { 
             if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                //request-urile merg corect dar toast-ul nu se afiseaza - cred ca nu stiu eu sa il folosesc bine
                 toast.success('Materie creata cu succes',
                     {position:toast.POSITION.TOP_RIGHT});
+                console.log("succes");
+            }
+            else if(request.readyState === XMLHttpRequest.DONE && request.status != 200) {
+                toast.error('Materia exista deja',
+                    {position:toast.POSITION.TOP_RIGHT});
+                //golire tag
             }
         }
         request.send(json);
