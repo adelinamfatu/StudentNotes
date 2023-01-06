@@ -12,6 +12,7 @@ function List({items}) {
             }
         </>
     )
+    //tot in return-ul de mai sus, daca merge, un buton de delete care sa faca un apel de delete la baza de date la adresa /subjects/delete/ + id-ul luat din item
 }
 
 const Subject = () => {
