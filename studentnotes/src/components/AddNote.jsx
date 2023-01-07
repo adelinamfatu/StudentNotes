@@ -43,13 +43,12 @@ const AddNote = () => {
                 <NavigationAboutMe />
                 <div className="newNote"> 
                     <h1>Notiță nouă</h1>
-                    <div>
-                    <br></br>
-                    <div className="create">
-                        <CreateNote/>
-                    </div>
-                    </div>
-
+                        <div>
+                            <br></br>
+                            <div className="create">
+                                <CreateNote/>
+                            </div>
+                        </div>
                 </div>
             </div>
         )                   

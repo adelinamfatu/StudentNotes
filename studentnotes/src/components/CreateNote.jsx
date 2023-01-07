@@ -8,29 +8,32 @@ const CreateNote = () => {
 
   const discardNote = () => {
     navigate('/notes');
-};
+  };
 
-const saveNote = () => {
+  const saveNote = () => {
 
-}
+  }
 
     return (
         <div className='CreateNote'>
           <div className='create'>
             <form>
-            <button onClick={discardNote} id="renunta">Renunță</button>
-            <button onClick={saveNote} id="salveaza">Salvează</button>
-            <label id="titlu">
-             Titlu
-            <input type="text" name="title" id="titleinput" placeholder="Titlu.."/>
-            </label>
-            
+              <button onClick={discardNote} id="renunta">Renunță</button>
+              <button onClick={saveNote} id="salveaza">Salvează</button>
+              <label id="titlu"> Titlu
+                <input type="text" name="title" id="titleinput" placeholder="Titlu.."/>
+              </label>
+              <textarea
+                placeholder="Editeaza paragraf..."
+              />
             </form>
-
-            </div>
+            <textarea
+                readOnly={true}
+              />
+          </div>
             <br></br>
-            </div>
-        )
+        </div>
+      )
 }
 
 export default CreateNote;
