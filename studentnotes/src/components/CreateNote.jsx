@@ -1,4 +1,4 @@
-import { React, useState, useRef } from 'react';
+import { React, useState, useRef, useEffect } from 'react';
 import '../style/CreateNote.css';
 import { useNavigate } from "react-router-dom";
 import ReactMarkdown from 'react-markdown'
@@ -9,6 +9,25 @@ const CreateNote = () => {
   const navigate = useNavigate();
   var titleRef = useRef(null);
   var contentRef = useRef(null);
+  const [subjects, setSubjects] = useState();
+
+  useEffect(() => {
+    var user = localStorage.getItem('user');
+    if(!user) {
+        navigate('/login');
+    }
+    else {
+        var userJSON = JSON.parse(user);
+        var url = "http://localhost:8000/subjects/" + userJSON["user"].email;
+        
+        var request = new XMLHttpRequest();
+        request.open("GET", url, false); 
+        request.setRequestHeader("x-access-token", userJSON["user"].token);
+        request.send(null);
+        setSubjects(JSON.parse(request.responseText));
+        console.log(subjects);
+    }
+    }, [])
 
   const discardNote = () => {
     navigate('/notes');
