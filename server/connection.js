@@ -1,6 +1,9 @@
 const User = require("./models/user");
 const Subject = require("./models/subject");
 const Note = require("./models/note");
+const GroupUser = require("./models/groupuser");
+const Group = require("./models/group");
+const GroupNote = require("./models/groupnote");
 const auth = require("./middleware/auth");
 
 const express = require("express");
@@ -27,7 +30,27 @@ User.hasMany(Note, {
     foreignKey: {
         name: "userEmail"
     }
-})
+});
+User.hasMany(GroupUser, {
+    foreignKey: {
+        name: "userEmail"
+    }
+});
+Group.hasMany(GroupUser, {
+    foreignKey: {
+        name: "groupId"
+    }
+});
+Note.hasMany(GroupNote, {
+    foreignKey: {
+        name: "noteId"
+    }
+});
+Group.hasMany(GroupNote, {
+    foreignKey: {
+        name: "groupId"
+    }
+});
 
 //Routes
 const userRouter = require("./routes/user-routes");
