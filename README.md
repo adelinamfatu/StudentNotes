@@ -26,6 +26,5 @@
 15.	Pe fiecare pagina, in partea de sus-dreapta va exista un buton-meniu ce va contine numele studentului si o sageata in jos. La apasarea butonului se va deschide meniul care va contine butoanele: 
 -	Grupuri -> in cazul in care studentul vrea sa organizeze grupuri de studiu
 -	Profil 
-16. Schema initiala a bazei de date:
+16. Schema bazei de date:
 ![ERD](https://user-images.githubusercontent.com/102324614/211157419-df127eba-af37-41a1-b9f0-565d916ec29e.svg)
-
