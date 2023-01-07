@@ -46,7 +46,6 @@ const AddSubject = () => {
         else {
             //toast de eroare - datele nu sunt sub formatul corect
         }
-        
     }
 
     function sendSubject(userJSON, json) {

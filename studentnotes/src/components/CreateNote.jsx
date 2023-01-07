@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useRef } from 'react';
 import '../style/CreateNote.css';
 import { useNavigate } from "react-router-dom";
 import ReactMarkdown from 'react-markdown'
@@ -6,15 +6,42 @@ import ReactMarkdown from 'react-markdown'
 const CreateNote = () => { 
   const [content, setContent] = useState('');
   const [note, setNote] = useState('');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  var titleRef = useRef(null);
+  var contentRef = useRef(null);
 
   const discardNote = () => {
     navigate('/notes');
   };
 
   const saveNote = () => {
+    var user = localStorage.getItem('user');
+    var title = titleRef.current.value;
+    var content = contentRef.current.value;
+    var userJSON = JSON.parse(user);
 
+    var json = '{' +
+        '"userEmail":' + '"' + userJSON["user"].email + '",' +
+        '"title":' + '"' + title + '",' +
+        '"content":' + '"' + content;
+        //'"subjectId":' + subjectId + '"}'; 
+    sendNote(userJSON, json);
   }
+
+  function sendNote(userJSON, json) {
+    var url = "http://localhost:8000/notes/add";
+    var request = new XMLHttpRequest();
+    request.open("POST", url, true); 
+    request.setRequestHeader("Content-Type", "application/json");
+    request.setRequestHeader("x-access-token", userJSON["user"].token);
+    request.onreadystatechange = () => 
+    { 
+        if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+            //toast de succes
+        }
+    }
+    request.send(json);
+}
 
   const submit = (event) => {
     event.preventDefault();
@@ -32,7 +59,8 @@ const CreateNote = () => {
               <button onClick={discardNote} id="renunta">Renunță</button>
               <button onClick={saveNote} id="salveaza">Salvează</button>
               <label id="titlu"> Titlu
-                <input type="text" name="title" id="titleinput" placeholder="Titlu.."/>
+                <input type="text" name="title" id="titleinput" placeholder="Titlu..."
+                ref={titleRef}/>
               </label>
               <textarea
                 placeholder="Editeaza paragraf..."
@@ -40,6 +68,7 @@ const CreateNote = () => {
                 name="content"
                 value={content}
                 onChange={handleContentChange}
+                ref={contentRef}
               />
             </form>
             <ReactMarkdown
