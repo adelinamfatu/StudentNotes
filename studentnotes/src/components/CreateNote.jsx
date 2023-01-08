@@ -1,30 +1,46 @@
-import { React, useState, useRef } from 'react';
+import { React, useState, useRef, useEffect } from 'react';
 import '../style/CreateNote.css';
 import { useNavigate } from "react-router-dom";
 import ReactMarkdown from 'react-markdown';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown'
+function List({items}) {
+  return (
+      <>
+          {items.map(item => (
+              <option key={item.id} value={item.id}>{item.title}</option>))
+          }
+      </>
+  )
+}
 
 const CreateNote = () => { 
-
-
-  const [value,setValue]=useState('');
-  const handleSelect=(e)=>{
-    console.log(e);
-    setValue(e)
-  }
   const [content, setContent] = useState('');
   const [note, setNote] = useState('');
   const navigate = useNavigate();
   var titleRef = useRef(null);
   var contentRef = useRef(null);
+  const [subjects, setSubjects] = useState();
+
+    useEffect(() => {
+        var user = localStorage.getItem('user');
+        if(!user) {
+            navigate('/login');
+        }
+        else {
+            var userJSON = JSON.parse(user);
+            var url = "http://localhost:8000/subjects/" + userJSON["user"].email;
+            
+            var request = new XMLHttpRequest();
+            request.open("GET", url, false); 
+            request.setRequestHeader("x-access-token", userJSON["user"].token);
+            request.send(null);
+            setSubjects(JSON.parse(request.responseText));
+        }
+    }, [])
 
   const discardNote = () => {
     navigate('/notes');
   };
-
 
   const saveNote = () => {
     var user = localStorage.getItem('user');
@@ -64,6 +80,13 @@ const CreateNote = () => {
     setNote((event.target.value));
   };
 
+  function getSubject() {
+    return subjects.map((subject) => {
+      return <option value={subject.Id}>{subject.title} 
+             </option>;
+    });
+  }
+
     return (
         <div className='CreateNote'>
           <div className='create'>
@@ -71,21 +94,20 @@ const CreateNote = () => {
               <button onClick={discardNote} id="renunta">Renunță</button>
               <button onClick={saveNote} id="salveaza">Salvează</button>
 
-                <DropdownButton
-                    title="Dropdown"
-                    id="dropdown-menu"
-                    onSelect={handleSelect}
-                >
-                  <Dropdown.Item eventKey="option-1">option-1</Dropdown.Item>
-                  <Dropdown.Item eventKey="option-2">option-2</Dropdown.Item>
-                  <Dropdown.Item eventKey="option-3">option 3</Dropdown.Item>
-              </DropdownButton>
+              <select
+                className="subjectsSelect"
+                defaultValue={'default'}
+              >
+                <option value="default" disabled>
+                  -- Select subject --
+                  </option>
+                  {subjects && <List items={subjects}></List>}
+              </select>
               
               <label id="titlu"> Titlu
                 <input type="text" name="title" id="titleinput" placeholder="Titlu..."
                 ref={titleRef}/>
               </label>
-              <br></br>
               <textarea
                 placeholder="Editeaza paragraf..."
                 id="content"
