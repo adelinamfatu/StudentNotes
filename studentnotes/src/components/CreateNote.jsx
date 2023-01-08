@@ -2,11 +2,19 @@ import { React, useState, useRef } from 'react';
 import '../style/CreateNote.css';
 import { useNavigate } from "react-router-dom";
 import ReactMarkdown from 'react-markdown';
-import Dropbutton from './DropDown';
-import MyComponent from './MyComponent';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown'
 
 const CreateNote = () => { 
+
+
+  const [value,setValue]=useState('');
+  const handleSelect=(e)=>{
+    console.log(e);
+    setValue(e)
+  }
   const [content, setContent] = useState('');
   const [note, setNote] = useState('');
   const navigate = useNavigate();
@@ -63,12 +71,21 @@ const CreateNote = () => {
               <button onClick={discardNote} id="renunta">Renunță</button>
               <button onClick={saveNote} id="salveaza">Salvează</button>
 
-              <Dropbutton />
+                <DropdownButton
+                    title="Dropdown"
+                    id="dropdown-menu"
+                    onSelect={handleSelect}
+                >
+                  <Dropdown.Item eventKey="option-1">option-1</Dropdown.Item>
+                  <Dropdown.Item eventKey="option-2">option-2</Dropdown.Item>
+                  <Dropdown.Item eventKey="option-3">option 3</Dropdown.Item>
+              </DropdownButton>
               
               <label id="titlu"> Titlu
                 <input type="text" name="title" id="titleinput" placeholder="Titlu..."
                 ref={titleRef}/>
               </label>
+              <br></br>
               <textarea
                 placeholder="Editeaza paragraf..."
                 id="content"
