@@ -4,6 +4,25 @@ import '../style/Notes.css';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
+function Note({items}) {
+    return (
+        <>
+            {
+                items.map(item => (
+                    <a className="functNote">
+                        {item.title} 
+                        <br></br>
+                        {item.subject}
+                        <br></br>
+                        <textarea id="paragraph" placeholder="Paragraf..." readOnly />
+                    </a>
+                ))
+            }
+        </>
+    )
+}
+
+
 const Notes = () => {
     var fullName = null;
     var field = null;
@@ -46,6 +65,37 @@ const Notes = () => {
 
     }
 
+     
+        
+    const arr_notes = 
+    [ 
+        {
+            "title":"DAM",
+            "subject":"Dispozitive"
+        }, 
+        {
+            "title":"TW", 
+            "subject":"Tehnologii"
+        },
+        {
+            "title":"DAM",
+            "subject":"Dispozitive"
+        }, 
+        {
+            "title":"TW", 
+            "subject":"Tehnologii"
+        },
+        {
+            "title":"DAM",
+            "subject":"Dispozitive"
+        }, 
+        {
+            "title":"TW", 
+            "subject":"Tehnologii"
+        }
+    ]
+    
+
         return (  
             <div className='Notes'> 
                 <NavigationBar />
@@ -61,6 +111,11 @@ const Notes = () => {
                     </div>
  
                 </div>
+
+                <div className="listOfNotes">
+                    {<Note items={arr_notes}/>}
+                </div>
+                
             </div>
         )                   
 }

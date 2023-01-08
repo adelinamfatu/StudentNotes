@@ -14,9 +14,30 @@
     font-size:50px;
     background-repeat:no-repeat;
     background-image: linear-gradient(75deg,#ddf3e6, #99dbad 50%, #ddf3e6);
-
+    text-align: center;
   }
-  
+
+  .functNote{
+    background-color: #DEF5E5;
+    display: inline-block;
+    position: relative;
+    width: 250pt;
+    margin: 15pt 30pt;
+    border-radius: 10px;
+    box-shadow: 4px 4px rgb(69, 63, 63); 
+    font-size: 25px;  
+}
+
+#paragraph {
+  resize: none;
+  height: 150px;
+  width: 160pt;
+}
+
+.listOfNotes {
+  padding-left: 10%;
+}
+
   h1 {
     text-align: center;
     border: 1px solid black; 
@@ -38,9 +59,6 @@
    padding-top: 100px;
    padding-left: 120px;
 }
- 
-
-
 
  #addCurs {
      position: relative;
