@@ -3,16 +3,6 @@ import '../style/CreateNote.css';
 import { useNavigate } from "react-router-dom";
 import ReactMarkdown from 'react-markdown';
 
-function List({items}) {
-  return (
-      <>
-          {items.map(item => (
-              <option key={item.id} value={item.id}>{item.title}</option>))
-          }
-      </>
-  )
-}
-
 const CreateNote = () => { 
   const [content, setContent] = useState('');
   const [note, setNote] = useState('');
@@ -82,7 +72,7 @@ const CreateNote = () => {
 
   function getSubject() {
     return subjects.map((subject) => {
-      return <option value={subject.Id}>{subject.title} 
+      return <option key={subject.id} value={subject.id}>{subject.title} 
              </option>;
     });
   }
@@ -101,7 +91,7 @@ const CreateNote = () => {
                 <option value="default" disabled>
                   -- Select subject --
                   </option>
-                  {subjects && <List items={subjects}></List>}
+                  {subjects && getSubject()}
               </select>
               
               <label id="titlu"> Titlu
