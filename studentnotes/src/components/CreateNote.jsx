@@ -10,6 +10,7 @@ const CreateNote = () => {
   var titleRef = useRef(null);
   var contentRef = useRef(null);
   const [subjects, setSubjects] = useState();
+  const [subjectId, setSubjectId] = useState('');
 
     useEffect(() => {
         var user = localStorage.getItem('user');
@@ -33,16 +34,18 @@ const CreateNote = () => {
   };
 
   const saveNote = () => {
+    //verificare ca e selectat ceva
     var user = localStorage.getItem('user');
     var title = titleRef.current.value;
     var content = contentRef.current.value;
     var userJSON = JSON.parse(user);
 
+    content = JSON.stringify(content);
+
     var json = '{' +
         '"userEmail":' + '"' + userJSON["user"].email + '",' +
-        '"title":' + '"' + title + '",' +
-        '"content":' + '"' + content;
-        //'"subjectId":' + subjectId + '"}'; 
+        '"content":' + content + ',' + 
+        '"subjectId":' + '"' + subjectId + '"}'; 
     sendNote(userJSON, json);
   }
 
@@ -70,6 +73,10 @@ const CreateNote = () => {
     setNote((event.target.value));
   };
 
+  const handleSubjectChange = event => {
+    setSubjectId(event.target.value);
+  }
+
   function getSubject() {
     return subjects.map((subject) => {
       return <option key={subject.id} value={subject.id}>{subject.title} 
@@ -87,6 +94,7 @@ const CreateNote = () => {
               <select
                 className="subjectsSelect"
                 defaultValue={'default'}
+                onChange={handleSubjectChange}
               >
                 <option value="default" disabled>
                   -- Select subject --
