@@ -96,9 +96,16 @@
   width: 30%;
 }
 
-#subject {
+.addSubject {
   padding-top: 30px;
 }
+
+#img_addSubject {
+  width: 15%;
+  height: 20%;
+  padding-top: 30px;
+}
+
 
 
  

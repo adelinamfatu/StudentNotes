@@ -1,40 +1,60 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    box-sizing: border-box;
-    text-align: center;
-  }
-  
+
   .Groups {
     background-size: "cover";
-    height: 100vh;
+    height: 110vh; 
     width: 100%;
     margin-top: 0px;
     font-size:50px;
     background-repeat:no-repeat;
-    background-image: linear-gradient(79deg,#8EC3B0, #9ED5C5 50%, #DEF5E5);
+    background-image: linear-gradient(75deg,#ddf3e6, #99dbad 50%, #ddf3e6);
 
   }
-  
 
-
-.content {
-    display: grid;
+  h1 {
+    text-align: center;
+    border: 1px solid black; 
+    color: #DEF5E5;
+    background-color: #24A19C;
+    text-shadow: 4px 4px black;
+    font-size: 30px;
+    border-radius: 10px;
+    font-size: 30px;
     display: flex;
-   position: fixed;
-   justify-content: center;
-   left: 139px;
-   top: 150px;
-   width: 1320px;
-   height: 528px;
-   background-color: rgb(255, 255, 255);
+    display: inline-block;
+    padding: 10px;
+    letter-spacing: 4px;
+  }
+  
+  #addGroup {
+    position: relative;
+    background-color: #0a0141;
+    font-size: 20px;
+    padding: 3px 10px;
+    left: 20px;
+    border: none;
+    color: #f1f1f1;
+    cursor: pointer;
+    border-radius: 10px;
 }
- 
+
+#addGroup:hover {
+    background-color: #8EC3B0;
+    color: #000;
+    border:rgb(0, 0, 0) 2px;
+    font-size: 25px;
+}
+
+.studentGroups {
+  padding-top: 100px;
+  padding-left: 120px;
+}
+
+
+
+
 
  
 
- 
  
  
  

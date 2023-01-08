@@ -13,10 +13,15 @@ const Groups = () => {
             <div className='Groups'>
                 <NavigationBar />
                 <NavigationAboutMe />
-            <div className="content"> 
-                <h1 id="grupurile mele">Grupurile mele</h1>
-                <button onClick={addGroup} id="addgroup">+</button>
-            </div>
+
+                <div className="studentGroups"> 
+                    <h1 id="myGroups">Grupurile mele</h1>
+                    <button onClick={addGroup} id="addGroup">+</button>
+                </div>
+
+                <div className='listOfGroups'>
+                    
+                </div>
             </div>  
         )      
     }
