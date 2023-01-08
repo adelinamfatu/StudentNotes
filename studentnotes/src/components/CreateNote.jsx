@@ -44,6 +44,7 @@ const CreateNote = () => {
 
     var json = '{' +
         '"userEmail":' + '"' + userJSON["user"].email + '",' +
+        '"title":' + '"' + title + '",' + 
         '"content":' + content + ',' + 
         '"subjectId":' + '"' + subjectId + '"}'; 
     sendNote(userJSON, json);

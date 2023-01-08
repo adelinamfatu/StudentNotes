@@ -1,11 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const Note = require("../models/note");
+const Subject = require("../models/subject");
 
 //get all notes by user
 router.get("/:email", async (req, res, next) => {
     try {
-      const notes = await Notes.findAll({ where: { userEmail: req.params.email }});
+      const notes = await Note.findAll(
+        { where: [{ userEmail: req.params.email }],
+        include: [{
+          model: Subject,
+          as: 'subject',
+          attributes: ['title', 'tag'],
+          required: true
+        }]
+      });
       res.status(200).json(notes);
     } catch (error) {
       next(error);

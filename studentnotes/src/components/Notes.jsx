@@ -2,19 +2,22 @@ import NavigationBar from "./NavigationBar";
 import NavigationAboutMe from "./NavigationAboutMe";
 import '../style/Notes.css';
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import ReactMarkdown from 'react-markdown';
 
 function Note({items}) {
     return (
         <>
             {
                 items.map(item => (
-                    <a className="functNote">
+                    <a className="functNote" key={item.id}>
                         {item.title} 
                         <br></br>
-                        {item.subject}
+                        {item.subject.title}
                         <br></br>
-                        <textarea id="paragraph" placeholder="Paragraf..." readOnly />
+                        <textarea id="paragraph" readOnly>
+                            <ReactMarkdown children={item.content}/>
+                        </textarea>
                     </a>
                 ))
             }
@@ -24,10 +27,8 @@ function Note({items}) {
 
 
 const Notes = () => {
-    var fullName = null;
-    var field = null;
-    var faculty = null;
     const navigate = useNavigate();
+    const [notes, setNotes] = useState();
 
     useEffect(() => {
         var user = localStorage.getItem('user');
@@ -36,18 +37,15 @@ const Notes = () => {
         }
         else {
             var userJSON = JSON.parse(user);
-            var url = "http://localhost:8000/users/" + userJSON["user"].email;
+            var url = "http://localhost:8000/notes/" + userJSON["user"].email;
             
             var request = new XMLHttpRequest();
             request.open("GET", url, false); 
             request.setRequestHeader("x-access-token", userJSON["user"].token);
             request.send(null);
-            var json = JSON.parse(request.responseText);
-            fullName = json["surname"] + " " + json["name"];
-            faculty = json["faculty"];
-            field = json["field"];
+            setNotes(JSON.parse(request.responseText));
         }
-    });
+    }, []);
 
     const addNote = () => {
         navigate('/addnote');
@@ -64,37 +62,6 @@ const Notes = () => {
     const showByDate = () => {
 
     }
-
-     
-        
-    const arr_notes = 
-    [ 
-        {
-            "title":"DAM",
-            "subject":"Dispozitive"
-        }, 
-        {
-            "title":"TW", 
-            "subject":"Tehnologii"
-        },
-        {
-            "title":"DAM",
-            "subject":"Dispozitive"
-        }, 
-        {
-            "title":"TW", 
-            "subject":"Tehnologii"
-        },
-        {
-            "title":"DAM",
-            "subject":"Dispozitive"
-        }, 
-        {
-            "title":"TW", 
-            "subject":"Tehnologii"
-        }
-    ]
-    
 
         return (  
             <div className='Notes'> 
@@ -113,7 +80,7 @@ const Notes = () => {
                 </div>
 
                 <div className="listOfNotes">
-                    {<Note items={arr_notes}/>}
+                    {notes && <Note items={notes}/>}
                 </div>
                 
             </div>
