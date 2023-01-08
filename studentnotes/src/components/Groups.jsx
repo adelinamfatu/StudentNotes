@@ -4,12 +4,18 @@ import NavigationAboutMe from "./NavigationAboutMe";
 import NavigationBar from "./NavigationBar";
 
 const Groups = () => {
+
+    const addGroup = () => {
+
+    }
+
         return (
             <div className='Groups'>
                 <NavigationBar />
                 <NavigationAboutMe />
             <div className="content"> 
-            <p>grupuri</p>
+                <h1 id="grupurile mele">Grupurile mele</h1>
+                <button onClick={addGroup} id="addgroup">+</button>
             </div>
             </div>  
         )      

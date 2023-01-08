@@ -10,8 +10,7 @@ const Subject = sequelize.define("subject", {
         type: Sequelize.STRING
     },
     tag: {
-        type: Sequelize.STRING,
-        unique: true
+        type: Sequelize.STRING
     }
 });
 
