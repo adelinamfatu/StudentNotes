@@ -24,10 +24,11 @@ const AddSubject = () => {
     };
 
     const verifyTitleAndTag = (title, tag) => {
-        //title contine prima litera mare, numai litere si mari si mici - uita-te la register
-        //tag contine numai litere mari - maxim 4 caractere in total
-        //returneaza true daca ambele conditii se indeplinesc, false altfel
-        return true;
+        if(/[A-Z]/.test(title[0]) &&
+            /^[A-Z]+$/.test(tag)) {
+                return true;
+            }
+        return false;
     }
 
     const saveSubject = () => {
@@ -58,14 +59,14 @@ const AddSubject = () => {
         request.onreadystatechange = () => 
         { 
             if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-                //request-urile merg corect dar toast-ul nu se afiseaza - cred ca nu stiu eu sa il folosesc bine
+                //request-urile merg corect dar toast-ul nu se afiseaza
                 toast.success('Materie creata cu succes',
                     {position:toast.POSITION.TOP_RIGHT});
             }
             else if(request.readyState === XMLHttpRequest.DONE && request.status != 200) {
                 toast.error('Materia exista deja',
                     {position:toast.POSITION.TOP_RIGHT});
-                //golire tag
+                //golire input de tag
             }
         }
         request.send(json);

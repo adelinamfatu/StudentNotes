@@ -68,7 +68,6 @@ const Notes = () => {
                 <div className="allNotes"> 
                     <h1 id="notitelemele">Notițele mele</h1>
                     <button onClick={addNote} id="addCurs">+</button>
-                    <button onClick={deleteNote} id="removeCurs">-</button>
                     <div id='namedatabtn'>
                     <text>Filtrare după: </text>
                         <button onClick={showAlphabetically} id="namealph">Nume</button>

@@ -12,6 +12,8 @@ function List({items}) {
             }
         </>
     )
+    //distanta mai mare intre elementele listei 
+    //rotunjire margini - stilizare
     //tot in return-ul de mai sus, daca merge, un buton de delete care sa faca un apel de delete la baza de date la adresa /subjects/delete/ + id-ul luat din item
 }
 
@@ -39,10 +41,7 @@ const Subject = () => {
     const addSubject = () => {
       navigate('/addsubject');
     };
-
-    const deleteSubject = () => {
-
-    }
+    
         return (  
             <div className='CourseDex'> 
                 <NavigationBar />
@@ -50,7 +49,6 @@ const Subject = () => {
                 <div className="cursuri"> 
                     <h1 id="cursurilemele">Materiile mele</h1>
                     <button onClick={addSubject} id="addCurs">+</button>
-                    <button onClick={deleteSubject} id="removeCurs">-</button>
                 
                     <div className='listOfSubjects'>
                         {subjects && <List items={subjects}/>}
