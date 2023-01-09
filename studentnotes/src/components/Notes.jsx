@@ -15,9 +15,7 @@ function Note({items}) {
                         <br></br>
                         {item.subject.title}
                         <br></br>
-                        <textarea id="paragraph" readOnly>
-                            <ReactMarkdown children={item.content}/>
-                        </textarea>
+                        <ReactMarkdown children={item.content}/>
                     </a>
                 ))
             }
