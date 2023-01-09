@@ -15,7 +15,9 @@ function Note({items}) {
                         <br></br>
                         {item.subject.title}
                         <br></br>
+                        <div id="paragraph">
                         <ReactMarkdown children={item.content}/>
+                        </div>
                     </a>
                 ))
             }

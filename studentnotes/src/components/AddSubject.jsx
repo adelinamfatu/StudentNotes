@@ -89,7 +89,7 @@ const AddSubject = () => {
                         <div className="addSubject">
                             <label id="lSubject">Denumire materie: </label>  
                             <input id="iSubject" type="text" minLength={2}
-                                pattern="[A-Z][a-z\s]*"
+                                pattern="[A-Z][a-zA-Z\s]*"
                                 title="Trebuie să conțină minim 2 litere și să înceapă cu literă mare." 
                                 ref={titleRef}
                                 required>

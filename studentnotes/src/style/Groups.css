@@ -49,6 +49,25 @@
   padding-left: 120px;
 }
 
+.functGroup{
+  background-color: #DEF5E5;
+  display: inline-block;
+  position: relative;
+  width: 200pt;
+  margin: 15pt 30pt;
+  border-radius: 10px;
+  box-shadow: 4px 4px rgb(69, 63, 63); 
+  font-size: 25px; 
+  
+  height: 150px;
+  width: 200pt;
+  resize: none;
+}
+
+.listOfGroups {
+  padding-left: 10%;
+}
+
 
 
 

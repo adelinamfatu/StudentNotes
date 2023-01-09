@@ -21,7 +21,7 @@
     background-color: #DEF5E5;
     display: inline-block;
     position: relative;
-    width: 250pt;
+    width: 200pt;
     margin: 15pt 30pt;
     border-radius: 10px;
     box-shadow: 4px 4px rgb(69, 63, 63); 
@@ -30,8 +30,12 @@
 
 #paragraph {
   resize: none;
+  margin: auto;
   height: 150px;
-  width: 160pt;
+  width: 100pt;
+  font-size: 15px;
+  background-color: whitesmoke;
+  border: 1px solid black; 
 }
 
 .listOfNotes {
