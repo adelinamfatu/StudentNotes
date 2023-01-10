@@ -117,7 +117,19 @@
      width: 50%;
      margin: 2px auto;
      top: 30px;
+     border-radius: 10px;
     }
+
+#btn_delete {
+  color:#DEF5E5;
+  float: right;
+  background-color: #DEF5E5;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+}
+
+
 
 
  

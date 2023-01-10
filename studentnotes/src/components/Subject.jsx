@@ -3,18 +3,26 @@ import NavigationBar from "./NavigationBar";
 import NavigationAboutMe from "./NavigationAboutMe";
 import '../style/Subject.css';
 import { useNavigate } from "react-router-dom";
+import remove_icon from '../images/remove_icon.png'
 
 function List({items}) {
     return (
         <>
             {items.map(item => (
-                <a className="courseName" key={item.id}>{item.title}</a>))
+                <a className="courseName" key={item.id}>
+                    {item.title}
+                    <a key={item.id} id="btn_delete">
+                        <img src={remove_icon}></img>
+                    </a>
+                    
+                </a>
+                
+                ))
             }
         </>
     )
-    //distanta mai mare intre elementele listei 
-    //rotunjire margini - stilizare
-    //tot in return-ul de mai sus, daca merge, un buton de delete care sa faca un apel de delete la baza de date la adresa /subjects/delete/ + id-ul luat din item
+    //adaugare metoda onclick pe buton + luare id buton si materie + stergere materie la id-ul respectiv + 
+    //notitele materiei respective + mesaj de intrebare daca e sigur si de instiintare ca se sterg si notitele
 }
 
 const Subject = () => {
