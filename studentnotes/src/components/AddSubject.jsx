@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import img1 from '../images/img2.jpg'
 
+//rezolvare bug de butoane de salvare si renunta - nu apar unde trebuie
+
 const AddSubject = () => {
     var titleRef = useRef(null);
     var tagRef = useRef(null);
@@ -59,7 +61,6 @@ const AddSubject = () => {
         request.onreadystatechange = () => 
         { 
             if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-                //request-urile merg corect dar toast-ul nu se afiseaza
                 toast.success('Materie creata cu succes',
                     {position:toast.POSITION.TOP_RIGHT});
             }

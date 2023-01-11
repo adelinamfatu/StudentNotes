@@ -4,6 +4,10 @@ import '../style/AddNote.css';
 import { useNavigate } from "react-router-dom";
 import CreateNote from "./CreateNote";
 
+//1. reparare butoane de renunta si salvare
+//2. testare daca restul paginilor arata cum trebuie
+//3. stilizare pagina dupa template - 2 coloane, una cu textarea si una cu markdown
+
 const AddNote = () => {
     var fullName = null;
     var field = null;

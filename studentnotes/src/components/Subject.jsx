@@ -22,6 +22,8 @@ function List({items}) {
                             request.open("DELETE", url, false); 
                             request.setRequestHeader("x-access-token", userJSON["user"].token);
                             request.send(null);*/
+
+                            //https://mui.com/material-ui/react-dialog/
                         }}>
                         <img src={remove_icon}></img>
                     </a>
