@@ -7,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import img1 from '../images/img2.jpg'
 
-//rezolvare bug de butoane de salvare si renunta - nu apar unde trebuie
 
 const AddSubject = () => {
     var titleRef = useRef(null);
@@ -83,11 +82,15 @@ const AddSubject = () => {
                 <NavigationBar />
                 <NavigationAboutMe />
                 <div className="newNote"> 
-                    <h1>Materie nouă</h1>
+                    <h1 id="not_sub_new">Materie nouă</h1>
                     <form id="subject" onSubmit={submit}>
-                        <button onClick={discardSubject} id="renunta">Renunță</button>
-                        <button onClick={saveSubject} id="salveaza" type="submit">Salvează</button>
+                        <div className="twoButtons">
+                            <button onClick={discardSubject} id="renunta">Renunță</button>
+                            <button onClick={saveSubject} id="salveaza" type="submit">Salvează</button>
+                        </div>
+
                         <ToastContainer />
+
                         <div className="addSubject">
                             <label id="lSubject">Denumire materie: </label>  
                             <input id="iSubject" type="text" minLength={2}
