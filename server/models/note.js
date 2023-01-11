@@ -11,6 +11,9 @@ const Note = sequelize.define("note", {
     },
     content: {
         type: Sequelize.STRING
+    },
+    creationDate: {
+        type: Sequelize.DATE
     }
 });
 

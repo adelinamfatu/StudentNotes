@@ -59,7 +59,7 @@ router.put("/edit/:id", async(req, res, next) => {
     }
 });
 
-//delete a note
+//delete a note by id
 router.delete("/delete/:id", async(req, res, next) =>{
     try {
       const note = await Note.findByPk(req.params.id); 
@@ -74,6 +74,23 @@ router.delete("/delete/:id", async(req, res, next) =>{
     } catch (error) {
      next(error);
     }
+});
+
+//delete notes by subject id
+router.delete("/delete/subject/:id", async(req, res, next) =>{
+  try {
+    const notes = await Note.findAll({where: [{ subjectId: req.params.id }] }); 
+    if (notes) {
+      await notes.destroy();
+      return res.status(200).json("Notes deleted successfully!");
+    } else {
+      return res
+        .status(404)
+        .json({ error: `Notes with subject id ${req.params.id} not found` });
+    }
+  } catch (error) {
+   next(error);
+  }
 });
 
 module.exports = router;

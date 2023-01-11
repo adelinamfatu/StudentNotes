@@ -11,12 +11,21 @@ function List({items}) {
             {items.map(item => (
                 <a className="courseName" key={item.id}>
                     {item.title}
-                    <a key={item.id} id="btn_delete">
+                    <a id="btn_delete" onClick=
+                    {() => 
+                        {
+                            /*var user = localStorage.getItem('user');
+                            var userJSON = JSON.parse(user);
+                            var url = "http://localhost:8000/notes/subject/" + item.id;
+                            
+                            var request = new XMLHttpRequest();
+                            request.open("DELETE", url, false); 
+                            request.setRequestHeader("x-access-token", userJSON["user"].token);
+                            request.send(null);*/
+                        }}>
                         <img src={remove_icon}></img>
                     </a>
-                    
                 </a>
-                
                 ))
             }
         </>
