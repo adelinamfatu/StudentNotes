@@ -2,6 +2,8 @@ import { React, useState, useRef, useEffect } from 'react';
 import '../style/CreateNote.css';
 import { useNavigate } from "react-router-dom";
 import ReactMarkdown from 'react-markdown';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const CreateNote = () => { 
   const [content, setContent] = useState('');
@@ -59,8 +61,8 @@ const CreateNote = () => {
     request.onreadystatechange = () => 
     { 
         if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-            //toast de succes
-        }
+          toast.success('Notița s-a salvat cu succes!',
+          {position:toast.POSITION.TOP_RIGHT});        }
     }
     request.send(json);
 }
@@ -88,25 +90,28 @@ const CreateNote = () => {
     return (
         <div className='CreateNote'>
           <div className='create'>
-            <form onSubmit={submit}>
-              <button onClick={discardNote} id="renunta">Renunță</button>
-              <button onClick={saveNote} id="salveaza">Salvează</button>
+            <div></div>
+            <form className='createForm' onSubmit={submit}>
+              <div id="all">
 
+              <div id='titlelabel'>
+              <label id="titlu"> Titlu
+                <input type="text" name="title" id="titleinput" placeholder="Titlu..."
+                ref={titleRef}/>
+              </label>
+              </div>
               <select
                 className="subjectsSelect"
                 defaultValue={'default'}
                 onChange={handleSubjectChange}
               >
                 <option value="default" disabled>
-                  -- Select subject --
+                  -- Selectează materia --
                   </option>
                   {subjects && getSubject()}
               </select>
-              
-              <label id="titlu"> Titlu
-                <input type="text" name="title" id="titleinput" placeholder="Titlu..."
-                ref={titleRef}/>
-              </label>
+              </div>
+             <div id='mark'>
               <textarea
                 placeholder="Editeaza paragraf..."
                 id="content"
@@ -115,12 +120,18 @@ const CreateNote = () => {
                 onChange={handleContentChange}
                 ref={contentRef}
               />
-            </form>
-            <ReactMarkdown
+                          <ReactMarkdown
                 children={note}
               />
+              </div>
+              <button onClick={discardNote} id="renunta">Renunță</button>
+              <button onClick={saveNote} id="salveaza">Salvează</button>
+
+            </form>
+
           </div>
             <br></br>
+            <ToastContainer />
         </div>
       )
 }

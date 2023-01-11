@@ -3,8 +3,8 @@ import NavigationAboutMe from "./NavigationAboutMe";
 import '../style/AddNote.css';
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import img1 from '../images/img2.jpg'
 
 const AddSubject = () => {
@@ -86,6 +86,7 @@ const AddSubject = () => {
                     <form id="subject" onSubmit={submit}>
                         <button onClick={discardSubject} id="renunta">Renunță</button>
                         <button onClick={saveSubject} id="salveaza" type="submit">Salvează</button>
+                        <ToastContainer />
                         <div className="addSubject">
                             <label id="lSubject">Denumire materie: </label>  
                             <input id="iSubject" type="text" minLength={2}

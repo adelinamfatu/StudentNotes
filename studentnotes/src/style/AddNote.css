@@ -11,14 +11,13 @@
     height: 110vh; 
     width: 100%;
     margin-top: 0px;
-    font-size:50px;
     background-repeat:no-repeat;
     background-image: linear-gradient(75deg,#ddf3e6, #99dbad 50%, #ddf3e6);
 
   }
   
-  h1 {
-    text-align: center;
+ #notitaNoua {
+    margin-left: 115px;
     border: 1px solid black; 
     color: #DEF5E5;
     background-color: #24A19C;
@@ -60,7 +59,7 @@
      background-color: #8EC3B0;
      color: #000;
      border:rgb(0, 0, 0) 2px;
-     font-size: 25px;
+     font-size: 24px;
  }
  
 
@@ -82,7 +81,7 @@
      background-color: #8EC3B0;
      color: #000;
      border:rgb(0, 0, 0) 2px;
-     font-size: 25px;
+     font-size: 24px;
  }
 
  #lSubject, #lAbbr {
