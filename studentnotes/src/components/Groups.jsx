@@ -62,7 +62,7 @@ const Groups = () => {
                 <NavigationAboutMe />
 
                 <div className="studentGroups"> 
-                    <h1 id="myGroups">Grupurile mele</h1>
+                    <h1 className="myGroups">Grupurile mele</h1>
                     <button onClick={addGroup} id="addGroup">+</button>
                 </div>
 

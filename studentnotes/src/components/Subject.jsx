@@ -66,7 +66,7 @@ const Subject = () => {
                 <NavigationBar />
                 <NavigationAboutMe />
                 <div className="cursuri"> 
-                    <h1 id="cursurilemele">Materiile mele</h1>
+                    <h1 className="mySubjects">Materiile mele</h1>
                     <button onClick={addSubject} id="addCurs">+</button>
                 
                     <div className='listOfSubjects'>

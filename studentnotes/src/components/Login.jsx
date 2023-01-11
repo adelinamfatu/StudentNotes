@@ -72,7 +72,7 @@ const Login = () => {
     return (
             <div className="Login">
                 <div className="LoginContent">
-                <h1>StudyTime</h1> 
+                <h1 className='studyTime'>StudyTime</h1> 
                 <label className="autentificare">AUTENTIFICARE</label>
                 <form className="login" onSubmit={submit}>
                     <label>Email:</label>

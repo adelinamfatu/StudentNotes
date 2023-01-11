@@ -68,7 +68,7 @@ const Notes = () => {
                 <NavigationBar />
                 <NavigationAboutMe />
                 <div className="allNotes"> 
-                    <h1 id="notitelemele">Notițele mele</h1>
+                    <h1 className="myNotes">Notițele mele</h1>
                     <button onClick={addNote} id="addCurs">+</button>
                     <div id='namedatabtn'>
                     <text>Filtrare după: </text>

@@ -156,7 +156,7 @@ const Register = () => {
         return (
             <div className="Register">
                 <div className='RegisterContent'>
-                <h1>StudyTime</h1> 
+                <h1 className='studyTime'>StudyTime</h1> 
                 <label className="inregistrare">ÎNREGISTRARE</label>
                 <form className="register" onSubmit={preventDefault}>
                     <label htmlFor="nume">Nume:</label>

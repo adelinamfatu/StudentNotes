@@ -1,30 +1,17 @@
 .CreateNote {
     position: absolute;
     background-color: rgb(245, 244, 244);
-    height: 540PX;
-    width: 1100PX;
-    left: 250px;
+    height: 600px;
+    width: 1200px;
+
+    left: 230px;
     top: 180px;
     border: 1px solid black;
     border-radius: 20px;
 }
 
-#titlu {
-    font-size: 20px;
-    padding: 10px;
-    text-align: left;
-    margin-left: 403px;
-    text-shadow: 1px 1px #24A19C;
-    
-}
-
-#titleinput {
-    background-color: rgb(255, 255, 255);
-    border: 1px solid black;
-}
-
-#renunta, #salveaza {
-    bottom: 20px;
+#two_buttons {
+    padding-top: 10px;
 }
 
 #dropdown-basic-button {
@@ -39,6 +26,31 @@
 }
 
 #content {
-    width: 100px;
-    height: 322px;
+    width: 580px;
+    height: 480px;
+    font-size: 15px;
 }
+
+#textPar {
+    float: left;
+    text-align: left;
+    align-content: left;
+}
+
+#markDown {
+    float: right;
+    background-color: #9ED5C5;
+    border: 2px solid black;
+    width: 580px;
+    height: 480px;
+    word-wrap: break-word;
+    font-size: 15px;
+    padding-left: 20px;
+
+    /* Pentru scroll: */
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+

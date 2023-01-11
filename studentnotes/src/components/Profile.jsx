@@ -38,7 +38,7 @@ const Profile = () => {
                 <NavigationAboutMe />
                      
                 <div className="studentProfile">      
-                    <h1 id="myProfile">Profilul meu</h1>
+                    <h1 className="myProfile">Profilul meu</h1>
 
                     <div id="student">
                         <div>

@@ -90,48 +90,42 @@ const CreateNote = () => {
     return (
         <div className='CreateNote'>
           <div className='create'>
-            <div></div>
             <form className='createForm' onSubmit={submit}>
               <div id="all">
-
-              <div id='titlelabel'>
-              <label id="titlu"> Titlu
-                <input type="text" name="title" id="titleinput" placeholder="Titlu..."
-                ref={titleRef}/>
-              </label>
-              </div>
-              <select
-                className="subjectsSelect"
-                defaultValue={'default'}
-                onChange={handleSubjectChange}
-              >
-                <option value="default" disabled>
-                  -- Selectează materia --
+                <div id="two_buttons">
+                  <button onClick={discardNote} id="renunta">Renunță</button>
+                  <button onClick={saveNote} id="salveaza">Salvează</button>
+                </div>
+                
+                <select className="subjectsSelect" defaultValue={'default'} onChange={handleSubjectChange}>
+                  <option value="default" disabled>
+                    -- Selectează materia --
                   </option>
                   {subjects && getSubject()}
-              </select>
+                </select>
               </div>
-             <div id='mark'>
-              <textarea
-                placeholder="Editeaza paragraf..."
-                id="content"
-                name="content"
-                value={content}
-                onChange={handleContentChange}
-                ref={contentRef}
-              />
-                          <ReactMarkdown
-                children={note}
-              />
+
+              <div id='textPar'>
+                <textarea
+                  placeholder="Editeaza paragraf..."
+                  id="content"
+                  name="content"
+                  value={content}
+                  onChange={handleContentChange}
+                  ref={contentRef}
+                />
+                 
               </div>
-              <button onClick={discardNote} id="renunta">Renunță</button>
-              <button onClick={saveNote} id="salveaza">Salvează</button>
+
+              <div id="markDown">
+                <ReactMarkdown children={note} />
+              </div>
 
             </form>
 
           </div>
-            <br></br>
-            <ToastContainer />
+          <br></br>
+          <ToastContainer />
         </div>
       )
 }
