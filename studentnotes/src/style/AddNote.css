@@ -16,8 +16,7 @@
 
   }
   
- #notitaNoua {
-    margin-left: 115px;
+ #not_sub_new {
     border: 1px solid black; 
     color: #DEF5E5;
     background-color: #24A19C;
@@ -31,7 +30,9 @@
     letter-spacing: 4px;
   }
 
-  
+.twoButtons {
+  padding-top: 30px;
+}
 
 .newNote {
    padding-top: 100px;

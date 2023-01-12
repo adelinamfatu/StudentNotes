@@ -83,11 +83,15 @@ const AddSubject = () => {
                 <NavigationBar />
                 <NavigationAboutMe />
                 <div className="newNote"> 
-                    <h1>Materie nouă</h1>
+                    <h1 id="not_sub_new">Materie nouă</h1>
                     <form id="subject" onSubmit={submit}>
-                        <button onClick={discardSubject} id="renunta">Renunță</button>
-                        <button onClick={saveSubject} id="salveaza" type="submit">Salvează</button>
+                        <div className="twoButtons">
+                            <button onClick={discardSubject} id="renunta">Renunță</button>
+                            <button onClick={saveSubject} id="salveaza" type="submit">Salvează</button>
+                        </div>
+
                         <ToastContainer />
+
                         <div className="addSubject">
                             <label id="lSubject">Denumire materie: </label>  
                             <input id="iSubject" type="text" minLength={2}
