@@ -26,6 +26,9 @@ Subject.hasMany(Note, {
         name: "subjectId"
     }
 });
+Note.belongsTo(Subject, {
+    foreignKey: "subjectId", as: "subject"
+});
 User.hasMany(Note, {
     foreignKey: {
         name: "userEmail"
@@ -51,9 +54,6 @@ Group.hasMany(GroupNote, {
         name: "groupId"
     }
 });
-Note.belongsTo(Subject, {
-    foreignKey: "subjectId", as: "subject"
-})
 
 //Routes
 const userRouter = require("./routes/user-routes");

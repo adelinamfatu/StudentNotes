@@ -5,6 +5,9 @@ import ReactMarkdown from 'react-markdown';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
+//sa nu se poata mari textarea-ul
+//centrare pe mijloc tot dreptunghiul alb
+
 const CreateNote = () => { 
   const [content, setContent] = useState('');
   const [note, setNote] = useState('');
@@ -96,7 +99,7 @@ const CreateNote = () => {
                   <button onClick={discardNote} id="renunta">Renunță</button>
                   <button onClick={saveNote} id="salveaza">Salvează</button>
                 </div>
-                
+                <input type="text" name="title" id="titleinput" placeholder="Titlu..." ref={titleRef}/>
                 <select className="subjectsSelect" defaultValue={'default'} onChange={handleSubjectChange}>
                   <option value="default" disabled>
                     -- Selectează materia --

@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import img1 from '../images/img2.jpg'
 
-//rezolvare bug de butoane de salvare si renunta - nu apar unde trebuie
+//rezolvare bug titlu - nu se vede cercul din jurul lui
 
 const AddSubject = () => {
     var titleRef = useRef(null);

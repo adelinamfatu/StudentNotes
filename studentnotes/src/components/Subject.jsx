@@ -14,16 +14,19 @@ function List({items}) {
                     <a id="btn_delete" onClick=
                     {() => 
                         {
-                            /*var user = localStorage.getItem('user');
+                            //https://mui.com/material-ui/react-dialog/
+                            //dialog de intrebare daca e sigur ca vrea sa stearga materia si notitele asociate
+                            //daca da, se fac operatiile de mai jos
+                            //daca nu, nu se intampla nimic
+                            var user = localStorage.getItem('user');
                             var userJSON = JSON.parse(user);
-                            var url = "http://localhost:8000/notes/subject/" + item.id;
+                            var url = "http://localhost:8000/subjects/remove/" + item.id;
                             
                             var request = new XMLHttpRequest();
                             request.open("DELETE", url, false); 
                             request.setRequestHeader("x-access-token", userJSON["user"].token);
-                            request.send(null);*/
-
-                            //https://mui.com/material-ui/react-dialog/
+                            request.send(null);
+                            //toast de informare ca materia a fost stearsa
                         }}>
                         <img src={remove_icon}></img>
                     </a>
@@ -32,8 +35,6 @@ function List({items}) {
             }
         </>
     )
-    //adaugare metoda onclick pe buton + luare id buton si materie + stergere materie la id-ul respectiv + 
-    //notitele materiei respective + mesaj de intrebare daca e sigur si de instiintare ca se sterg si notitele
 }
 
 const Subject = () => {

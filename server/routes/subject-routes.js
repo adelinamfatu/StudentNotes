@@ -51,7 +51,7 @@ router.put("/edit/:id", async(req, res, next) => {
 });
 
 //delete a subject
-router.delete("/delete/:id", async(req, res, next) =>{
+router.delete("/remove/:id", async(req, res, next) =>{
     try {
       const subject = await Subject.findByPk(req.params.id); 
       if (subject) {
