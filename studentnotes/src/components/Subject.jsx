@@ -4,6 +4,8 @@ import NavigationAboutMe from "./NavigationAboutMe";
 import '../style/Subject.css';
 import { useNavigate } from "react-router-dom";
 import remove_icon from '../images/remove_icon.png'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function List({items}) {
     return (
@@ -26,7 +28,8 @@ function List({items}) {
                             request.open("DELETE", url, false); 
                             request.setRequestHeader("x-access-token", userJSON["user"].token);
                             request.send(null);
-                            //toast de informare ca materia a fost stearsa
+                            toast.success('Materia a fost ștearsă cu succes!',
+                            {position:toast.POSITION.TOP_RIGHT})
                         }}>
                         <img src={remove_icon}></img>
                     </a>
@@ -74,6 +77,7 @@ const Subject = () => {
                         {subjects && <List items={subjects}/>}
                     </div>
                 </div>
+                <ToastContainer />
             </div>
         )                   
 }
