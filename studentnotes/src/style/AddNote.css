@@ -85,18 +85,19 @@
      font-size: 24px;
  }
 
- #lSubject, #lAbbr {
+ #lSubject, #lAbbr, #lGroup {
   text-align: center;
   font-size: 25px;
   color: black;
   text-shadow: 4px 4px #24A19C;
+  padding-top: 20px;
 }
 
-#iSubject {
+#iSubject, #iGroup {
   width: 30%;
 }
 
-.addSubject {
+.addSubject, .addGroup {
   padding-top: 30px;
 }
 
@@ -105,6 +106,18 @@
   height: 20%;
   padding-top: 30px;
 }
+
+#multi_select {
+  background-color: #ddf3e6;
+  border-radius: 10px;
+}
+
+.mselect {
+  padding-left: 30%;
+  padding-right: 30%;
+}
+
+
 
 
 

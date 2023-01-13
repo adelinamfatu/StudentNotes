@@ -15,6 +15,7 @@ import {
   Navigate
  } from "react-router-dom";
 import AddSubject from './components/AddSubject';
+import AddGroup from './components/AddGroup';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
             <Route path="/addsubject" element={<AddSubject/>} />
             <Route path="/profile" element={<Profile/>} />
             <Route path="/groups" element={<Groups/>} />
+            <Route path="/addgroup" element={<AddGroup/>} />
           </Routes>
         </BrowserRouter>
   );

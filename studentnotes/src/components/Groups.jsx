@@ -2,17 +2,8 @@ import React from "react";
 import '../style/Groups.css';
 import NavigationAboutMe from "./NavigationAboutMe";
 import NavigationBar from "./NavigationBar";
+import { useNavigate } from "react-router-dom";
 
-//adaugare pagina de adaugare grup - similar cu add subject:
-//trebuie facut AddGroup.js
-//trebuie adaugata ruta in App.js
-//ca si content - Grup nou
-//              Renunta Salveaza
-//              Nume grup - input normal ca la materii
-//              Utilizatorii grupului - select multiplu
-//              Notitele partajate cu grupul - select multiplu
-// pt select multiplu: https://react-select.com/home sau https://codesandbox.io/s/givp5
-// alegi care ti se pare mai usor
 
 function Group({items}) {
     return (
@@ -29,9 +20,10 @@ function Group({items}) {
 }
 
 const Groups = () => {
+    const navigate = useNavigate();
 
     const addGroup = () => {
-
+        navigate('/addgroup');
     }
 
     const arr_groups = 
