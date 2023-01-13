@@ -59,6 +59,7 @@ Group.hasMany(GroupNote, {
 const userRouter = require("./routes/user-routes");
 const subjectRouter = require("./routes/subject-routes");
 const noteRouter = require("./routes/note-routes");
+const groupRouter = require("./routes/group-routes");
 
 app.use(express.json());
 app.use(function (req, res, next) {
@@ -73,6 +74,7 @@ app.use("/users", userRouter);
 app.use(auth);
 app.use("/notes", noteRouter);
 app.use("/subjects", subjectRouter);
+app.use("/groups", groupRouter);
 app.use((error, req, res, next) => {
     console.warn(error);
     res.status(500).json({ message: 'Server error'})
@@ -86,6 +88,6 @@ app.listen(8000, async () => {
       console.warn("Unable to connect to db");
       console.warn(error);
     }
-  });
+});
 
 module.exports = app;

@@ -8,15 +8,16 @@ import { createRef } from "react";
 
 //fixare bug titlu
 //variante facute verde
-//placeholder pt select-uri: "Utilizatori" si "Notite"
 //rotunjire colturi select-uri
+//daca se poate schimba optiunile sa scriem in romana in loc de "No options available" cand sunt toate optiunile alese
 
 const AddGroup = () => {
     const navigate = useNavigate();
     const [users, setUsers] = useState();
     const [notes, setNotes] = useState();
-    const [food, setFood] = useState(["Burger", "Pizza", "Sandwich"]);
     var usersRef = createRef('');
+    var notesRef = createRef('');
+    var nameRef = createRef('');
 
     useEffect(() => {
         var user = localStorage.getItem('user');
@@ -37,7 +38,8 @@ const AddGroup = () => {
         request.open("GET", url, false); 
         request.setRequestHeader("x-access-token", userJSON["user"].token);
         request.send(null);
-        setUsers((JSON.parse(request.responseText)).map(u => u.email));
+        var usersJson = (JSON.parse(request.responseText)).filter(u => u.email != userJSON["user"].email);
+        setUsers(usersJson.map(u => u.email));
     }
 
     function makeNotesRequest(user) {
@@ -59,6 +61,84 @@ const AddGroup = () => {
         navigate('/groups');
     }
 
+    const saveGroup = () => {
+        var user = localStorage.getItem('user');
+        var userJSON = JSON.parse(user);
+
+        sendGroup(userJSON);
+    }
+
+    function sendGroup(userJSON) {
+        var name = nameRef.current.value;
+        var json = '{' + '"name":' + '"' + name + '"}'; 
+        var url = "http://localhost:8000/groups/add";
+        var request = new XMLHttpRequest();
+        var groupId;
+        request.open("POST", url, true); 
+        request.setRequestHeader("Content-Type", "application/json");
+        request.setRequestHeader("x-access-token", userJSON["user"].token);
+        request.onreadystatechange = () => 
+        { 
+            if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                groupId = JSON.parse(request.responseText).id;
+                sendGroupUser(userJSON, groupId);
+                sendGroupNote(userJSON, groupId);
+            }
+        }
+        request.send(json);
+    }
+
+    function sendGroupUser(userJSON, groupId) {
+        var users = usersRef.current.getSelectedItems();
+        
+        var json = '{' +
+            '"userEmail":' + '"' + userJSON["user"].email + '",' +
+            '"groupId":' + '"' + groupId + '"}'; 
+        sendUser(json, userJSON);
+
+        for(var i = 0; i < users.length; i++) {
+            json = '{' +
+                '"userEmail":' + '"' + users[i] + '",' +
+                '"groupId":' + '"' + groupId + '"}'; 
+            sendUser(json, userJSON);
+        }
+    }
+
+    function sendUser(json, userJSON) {
+        var url = "http://localhost:8000/groups/add/user";
+        var request = new XMLHttpRequest();
+        request.open("POST", url, true); 
+        request.setRequestHeader("Content-Type", "application/json");
+        request.setRequestHeader("x-access-token", userJSON["user"].token);
+        request.send(json);
+    }
+
+    function sendGroupNote(userJSON, groupId) {
+        var notes = notesRef.current.getSelectedItems();
+        
+        for(var i = 0; i < notes.length; i++) {
+            var json = '{' +
+                '"noteId":' + '"' + notes[i].id + '",' +
+                '"groupId":' + '"' + groupId + '"}'; 
+            sendNote(json, userJSON);
+        }
+    }
+
+    function sendNote(json, userJSON) {
+        var url = "http://localhost:8000/groups/add/note";
+        var request = new XMLHttpRequest();
+        request.open("POST", url, true); 
+        request.setRequestHeader("Content-Type", "application/json");
+        request.setRequestHeader("x-access-token", userJSON["user"].token);
+        request.onreadystatechange = () => 
+        { 
+            if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                //toast de succes - grupul a fost creat
+            }
+        }
+        request.send(json);
+    }
+
     return (  
         <div className='AddNote'> 
             <NavigationBar />
@@ -69,15 +149,16 @@ const AddGroup = () => {
 
                         <div className="twoButtons">
                             <button id="renunta" onClick={discardGroup}>Renunță</button>
-                            <button id="salveaza" type="submit">Salvează</button>
+                            <button id="salveaza" type="submit" onClick={saveGroup}>Salvează</button>
                         </div>
 
                         <div className="addGroup">
                             <label id="lGroup">Nume grup: </label>  
                             <input id="iGroup" type="text" minLength={2}
-                                pattern="[A-Z][a-zA-Z\s]*"
                                 title="Trebuie să conțină minim 2 litere și să înceapă cu literă mare."
-                                required>
+                                required
+                                ref={nameRef}
+                                >
                             </input> 
 
                             <label id="lGroup">Utilizatorii grupului: </label>
@@ -86,14 +167,18 @@ const AddGroup = () => {
                                     isObject={false}
                                     options={users}
                                     ref={usersRef}
+                                    placeholder="Selecteaza utilizatorii"
                                 />
                             </div>
 
                             <label id="lGroup">Notițele partajate cu grupul: </label>
                             <div className="mselect">
                                 <Multiselect id="multi_select"
-                                    isObject={false}
-                                    options={food}
+                                    isObject={true}
+                                    options={notes}
+                                    displayValue="title"
+                                    ref={notesRef}
+                                    placeholder="Selecteaza notitele"
                                 />
                             </div>
                         </div>

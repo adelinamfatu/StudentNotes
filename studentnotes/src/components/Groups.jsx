@@ -4,13 +4,12 @@ import NavigationAboutMe from "./NavigationAboutMe";
 import NavigationBar from "./NavigationBar";
 import { useNavigate } from "react-router-dom";
 
-
 function Group({items}) {
     return (
         <>
             {
                 items.map(item => (
-                    <a className="functGroup">
+                    <a className="functGroup" key={item.id}>
                         {item.name} 
                     </a>
                 ))
@@ -18,6 +17,8 @@ function Group({items}) {
         </>
     )
 }
+
+//grupul sa fie apasabil - sa apara mouse-ul cu manuta pe deasupra
 
 const Groups = () => {
     const navigate = useNavigate();

@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ReactMarkdown from 'react-markdown';
 
+//notita sa fie apasabila - sa apara mouse-ul cu manuta pe deasupra
+
 function Note({items}) {
     return (
         <>
