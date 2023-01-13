@@ -48,8 +48,8 @@ const AddSubject = () => {
             sendSubject(userJSON, json);
         }
         else {
-            //toast de eroare - datele nu sunt sub formatul corect
-        }
+            toast.error('Datele introduse nu respectă formatul',
+            {position:toast.POSITION.TOP_RIGHT});        }
     }
 
     function sendSubject(userJSON, json) {
@@ -83,7 +83,7 @@ const AddSubject = () => {
                 <NavigationBar />
                 <NavigationAboutMe />
                 <div className="newNote"> 
-                    <h1 id="not_sub_new">Materie nouă</h1>
+                    <h1 id="sub_new">Materie nouă</h1>
                     <form id="subject" onSubmit={submit}>
                         <div className="twoButtons">
                             <button onClick={discardSubject} id="renunta">Renunță</button>
