@@ -29,7 +29,7 @@ function List({items}) {
                             request.setRequestHeader("x-access-token", userJSON["user"].token);
                             request.send(null);
                             toast.success('Materia a fost ștearsă cu succes!',
-                            {position:toast.POSITION.TOP_RIGHT})
+                                {position:toast.POSITION.TOP_RIGHT})
                         }}>
                         <img src={remove_icon}></img>
                     </a>

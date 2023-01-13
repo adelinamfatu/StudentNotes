@@ -1,16 +1,63 @@
-import React, {useState} from "react";
+import { React, useState, useEffect } from "react";
 import NavigationBar from "./NavigationBar";
 import NavigationAboutMe from "./NavigationAboutMe";
 import { useNavigate } from "react-router-dom";
 import '../style/AddNote.css';
-import Multiselect from "multiselect-react-dropdown";
+import { Multiselect } from "multiselect-react-dropdown";
+import { createRef } from "react";
 
-// import Select from 'react-select'
-
+//fixare bug titlu
+//variante facute verde
+//placeholder pt select-uri: "Utilizatori" si "Notite"
+//rotunjire colturi select-uri
 
 const AddGroup = () => {
-    const [food,setFood] = useState(["Burger", "Pizza", "Sandwich"])
-    
+    const navigate = useNavigate();
+    const [users, setUsers] = useState();
+    const [notes, setNotes] = useState();
+    const [food, setFood] = useState(["Burger", "Pizza", "Sandwich"]);
+    var usersRef = createRef('');
+
+    useEffect(() => {
+        var user = localStorage.getItem('user');
+        if(!user) {
+            navigate('/login');
+        }
+        else {
+            makeUsersRequest(user);
+            makeNotesRequest(user);
+        }
+    }, []);
+
+    function makeUsersRequest(user) {
+        var userJSON = JSON.parse(user);
+        var url = "http://localhost:8000/users";
+        
+        var request = new XMLHttpRequest();
+        request.open("GET", url, false); 
+        request.setRequestHeader("x-access-token", userJSON["user"].token);
+        request.send(null);
+        setUsers((JSON.parse(request.responseText)).map(u => u.email));
+    }
+
+    function makeNotesRequest(user) {
+        var userJSON = JSON.parse(user);
+        var url = "http://localhost:8000/notes/" + userJSON["user"].email;
+        
+        var request = new XMLHttpRequest();
+        request.open("GET", url, false); 
+        request.setRequestHeader("x-access-token", userJSON["user"].token);
+        request.send(null);
+        setNotes(JSON.parse(request.responseText));
+    }
+
+    const submit = (event) => {
+        event.preventDefault();
+      }
+
+    const discardGroup = () => {
+        navigate('/groups');
+    }
 
     return (  
         <div className='AddNote'> 
@@ -18,10 +65,10 @@ const AddGroup = () => {
             <NavigationAboutMe />
             <div className="newNote"> 
                     <h1 id="not_sub_new">Grup nou</h1>
-                    <form id="subject">
+                    <form id="subject" onSubmit={submit}>
 
                         <div className="twoButtons">
-                            <button id="renunta">Renunță</button>
+                            <button id="renunta" onClick={discardGroup}>Renunță</button>
                             <button id="salveaza" type="submit">Salvează</button>
                         </div>
 
@@ -37,7 +84,8 @@ const AddGroup = () => {
                             <div className="mselect">
                                 <Multiselect id="multi_select"
                                     isObject={false}
-                                    options={food}
+                                    options={users}
+                                    ref={usersRef}
                                 />
                             </div>
 
@@ -48,8 +96,6 @@ const AddGroup = () => {
                                     options={food}
                                 />
                             </div>
-                            
-                               
                         </div>
                     </form>
                 </div>

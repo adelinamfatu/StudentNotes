@@ -99,7 +99,7 @@ const CreateNote = () => {
                   <button onClick={discardNote} id="renunta">Renunță</button>
                   <button onClick={saveNote} id="salveaza">Salvează</button>
                 </div>
-                <input type="text" name="title" id="titleinput" placeholder="Titlu..." ref={titleRef}/>
+                <input type="text" name="title" id="titleinput" placeholder="-- Titlu --" ref={titleRef}/>
                 <select className="subjectsSelect" defaultValue={'default'} onChange={handleSubjectChange}>
                   <option value="default" disabled>
                     -- Selectează materia --
@@ -107,7 +107,6 @@ const CreateNote = () => {
                   {subjects && getSubject()}
                 </select>
               </div>
-
               <div id='textPar'>
                 <textarea
                   placeholder="Editeaza paragraf..."
@@ -117,15 +116,11 @@ const CreateNote = () => {
                   onChange={handleContentChange}
                   ref={contentRef}
                 />
-                 
               </div>
-
               <div id="markDown">
                 <ReactMarkdown children={note} />
               </div>
-
             </form>
-
           </div>
           <br></br>
           <ToastContainer />
