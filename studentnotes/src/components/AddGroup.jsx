@@ -64,6 +64,7 @@ const AddGroup = () => {
     }
 
     const saveGroup = () => {
+        //verificare ca nu sunt goale campurile si afisare toast de eroare
         var user = localStorage.getItem('user');
         var userJSON = JSON.parse(user);
         toast.success('Grupul a fost creat cu succes!',

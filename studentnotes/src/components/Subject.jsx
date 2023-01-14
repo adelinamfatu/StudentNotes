@@ -10,6 +10,41 @@ import 'react-toastify/dist/ReactToastify.css';
 function List({items}) {
     const navigate = useNavigate();
 
+    function deleteNotes(subjectId, userJSON) {
+        var url = "http://localhost:8000/notes/remove/subject/" + subjectId;
+                            
+        var request = new XMLHttpRequest();
+        request.open("DELETE", url, false); 
+        request.setRequestHeader("x-access-token", userJSON["user"].token);
+        request.onreadystatechange = () => 
+        { 
+            if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                deleteSubject(subjectId, userJSON);       
+            }
+        }
+        request.send(null);
+    }
+
+    function deleteSubject(subjectId, userJSON) {
+        var url = "http://localhost:8000/subjects/remove/" + subjectId;
+                            
+        var request = new XMLHttpRequest();
+        request.open("DELETE", url, false); 
+        request.setRequestHeader("x-access-token", userJSON["user"].token);
+        request.onreadystatechange = () => 
+        { 
+            if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                toast.success('Materia a fost ștearsă cu succes!',
+                    {position:toast.POSITION.TOP_RIGHT})
+                setTimeout(() => {
+                    window.location.reload(false);
+                }, 2000);       
+            }
+        }
+        request.send(null);
+        
+    }
+
     return (
         <>
             {items.map(item => (
@@ -28,23 +63,13 @@ function List({items}) {
                 <div id="btn_delete" onClick=
                     {() => 
                         {
+                            var user = localStorage.getItem('user');
+                            var userJSON = JSON.parse(user);
+                            deleteNotes(item.id, userJSON);
                             //https://mui.com/material-ui/react-dialog/
                             //dialog de intrebare daca e sigur ca vrea sa stearga materia si notitele asociate
                             //daca da, se fac operatiile de mai jos
                             //daca nu, nu se intampla nimic
-                            var user = localStorage.getItem('user');
-                            var userJSON = JSON.parse(user);
-                            var url = "http://localhost:8000/subjects/remove/" + item.id;
-                            
-                            var request = new XMLHttpRequest();
-                            request.open("DELETE", url, false); 
-                            request.setRequestHeader("x-access-token", userJSON["user"].token);
-                            request.send(null);
-                            toast.success('Materia a fost ștearsă cu succes!',
-                                {position:toast.POSITION.TOP_RIGHT})
-                                setTimeout(() => {
-                                    window.location.reload(false);
-                                }, 2000);
                         }}>
                         <img src={remove_icon}></img>
                     </div>

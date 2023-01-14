@@ -117,4 +117,21 @@ router.delete("/remove/:id", async(req, res, next) =>{
     }
 });
 
+//delete notes by subject
+router.delete("/remove/subject/:id", async(req, res, next) =>{
+  try {
+    const notes = await Note.findAll({ where: { subjectId: req.params.id} }); 
+    if (notes) {
+      await Note.destroy({ where: { subjectId: req.params.id} });
+      return res.status(200).json("Notes deleted successfully!");
+    } else {
+      return res
+        .status(404)
+        .json({ error: `Notes with subject id ${req.params.id} not found` });
+    }
+  } catch (error) {
+   next(error);
+  }
+});
+
 module.exports = router;
