@@ -7,8 +7,16 @@ const GroupNote = require("../models/groupnote");
 //get all groups by user
 router.get("/:email", async (req, res, next) => {
     try {
-      const groups = await Group.findAll();
-      res.status(200).json(groups);
+      const groupuser = await GroupUser.findAll(
+        { where: [{ userEmail: req.params.email }],
+        include: [{
+          model: Group,
+          as: 'group',
+          attributes: ['name', 'id'],
+          required: true
+        }]
+      });;
+      res.status(200).json(groupuser);
     } catch (error) {
       next(error);
     }

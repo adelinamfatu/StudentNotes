@@ -44,6 +44,9 @@ Group.hasMany(GroupUser, {
         name: "groupId"
     }
 });
+GroupUser.belongsTo(Group, {
+    foreignKey: "groupId", as: "group"
+});
 Note.hasMany(GroupNote, {
     foreignKey: {
         name: "noteId"
@@ -54,6 +57,9 @@ Group.hasMany(GroupNote, {
         name: "groupId"
     }
 });
+GroupNote.belongsTo(Group, {
+    foreignKey: "groupId", as: "group"
+})
 
 //Routes
 const userRouter = require("./routes/user-routes");

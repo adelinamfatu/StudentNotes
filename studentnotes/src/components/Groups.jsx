@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import '../style/Groups.css';
 import NavigationAboutMe from "./NavigationAboutMe";
 import NavigationBar from "./NavigationBar";
@@ -10,7 +10,7 @@ function Group({items}) {
             {
                 items.map(item => (
                     <a className="functGroup" key={item.id}>
-                        {item.name} 
+                        {item.group.name} 
                     </a>
                 ))
             }
@@ -22,33 +22,29 @@ function Group({items}) {
 
 const Groups = () => {
     const navigate = useNavigate();
+    const [groups, setGroups] = useState();
+
+    useEffect(() => {
+        var user = localStorage.getItem('user');
+        if(!user) {
+            navigate('/login');
+        }
+        else {
+            var userJSON = JSON.parse(user);
+            var url = "http://localhost:8000/groups/" + userJSON["user"].email;
+            
+            var request = new XMLHttpRequest();
+            request.open("GET", url, false); 
+            request.setRequestHeader("x-access-token", userJSON["user"].token);
+            request.send(null);
+            setGroups(JSON.parse(request.responseText));
+        }
+    }, [])
 
     const addGroup = () => {
         navigate('/addgroup');
     }
-
-    const arr_groups = 
-    [ 
-        {
-            "name":"grup_1"
-        }, 
-        {
-            "name":"grup_2"
-        },
-        {
-            "name":"grup_3"
-        }, 
-        {
-            "name":"grup_4"
-        },
-        {
-            "name":"grup_5"
-        }, 
-        {
-            "name":"grup_6"
-        }
-    ]
-
+    
         return (
             <div className='Groups'>
                 <NavigationBar />
@@ -60,7 +56,7 @@ const Groups = () => {
                 </div>
 
                 <div className='listOfGroups'>
-                    {<Group items={arr_groups}/>}
+                    {groups && <Group items={groups}/>}
                 </div>
             </div>  
         )      
