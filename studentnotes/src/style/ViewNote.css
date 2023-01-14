@@ -16,61 +16,68 @@
     background-image: linear-gradient(75deg,#ddf3e6, #99dbad 50%, #ddf3e6);
     text-align: center;
   }
+
+  #view_note {
+    border: 1px solid black; 
+    color: #DEF5E5;
+    background-color: #24A19C;
+    text-shadow: 4px 4px black;
+    font-size: 30px;
+    border-radius: 10px;
+    font-size: 30px;
+    display: flex;
+    display: inline-block;
+    padding: 10px;
+    letter-spacing: 4px;
+  }
   
   .CreateView {
     position: absolute;
     background-color: rgb(245, 244, 244);
-    height: 600px;
-    width: 1200px;
-    left: 180px;
+    
+    height: 80%;
+    width: 40%;
+
+    left: 30%;
     top: 100px;
+
     border: 1px solid black;
     border-radius: 20px;
 }
 
-#two_buttons {
-    padding-top: 10px;
+#titleinput1 {
+    width: 30%;
 }
+
+#titleinput2 {
+    width: 50%;
+}
+
 
 #dropdown-basic-button {
     background-color: blueviolet;
     font-size: small;
 }
 
-.subjectsSelect {
-    font-size: 12px;
-    background-color: #9ED5C5;
-    margin-bottom: 13px;
-    width: 190px;
-}
 
-
-#content {
-    width: 580px;
-    height: 480px;
-    font-size: 15px;
-}
-
-#textPar {
-    float: left;
-    text-align: left;
-    align-content: left;
-}
-
-#markDown {
-    float: right;
+#mark_down {
     background-color: #9ED5C5;
     border: 2px solid black;
-    width: 580px;
-    height: 480px;
+    /* width: 580px;
+    height: 480px; */
+    height: 70%;
+    width: 70%;
+
     word-wrap: break-word;
     font-size: 15px;
-    padding-left: 20px;
+    position: absolute;
+    margin-left: 15%;
 
     /* Pentru scroll: */
     overflow-x: hidden;
     overflow-y: auto;
 }
+
 
 
 

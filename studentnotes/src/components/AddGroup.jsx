@@ -8,8 +8,6 @@ import { createRef } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-//fixare bug titlu
-//variante facute verde
 //rotunjire colturi select-uri
 //daca se poate schimba optiunile sa scriem in romana in loc de "No options available" cand sunt toate optiunile alese
 
@@ -152,7 +150,7 @@ const AddGroup = () => {
             <NavigationBar />
             <NavigationAboutMe />
             <div className="newNote"> 
-                    <h1 id="not_sub_new">Grup nou</h1>
+                    <h1 id="group_new">Grup nou</h1>
                     <form id="subject" onSubmit={submit}>
 
                         <div className="twoButtons">
@@ -176,6 +174,19 @@ const AddGroup = () => {
                                     options={users}
                                     ref={usersRef}
                                     placeholder="Selecteaza utilizatorii"
+
+                                    style={{
+                                        chips: {
+                                          backgroundColor: '#24A19C'
+                                        },
+                                        searchBox: {
+                                            backgroundColor:'#ddf3e6'
+                                        },
+                                        option: {
+                                            backgroundColor: '#24A19C'
+                                        }
+                                    
+                                      }}
                                 />
                             </div>
 
@@ -187,6 +198,19 @@ const AddGroup = () => {
                                     displayValue="title"
                                     ref={notesRef}
                                     placeholder="Selecteaza notitele"
+
+                                    style={{
+                                        chips: {
+                                            backgroundColor: '#24A19C'
+                                          },
+                                          searchBox: {
+                                              backgroundColor:'#ddf3e6'
+                                          },
+                                          option: {
+                                              backgroundColor: '#24A19C'
+                                          }
+                                    
+                                      }}
                                 />
                             </div>
                         </div>

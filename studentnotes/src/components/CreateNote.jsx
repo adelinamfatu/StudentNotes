@@ -146,10 +146,9 @@ const CreateNote = () => {
                   {subjects && getSubject()}
                 </select>
               </div>
-              <div id='textPar'>
-                <textarea
+              <div >
+                <textarea id='textPar'
                   placeholder="Editeaza paragraf..."
-                  id="content"
                   name="content"
                   value={content}
                   onChange={handleContentChange}

@@ -22,7 +22,7 @@
 
   }
   
- #not_new {
+ #not_new, #sub_new, #group_new {
     border: 1px solid black; 
     color: #DEF5E5;
     background-color: #24A19C;
@@ -36,20 +36,6 @@
     letter-spacing: 4px;
   }
 
-
-  #sub_new {
-    border: 1px solid black; 
-    color: #DEF5E5;
-    background-color: #24A19C;
-    text-shadow: 4px 4px black;
-    font-size: 30px;
-    border-radius: 10px;
-    font-size: 30px;
-    display: flex;
-    display: inline-block;
-    padding: 10px;
-    letter-spacing: 4px;
-  }
 
 .twoButtons {
   padding-top: 30px;

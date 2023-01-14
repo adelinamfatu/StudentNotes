@@ -51,18 +51,25 @@ const ViewNote = () => {
           <div className='CreateView'>
             <div className='create'>
               <div id="all">
-                <input type="text" name="title" id="titleinput" 
-                  placeholder="-- Titlu --" 
-                  readOnly={true}
-                  ref={titleRef}/>
-                <input type="text" name="title" id="titleinput" 
-                  placeholder="-- Titlu --" 
-                  readOnly={true}
-                  ref={subjectRef}/>
+                <h1 id="view_note">Vizualizare notiță</h1>
+                
+                <div>
+                  <input type="text" name="title" id="titleinput1" 
+                    readOnly={true}
+                    ref={titleRef}/>
+                </div>
+
+                <div>
+                  <input type="text" name="title" id="titleinput2" 
+                    readOnly={true}
+                    ref={subjectRef}/>
+                </div>
+
+                <div id="mark_down">
+                  <ReactMarkdown children={note} />
+                </div>
               </div>
-              <div id="markDown">
-                <ReactMarkdown children={note} />
-              </div>
+              
             </div>
               <br></br>
               <ToastContainer />
