@@ -13,6 +13,8 @@
     margin-top: 0px;
     background-repeat:no-repeat;
     background-image: linear-gradient(75deg,#ddf3e6, #99dbad 50%, #ddf3e6);
+    text-align: center;
+
 
   }
   
@@ -28,7 +30,6 @@
     display: inline-block;
     padding: 10px;
     letter-spacing: 4px;
-    margin-left: 70px;
   }
 
 
@@ -44,7 +45,6 @@
     display: inline-block;
     padding: 10px;
     letter-spacing: 4px;
-    margin-left: 0px;
   }
 
 .twoButtons {

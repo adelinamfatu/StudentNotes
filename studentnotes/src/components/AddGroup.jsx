@@ -66,7 +66,8 @@ const AddGroup = () => {
     const saveGroup = () => {
         var user = localStorage.getItem('user');
         var userJSON = JSON.parse(user);
-
+        toast.success('Grupul a fost creat cu succes!',
+        {position:toast.POSITION.TOP_RIGHT}); 
         sendGroup(userJSON);
     }
 
@@ -85,6 +86,7 @@ const AddGroup = () => {
                 groupId = JSON.parse(request.responseText).id;
                 sendGroupUser(userJSON, groupId);
                 sendGroupNote(userJSON, groupId);
+                
             }
         }
         request.send(json);
@@ -135,8 +137,8 @@ const AddGroup = () => {
         request.onreadystatechange = () => 
         { 
             if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-                toast.success('Grupul a fost creat cu succes!',
-                {position:toast.POSITION.TOP_RIGHT});            }
+                
+            }
         }
         request.send(json);
     }

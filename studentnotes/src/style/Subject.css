@@ -4,6 +4,8 @@
     font-family: sans-serif;
     box-sizing: border-box;
     text-align: center;
+    text-align: center;
+
   }
   
   .CourseDex {
@@ -13,6 +15,8 @@
     margin-top: 0px;
     background-repeat:no-repeat;
     background-image: linear-gradient(75deg,#ddf3e6, #99dbad 50%, #ddf3e6);
+    text-align: center;
+
 
   }
   
@@ -60,7 +64,7 @@
      background-color: #0a0141;
      font-size: 20px;
      padding: 3px 10px;
-     left: 20px;
+     text-align: center;
      border: none;
      color: #f1f1f1;
      cursor: pointer;
