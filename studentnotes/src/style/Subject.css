@@ -54,6 +54,7 @@
 .cursuri {
    padding-top: 100px;
    padding-left: 120px;
+   text-align: center;
 }
  
 
@@ -109,27 +110,33 @@
    }  
 
  .courseName {
-     position: relative;
      background-color: #DEF5E5;
      color: rgb(0, 0, 0);
      padding: 10px 26px;
      border: none;
      display: block;
      cursor: pointer;
-     width: 50%;
+     width: auto;
      margin: 2px auto;
-     top: 30px;
      border-radius: 10px;
-     font-size: 25px;
+     font-size: 25px;  
+     display: inline-block;
+
     }
 
 #btn_delete {
   color:#DEF5E5;
-  float: right;
   background-color: #DEF5E5;
   cursor: pointer;
   height: 25px;
   width: 25px;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.listItem {
+  box-sizing: border-box;
+  margin-top: 10px;
 }
 
 

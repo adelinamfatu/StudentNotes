@@ -7,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import img1 from '../images/img2.jpg';
 
-//rezolvare bug titlu - nu se vede cercul din jurul lui
 
 const AddSubject = () => {
     var titleRef = useRef(null);
@@ -46,11 +45,13 @@ const AddSubject = () => {
                     '"title":' + '"' + title + '",' +
                     '"tag":' + '"' + tag + '"}'; 
             sendSubject(userJSON, json);
+            document.getElementById("subject").reset();
         }
         else {
             toast.error('Datele introduse nu respectă formatul',
             {position:toast.POSITION.TOP_RIGHT});        }
     }
+
 
     function sendSubject(userJSON, json) {
         var url = "http://localhost:8000/subjects/add";

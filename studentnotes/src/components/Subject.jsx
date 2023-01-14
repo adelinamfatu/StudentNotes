@@ -13,7 +13,8 @@ function List({items}) {
     return (
         <>
             {items.map(item => (
-                <a className="courseName" key={item.id} onClick=
+                <div className="listItem">
+                <div className="courseName" key={item.id} onClick=
                 {() => {
                     navigate({
                         pathname: "/notes",
@@ -23,7 +24,8 @@ function List({items}) {
                     });
                 }}>
                     {item.title}
-                    <a id="btn_delete" onClick=
+                </div>
+                <div id="btn_delete" onClick=
                     {() => 
                         {
                             //https://mui.com/material-ui/react-dialog/
@@ -40,10 +42,13 @@ function List({items}) {
                             request.send(null);
                             toast.success('Materia a fost ștearsă cu succes!',
                                 {position:toast.POSITION.TOP_RIGHT})
+                                setTimeout(() => {
+                                    window.location.reload(false);
+                                }, 2000);
                         }}>
                         <img src={remove_icon}></img>
-                    </a>
-                </a>
+                    </div>
+                </div>
                 ))
             }
         </>
@@ -84,7 +89,7 @@ const Subject = () => {
                     <button onClick={addSubject} id="addCurs">+</button>
                 
                     <div className='listOfSubjects'>
-                        {subjects && <List items={subjects}/>}
+                        {subjects && <List items={subjects}/> }
                     </div>
                 </div>
                 <ToastContainer />
