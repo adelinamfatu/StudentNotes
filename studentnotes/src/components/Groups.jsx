@@ -18,7 +18,6 @@ function Group({items}) {
     )
 }
 
-//grupul sa fie apasabil - sa apara mouse-ul cu manuta pe deasupra
 
 const Groups = () => {
     const navigate = useNavigate();
