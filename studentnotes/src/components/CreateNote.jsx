@@ -1,6 +1,6 @@
 import { React, useState, useRef, useEffect } from 'react';
 import '../style/CreateNote.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import ReactMarkdown from 'react-markdown';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -16,6 +16,8 @@ const CreateNote = () => {
   var contentRef = useRef(null);
   const [subjects, setSubjects] = useState();
   const [subjectId, setSubjectId] = useState('');
+  const [searchParams] = useSearchParams();
+  const [selectedSubject, setSelectedSubject] = useState('');
 
     useEffect(() => {
         var user = localStorage.getItem('user');
@@ -31,8 +33,24 @@ const CreateNote = () => {
             request.setRequestHeader("x-access-token", userJSON["user"].token);
             request.send(null);
             setSubjects(JSON.parse(request.responseText));
+            if(searchParams.get("id")) {
+              populateData(user);
+            }
         }
     }, [])
+
+  function populateData(user) {
+    var userJSON = JSON.parse(user);
+    var url = "http://localhost:8000/notes/id/" + searchParams.get("id");
+            
+    var request = new XMLHttpRequest();
+    request.open("GET", url, false); 
+    request.setRequestHeader("x-access-token", userJSON["user"].token);
+    request.send(null);
+    setSelectedSubject(JSON.parse(request.responseText).subject.title);
+    titleRef.current.value = JSON.parse(request.responseText).title;
+    setContent(JSON.parse(request.responseText).content);
+  }
 
   const discardNote = () => {
     navigate('/notes');
@@ -52,20 +70,28 @@ const CreateNote = () => {
         '"title":' + '"' + title + '",' + 
         '"content":' + content + ',' + 
         '"subjectId":' + '"' + subjectId + '"}'; 
-    sendNote(userJSON, json);
+
+    if(!searchParams.get("id")) {
+      var url = "http://localhost:8000/notes/add";
+      sendNote(userJSON, json, "POST", url);
+    }
+    else {
+      var url = "http://localhost:8000/notes/edit/" + searchParams.get("id");
+      sendNote(userJSON, json, "PUT", url);
+    }
   }
 
-  function sendNote(userJSON, json) {
-    var url = "http://localhost:8000/notes/add";
+  function sendNote(userJSON, json, method, url) {
     var request = new XMLHttpRequest();
-    request.open("POST", url, true); 
+    request.open(method, url, true); 
     request.setRequestHeader("Content-Type", "application/json");
     request.setRequestHeader("x-access-token", userJSON["user"].token);
     request.onreadystatechange = () => 
     { 
         if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
           toast.success('Notița s-a salvat cu succes!',
-          {position:toast.POSITION.TOP_RIGHT});        }
+            {position:toast.POSITION.TOP_RIGHT});        
+        }
     }
     request.send(json);
 }
@@ -99,8 +125,13 @@ const CreateNote = () => {
                   <button onClick={discardNote} id="renunta">Renunță</button>
                   <button onClick={saveNote} id="salveaza">Salvează</button>
                 </div>
-                <input type="text" name="title" id="titleinput" placeholder="-- Titlu --" ref={titleRef}/>
-                <select className="subjectsSelect" defaultValue={'default'} onChange={handleSubjectChange}>
+                <input type="text" name="title" id="titleinput" 
+                placeholder="-- Titlu --" 
+                ref={titleRef}/>
+                <select className="subjectsSelect" 
+                  defaultValue={selectedSubject} 
+                  onChange={handleSubjectChange}
+                  >
                   <option value="default" disabled>
                     -- Selectează materia --
                   </option>

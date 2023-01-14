@@ -5,17 +5,11 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Notes from './components/Notes';
 import AddNote from './components/AddNote';
-
-import React from 'react';
-import './App.css';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate
- } from "react-router-dom";
 import AddSubject from './components/AddSubject';
 import AddGroup from './components/AddGroup';
+import React from 'react';
+import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
 
@@ -28,6 +22,7 @@ function App() {
             <Route path="/subjects" element={<Subject/>} />
             <Route path="/notes" element={<Notes/>} />
             <Route path="/addnote" element={<AddNote/>} />
+            <Route path="/editnote" element={<AddNote/>} />
             <Route path="/addsubject" element={<AddSubject/>} />
             <Route path="/profile" element={<Profile/>} />
             <Route path="/groups" element={<Groups/>} />

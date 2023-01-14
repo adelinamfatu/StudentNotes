@@ -40,9 +40,16 @@ router.get("/subjects/:id", async (req, res, next) => {
 });
 
 //get a note
-router.get("/:id", async (req, res, next) => {
+router.get("/id/:id", async (req, res, next) => {
     try {
-      const note = await Note.findByPk(req.params.id)
+      const note = await Note.findByPk(req.params.id, {
+        include: [{
+          model: Subject,
+          as: 'subject',
+          attributes: ['title', 'tag'],
+          required: true
+        }]
+      });
       if (note) {
         res.status(200).json(note);
       } else {
