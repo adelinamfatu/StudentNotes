@@ -19,10 +19,12 @@
 }
 
 .subjectsSelect {
-    font-size: 15px;
+    font-size: 12px;
     background-color: #9ED5C5;
     margin-bottom: 13px;
+    width: 190px;
 }
+
 
 #content {
     width: 580px;
