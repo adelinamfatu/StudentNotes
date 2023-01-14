@@ -6,9 +6,7 @@ import { useEffect, useState } from "react";
 import ReactMarkdown from 'react-markdown';
 import remove_icon from '../images/remove_icon.png'
 
-
-
-function Note({items}) {
+function Note({items, mode}) {
     const navigate = useNavigate();
 
     return (
@@ -17,12 +15,22 @@ function Note({items}) {
                 items.map(item => (
                     <div className="noteItem">
                     <div className="functNote" key={item.id} onClick={() => {
-                        navigate({
-                            pathname: "/editnote",
-                            search: createSearchParams({
-                                id: item.id
-                            }).toString()
-                        });
+                        if(mode === 'g') {
+                            navigate({
+                                pathname: "/viewnote",
+                                search: createSearchParams({
+                                    id: item.id
+                                }).toString()
+                            });
+                        }
+                        else {
+                            navigate({
+                                pathname: "/editnote",
+                                search: createSearchParams({
+                                    id: item.id
+                                }).toString()
+                            });
+                        }
                     }}>
                         {item.title} 
                         <br></br>
@@ -51,6 +59,7 @@ const Notes = () => {
     const navigate = useNavigate();
     const [notes, setNotes] = useState();
     const [searchParams] = useSearchParams();
+    const [mode, setMode] = useState();
 
     useEffect(() => {
         var user = localStorage.getItem('user');
@@ -77,8 +86,8 @@ const Notes = () => {
                     request.open("GET", url, false); 
                     request.setRequestHeader("x-access-token", userJSON["user"].token);
                     request.send(null);
+                    setMode('s');
                     setNotes(JSON.parse(request.responseText));
-                    console.log(JSON.parse(request.responseText));
                 }
                 else {
                     var userJSON = JSON.parse(user);
@@ -88,6 +97,7 @@ const Notes = () => {
                     request.open("GET", url, false); 
                     request.setRequestHeader("x-access-token", userJSON["user"].token);
                     request.send(null);
+                    setMode('g');
                     setNotes(JSON.parse(request.responseText).map(g => g.note));
                 }
             }
@@ -122,7 +132,7 @@ const Notes = () => {
                 </div>
 
                 <div className="listOfNotes">
-                    {notes && <Note items={notes}/>}
+                    {notes && <Note items={notes} mode={mode}/>}
                 </div>
                 
             </div>

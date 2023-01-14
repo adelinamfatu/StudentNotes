@@ -7,18 +7,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import NavigationAboutMe from './NavigationAboutMe';
 import NavigationBar from './NavigationBar';
 
-//sa nu se poata mari textarea-ul
-//centrare pe mijloc tot dreptunghiul alb
-
 const ViewNote = () => { 
-  const [content, setContent] = useState('');
-  const [note, setNote] = useState('');
   const navigate = useNavigate();
   var titleRef = useRef(null);
-  var contentRef = useRef(null);
-  var selectRef = useRef(null);
-  const [subjects, setSubjects] = useState();
-  const [subjectId, setSubjectId] = useState('');
+  var subjectRef = useRef(null);
+  const [note, setNote] = useState();
   const [searchParams] = useSearchParams();
 
     useEffect(() => {
@@ -34,10 +27,7 @@ const ViewNote = () => {
             request.open("GET", url, false); 
             request.setRequestHeader("x-access-token", userJSON["user"].token);
             request.send(null);
-            setSubjects(JSON.parse(request.responseText));
-            if(searchParams.get("id")) {
-              populateData(user);
-            }
+            populateData(user);
         }
     }, [])
 
@@ -50,72 +40,34 @@ const ViewNote = () => {
     request.setRequestHeader("x-access-token", userJSON["user"].token);
     request.send(null);
     titleRef.current.value = JSON.parse(request.responseText).title;
-    setContent(JSON.parse(request.responseText).content);
-    selectRef.current.value = JSON.parse(request.responseText).subject.title
+    setNote(JSON.parse(request.responseText).content);
+    subjectRef.current.value = JSON.parse(request.responseText).subject.title;
   }
-
- 
-
-  function sendNote(userJSON, json, method, url) {
-    var request = new XMLHttpRequest();
-    request.open(method, url, true); 
-    request.setRequestHeader("Content-Type", "application/json");
-    request.setRequestHeader("x-access-token", userJSON["user"].token);
-    request.onreadystatechange = () => 
-    { 
-        if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-          toast.success('Notița s-a salvat cu succes!',
-            {position:toast.POSITION.TOP_RIGHT});        
-        }
-    }
-    request.send(json);
-}
-
-  const submit = (event) => {
-    event.preventDefault();
-  }
-
-  const handleContentChange = event => {
-    setContent(event.target.value);
-    setNote((event.target.value));
-  };
-
-
 
     return (    
         <div className='view'>
-        <NavigationAboutMe></NavigationAboutMe>
-            <NavigationBar></NavigationBar>
-
-        <div className='CreateView'>
-
-
-          <div className='create'>
-            <form className='createForm' onSubmit={submit}>
+          <NavigationAboutMe/>
+          <NavigationBar/>
+          <div className='CreateView'>
+            <div className='create'>
               <div id="all">
                 <input type="text" name="title" id="titleinput" 
-                placeholder="-- Titlu --" 
-                ref={titleRef}/>
-              </div>
-              <div id='textPar'>
-                <textarea
-                  placeholder="Editeaza paragraf..."
-                  id="content"
-                  name="content"
-                  value={content}
-                  onChange={handleContentChange}
-                  ref={contentRef}
-                />
+                  placeholder="-- Titlu --" 
+                  readOnly={true}
+                  ref={titleRef}/>
+                <input type="text" name="title" id="titleinput" 
+                  placeholder="-- Titlu --" 
+                  readOnly={true}
+                  ref={subjectRef}/>
               </div>
               <div id="markDown">
                 <ReactMarkdown children={note} />
               </div>
-            </form>
-          </div>
-          <br></br>
-          <ToastContainer />
-          </div>
-           </div>
+            </div>
+              <br></br>
+              <ToastContainer />
+            </div>
+        </div>
       )
 }
 

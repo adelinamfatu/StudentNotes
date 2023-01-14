@@ -7,11 +7,41 @@ import remove_icon from '../images/remove_icon.png'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+//schimbare culoare butoane modal
+//stilizare modal
+
 function List({items}) {
     const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(false);
+    const [id, setId] = useState('');
+    const [userJSON, setUserJSON] = useState('');
 
-    function deleteNotes(subjectId, userJSON) {
-        var url = "http://localhost:8000/notes/remove/subject/" + subjectId;
+    const toggleShowModal = () => {
+      setShowModal(!showModal);
+    };
+
+    const Modal = ({ show, onCloseButtonClick }) => {
+        if (!show) {
+          return null;
+        }
+      
+        return (
+          <div className="modal-wrapper">
+            <div className="modal">
+              <div className="body">
+                Stergerea materiei va rezulta in stergerea tuturor notitelor asociate. Doriti sa continuati?
+              </div>
+              <div className="footer">
+                <button onClick={deleteNotes}>Da</button>
+                <button onClick={onCloseButtonClick}>Nu</button> 
+              </div>
+            </div>
+          </div>
+        );
+      };
+
+    function deleteNotes() {
+        var url = "http://localhost:8000/notes/remove/subject/" + id;
                             
         var request = new XMLHttpRequest();
         request.open("DELETE", url, false); 
@@ -19,14 +49,14 @@ function List({items}) {
         request.onreadystatechange = () => 
         { 
             if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-                deleteSubject(subjectId, userJSON);       
+                deleteSubject();       
             }
         }
         request.send(null);
     }
 
-    function deleteSubject(subjectId, userJSON) {
-        var url = "http://localhost:8000/subjects/remove/" + subjectId;
+    function deleteSubject() {
+        var url = "http://localhost:8000/subjects/remove/" + id;
                             
         var request = new XMLHttpRequest();
         request.open("DELETE", url, false); 
@@ -42,37 +72,34 @@ function List({items}) {
             }
         }
         request.send(null);
-        
     }
 
     return (
         <>
             {items.map(item => (
-                <div className="listItem">
-                <div className="courseName" key={item.id} onClick=
-                {() => {
-                    navigate({
-                        pathname: "/notes",
-                        search: createSearchParams({
-                            subjectId: item.id
-                        }).toString()
-                    });
-                }}>
-                    {item.title}
-                </div>
-                <div id="btn_delete" onClick=
-                    {() => 
-                        {
-                            var user = localStorage.getItem('user');
-                            var userJSON = JSON.parse(user);
-                            deleteNotes(item.id, userJSON);
-                            //https://mui.com/material-ui/react-dialog/
-                            //dialog de intrebare daca e sigur ca vrea sa stearga materia si notitele asociate
-                            //daca da, se fac operatiile de mai jos
-                            //daca nu, nu se intampla nimic
-                        }}>
-                        <img src={remove_icon}></img>
+                <div className="listItem" key={item.id}>
+                    <div className="courseName" key={item.id} onClick=
+                    {() => {
+                        navigate({
+                            pathname: "/notes",
+                            search: createSearchParams({
+                                subjectId: item.id
+                            }).toString()
+                        });
+                    }}>
+                        {item.title}
                     </div>
+                    <Modal show={showModal} onCloseButtonClick={toggleShowModal} />
+                        <div id="btn_delete" onClick=
+                         {() => 
+                            {
+                                var user = localStorage.getItem('user');
+                                setUserJSON(JSON.parse(user));
+                                setShowModal(!showModal);
+                                setId(item.id);
+                            }} >
+                        <img src={remove_icon}></img>
+                        </div>
                 </div>
                 ))
             }
