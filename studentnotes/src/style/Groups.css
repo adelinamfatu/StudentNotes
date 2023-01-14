@@ -58,7 +58,7 @@
   border-radius: 10px;
   box-shadow: 4px 4px rgb(69, 63, 63); 
   font-size: 25px; 
-  
+  cursor: pointer;
   height: 150px;
   width: 200pt;
   resize: none;

@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import '../style/AddNote.css';
 import { Multiselect } from "multiselect-react-dropdown";
 import { createRef } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //fixare bug titlu
 //variante facute verde
@@ -133,8 +135,8 @@ const AddGroup = () => {
         request.onreadystatechange = () => 
         { 
             if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-                //toast de succes - grupul a fost creat
-            }
+                toast.success('Grupul a fost creat cu succes!',
+                {position:toast.POSITION.TOP_RIGHT});            }
         }
         request.send(json);
     }
@@ -184,6 +186,7 @@ const AddGroup = () => {
                         </div>
                     </form>
                 </div>
+                <ToastContainer/>
         </div>
     )                   
 }
