@@ -1,14 +1,16 @@
 import { React, useState, useRef, useEffect } from 'react';
-import '../style/CreateNote.css';
+import '../style/ViewNote.css';
 import { useNavigate, useSearchParams } from "react-router-dom";
 import ReactMarkdown from 'react-markdown';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import NavigationAboutMe from './NavigationAboutMe';
+import NavigationBar from './NavigationBar';
 
 //sa nu se poata mari textarea-ul
 //centrare pe mijloc tot dreptunghiul alb
 
-const CreateNote = () => { 
+const ViewNote = () => { 
   const [content, setContent] = useState('');
   const [note, setNote] = useState('');
   const navigate = useNavigate();
@@ -49,41 +51,10 @@ const CreateNote = () => {
     request.send(null);
     titleRef.current.value = JSON.parse(request.responseText).title;
     setContent(JSON.parse(request.responseText).content);
-    setNote(JSON.parse(request.responseText).content);
     selectRef.current.value = JSON.parse(request.responseText).subject.title
   }
 
-  const discardNote = () => {
-    navigate('/notes');
-  };
-
-  const saveNote = () => {
-    //verificare ca e selectat ceva
-    var user = localStorage.getItem('user');
-    var title = titleRef.current.value;
-    var content = contentRef.current.value;
-    var userJSON = JSON.parse(user);
-
-    content = JSON.stringify(content);
-
-    var json = '{' +
-        '"userEmail":' + '"' + userJSON["user"].email + '",' +
-        '"title":' + '"' + title + '",' + 
-        '"content":' + content + ',' + 
-        '"subjectId":' + '"' + subjectId + '"}'; 
-    
-    if(!searchParams.get("id")) {
-      var url = "http://localhost:8000/notes/add";
-      sendNote(userJSON, json, "POST", url);
-      setTimeout(() => {
-        navigate('/notes');
-       }, 2000);
-    }
-    else {
-      var url = "http://localhost:8000/notes/edit/" + searchParams.get("id");
-      sendNote(userJSON, json, "PUT", url);
-    }
-  }
+ 
 
   function sendNote(userJSON, json, method, url) {
     var request = new XMLHttpRequest();
@@ -109,38 +80,22 @@ const CreateNote = () => {
     setNote((event.target.value));
   };
 
-  const handleSubjectChange = event => {
-    setSubjectId(event.target.value);
-  }
 
-  function getSubject() {
-    return subjects.map((subject) => {
-      return <option key={subject.id} value={subject.id}>{subject.title} 
-             </option>;
-    });
-  }
 
-    return (
+    return (    
+        <div className='view'>
+        <NavigationAboutMe></NavigationAboutMe>
+            <NavigationBar></NavigationBar>
+
         <div className='CreateNote'>
+
+
           <div className='create'>
             <form className='createForm' onSubmit={submit}>
               <div id="all">
-                <div id="two_buttons">
-                  <button onClick={discardNote} id="renunta">Renunță</button>
-                  <button onClick={saveNote} id="salveaza">Salvează</button>
-                </div>
                 <input type="text" name="title" id="titleinput" 
                 placeholder="-- Titlu --" 
                 ref={titleRef}/>
-                <select className="subjectsSelect" 
-                  defaultValue={'default'} 
-                  onChange={handleSubjectChange}
-                  ref={selectRef}>
-                  <option value="default" disabled>
-                    -- Selectează materia --
-                  </option>
-                  {subjects && getSubject()}
-                </select>
               </div>
               <div id='textPar'>
                 <textarea
@@ -159,8 +114,9 @@ const CreateNote = () => {
           </div>
           <br></br>
           <ToastContainer />
-        </div>
+          </div>
+           </div>
       )
 }
 
-export default CreateNote;
+export default ViewNote;

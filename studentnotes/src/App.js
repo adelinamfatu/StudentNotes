@@ -10,6 +10,7 @@ import AddGroup from './components/AddGroup';
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import ViewNote from './components/ViewNote';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/profile" element={<Profile/>} />
             <Route path="/groups" element={<Groups/>} />
             <Route path="/addgroup" element={<AddGroup/>} />
+            <Route path="/viewnote" element={<ViewNote/>} />
           </Routes>
         </BrowserRouter>
   );

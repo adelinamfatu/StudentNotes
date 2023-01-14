@@ -45,7 +45,6 @@ const AddSubject = () => {
                     '"title":' + '"' + title + '",' +
                     '"tag":' + '"' + tag + '"}'; 
             sendSubject(userJSON, json);
-            document.getElementById("subject").reset();
         }
         else {
             toast.error('Datele introduse nu respectă formatul',
@@ -64,11 +63,14 @@ const AddSubject = () => {
             if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
                 toast.success('Materie creata cu succes',
                     {position:toast.POSITION.TOP_RIGHT});
+                    document.getElementById("subject").reset();
+
             }
             else if(request.readyState === XMLHttpRequest.DONE && request.status != 200) {
                 toast.error('Materia exista deja',
                     {position:toast.POSITION.TOP_RIGHT});
-                //golire input de tag
+                    document.getElementById("subject").reset();
+
             }
         }
         request.send(json);
