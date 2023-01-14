@@ -21,6 +21,24 @@ router.get("/:email", async (req, res, next) => {
     }
 });
 
+//get all notes by subject
+router.get("/subjects/:id", async (req, res, next) => {
+  try {
+    const notes = await Note.findAll(
+      { where: [{ subjectId: req.params.id }],
+      include: [{
+        model: Subject,
+        as: 'subject',
+        attributes: ['title', 'tag'],
+        required: true
+      }]
+    });
+    res.status(200).json(notes);
+  } catch (error) {
+    next(error);
+  }
+});
+
 //get a note
 router.get("/:id", async (req, res, next) => {
     try {

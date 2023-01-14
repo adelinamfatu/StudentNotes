@@ -2,16 +2,26 @@ import { React, useEffect, useState } from "react";
 import NavigationBar from "./NavigationBar";
 import NavigationAboutMe from "./NavigationAboutMe";
 import '../style/Subject.css';
-import { useNavigate } from "react-router-dom";
+import { createSearchParams, useNavigate } from "react-router-dom";
 import remove_icon from '../images/remove_icon.png'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function List({items}) {
+    const navigate = useNavigate();
+
     return (
         <>
             {items.map(item => (
-                <a className="courseName" key={item.id}>
+                <a className="courseName" key={item.id} onClick=
+                {() => {
+                    navigate({
+                        pathname: "/notes",
+                        search: createSearchParams({
+                            id: item.id
+                        }).toString()
+                    });
+                }}>
                     {item.title}
                     <a id="btn_delete" onClick=
                     {() => 

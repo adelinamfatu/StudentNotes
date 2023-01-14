@@ -1,7 +1,7 @@
 import NavigationBar from "./NavigationBar";
 import NavigationAboutMe from "./NavigationAboutMe";
 import '../style/Notes.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ReactMarkdown from 'react-markdown';
 
@@ -31,6 +31,7 @@ function Note({items}) {
 const Notes = () => {
     const navigate = useNavigate();
     const [notes, setNotes] = useState();
+    const [searchParams] = useSearchParams();
 
     useEffect(() => {
         var user = localStorage.getItem('user');
@@ -38,14 +39,26 @@ const Notes = () => {
             navigate('/login');
         }
         else {
-            var userJSON = JSON.parse(user);
-            var url = "http://localhost:8000/notes/" + userJSON["user"].email;
-            
-            var request = new XMLHttpRequest();
-            request.open("GET", url, false); 
-            request.setRequestHeader("x-access-token", userJSON["user"].token);
-            request.send(null);
-            setNotes(JSON.parse(request.responseText));
+            if(!searchParams.get("id")) {
+                var userJSON = JSON.parse(user);
+                var url = "http://localhost:8000/notes/" + userJSON["user"].email;
+                
+                var request = new XMLHttpRequest();
+                request.open("GET", url, false); 
+                request.setRequestHeader("x-access-token", userJSON["user"].token);
+                request.send(null);
+                setNotes(JSON.parse(request.responseText));
+            }
+            else {
+                var userJSON = JSON.parse(user);
+                var url = "http://localhost:8000/notes/subjects/" + searchParams.get("id");
+                
+                var request = new XMLHttpRequest();
+                request.open("GET", url, false); 
+                request.setRequestHeader("x-access-token", userJSON["user"].token);
+                request.send(null);
+                setNotes(JSON.parse(request.responseText));
+            }
         }
     }, []);
 
