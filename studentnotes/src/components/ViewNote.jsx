@@ -87,7 +87,7 @@ const ViewNote = () => {
         <NavigationAboutMe></NavigationAboutMe>
             <NavigationBar></NavigationBar>
 
-        <div className='CreateNote'>
+        <div className='CreateView'>
 
 
           <div className='create'>
