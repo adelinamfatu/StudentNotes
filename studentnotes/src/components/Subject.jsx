@@ -19,7 +19,7 @@ function List({items}) {
                     navigate({
                         pathname: "/notes",
                         search: createSearchParams({
-                            id: item.id
+                            subjectId: item.id
                         }).toString()
                     });
                 }}>

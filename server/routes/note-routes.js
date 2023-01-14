@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Note = require("../models/note");
 const Subject = require("../models/subject");
+const GroupNote = require("../models/groupnote");
 
 //get all notes by user
 router.get("/:email", async (req, res, next) => {
@@ -34,6 +35,21 @@ router.get("/subjects/:id", async (req, res, next) => {
       }]
     });
     res.status(200).json(notes);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//get all notes by group
+router.get("/groups/:id", async (req, res, next) => {
+  try {
+    const groupnotes = await GroupNote.findAll(
+      { where: [{ groupId: req.params.id }],
+      include: {
+        all: true, nested: true
+      }
+    });
+    res.status(200).json(groupnotes);
   } catch (error) {
     next(error);
   }

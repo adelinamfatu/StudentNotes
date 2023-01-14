@@ -49,6 +49,7 @@ const CreateNote = () => {
     request.send(null);
     titleRef.current.value = JSON.parse(request.responseText).title;
     setContent(JSON.parse(request.responseText).content);
+    setNote(JSON.parse(request.responseText).content);
     selectRef.current.value = JSON.parse(request.responseText).subject.title
   }
 
