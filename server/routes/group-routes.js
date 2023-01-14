@@ -15,7 +15,7 @@ router.get("/:email", async (req, res, next) => {
           attributes: ['name', 'id'],
           required: true
         }]
-      });;
+      });
       res.status(200).json(groupuser);
     } catch (error) {
       next(error);

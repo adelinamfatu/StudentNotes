@@ -48,7 +48,7 @@ const Notes = () => {
             navigate('/login');
         }
         else {
-            if(!searchParams.get("id")) {
+            if(!searchParams.get("groupId") && !searchParams.get("subjectId")) {
                 var userJSON = JSON.parse(user);
                 var url = "http://localhost:8000/notes/" + userJSON["user"].email;
                 
@@ -59,14 +59,27 @@ const Notes = () => {
                 setNotes(JSON.parse(request.responseText));
             }
             else {
-                var userJSON = JSON.parse(user);
-                var url = "http://localhost:8000/notes/subjects/" + searchParams.get("id");
-                
-                var request = new XMLHttpRequest();
-                request.open("GET", url, false); 
-                request.setRequestHeader("x-access-token", userJSON["user"].token);
-                request.send(null);
-                setNotes(JSON.parse(request.responseText));
+                if(searchParams.get("subjectId")) {
+                    var userJSON = JSON.parse(user);
+                    var url = "http://localhost:8000/notes/subjects/" + searchParams.get("subjectId");
+                    
+                    var request = new XMLHttpRequest();
+                    request.open("GET", url, false); 
+                    request.setRequestHeader("x-access-token", userJSON["user"].token);
+                    request.send(null);
+                    setNotes(JSON.parse(request.responseText));
+                    console.log(JSON.parse(request.responseText));
+                }
+                else {
+                    var userJSON = JSON.parse(user);
+                    var url = "http://localhost:8000/notes/groups/" + searchParams.get("groupId");
+                    
+                    var request = new XMLHttpRequest();
+                    request.open("GET", url, false); 
+                    request.setRequestHeader("x-access-token", userJSON["user"].token);
+                    request.send(null);
+                    setNotes(JSON.parse(request.responseText).map(g => g.note));
+                }
             }
         }
     }, []);

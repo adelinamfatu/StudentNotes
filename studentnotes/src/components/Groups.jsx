@@ -2,14 +2,24 @@ import { React, useState, useEffect } from "react";
 import '../style/Groups.css';
 import NavigationAboutMe from "./NavigationAboutMe";
 import NavigationBar from "./NavigationBar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, createSearchParams } from "react-router-dom";
 
 function Group({items}) {
+    const navigate = useNavigate();
+
     return (
         <>
             {
                 items.map(item => (
-                    <a className="functGroup" key={item.id}>
+                    <a className="functGroup" key={item.group.id} onClick=
+                    {() => {
+                        navigate({
+                            pathname: "/notes",
+                            search: createSearchParams({
+                                groupId: item.group.id
+                            }).toString()
+                        });
+                    }}>
                         {item.group.name} 
                     </a>
                 ))
