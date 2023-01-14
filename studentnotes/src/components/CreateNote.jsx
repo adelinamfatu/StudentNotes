@@ -75,6 +75,9 @@ const CreateNote = () => {
     if(!searchParams.get("id")) {
       var url = "http://localhost:8000/notes/add";
       sendNote(userJSON, json, "POST", url);
+      setTimeout(() => {
+        navigate('/notes');
+       }, 2000);
     }
     else {
       var url = "http://localhost:8000/notes/edit/" + searchParams.get("id");

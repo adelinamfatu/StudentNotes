@@ -4,8 +4,9 @@ import '../style/Notes.css';
 import { useNavigate, useSearchParams, createSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ReactMarkdown from 'react-markdown';
+import remove_icon from '../images/remove_icon.png'
 
-//notita sa fie apasabila - sa apara mouse-ul cu manuta pe deasupra
+
 
 function Note({items}) {
     const navigate = useNavigate();
@@ -14,7 +15,8 @@ function Note({items}) {
         <>
             {
                 items.map(item => (
-                    <a className="functNote" key={item.id} onClick={() => {
+                    <div className="noteItem">
+                    <div className="functNote" key={item.id} onClick={() => {
                         navigate({
                             pathname: "/editnote",
                             search: createSearchParams({
@@ -29,7 +31,15 @@ function Note({items}) {
                         <div id="paragraph">
                         <ReactMarkdown children={item.content}/>
                         </div>
-                    </a>
+                    </div>
+                     <div id="btn_delete" onClick=
+                     {() => 
+                         {
+                           //delete note
+                         }}>
+                        <img src={remove_icon}></img>
+                     </div>
+                     </div>
                 ))
             }
         </>
@@ -87,10 +97,6 @@ const Notes = () => {
     const addNote = () => {
         navigate('/addnote');
     };
-
-    const deleteNote = () => {
-
-    }
 
     const showAlphabetically = () => {
 

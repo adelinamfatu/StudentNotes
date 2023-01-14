@@ -69,6 +69,9 @@ const AddGroup = () => {
         toast.success('Grupul a fost creat cu succes!',
         {position:toast.POSITION.TOP_RIGHT}); 
         sendGroup(userJSON);
+        setTimeout(() => {
+            navigate('/groups');
+           }, 2000);
     }
 
     function sendGroup(userJSON) {

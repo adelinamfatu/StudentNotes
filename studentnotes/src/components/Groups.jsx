@@ -3,6 +3,8 @@ import '../style/Groups.css';
 import NavigationAboutMe from "./NavigationAboutMe";
 import NavigationBar from "./NavigationBar";
 import { useNavigate, createSearchParams } from "react-router-dom";
+import remove_icon from '../images/remove_icon.png'
+
 
 function Group({items}) {
     const navigate = useNavigate();
@@ -11,7 +13,8 @@ function Group({items}) {
         <>
             {
                 items.map(item => (
-                    <a className="functGroup" key={item.group.id} onClick=
+                    <div className="groupsList">
+                    <div className="functGroup" key={item.group.id} onClick=
                     {() => {
                         navigate({
                             pathname: "/notes",
@@ -21,7 +24,15 @@ function Group({items}) {
                         });
                     }}>
                         {item.group.name} 
-                    </a>
+                    </div>
+                    <div id="btn_delete" onClick=
+                     {() => 
+                         {
+                           //delete note
+                         }}>
+                        <img src={remove_icon}></img>
+                     </div>
+                    </div>
                 ))
             }
         </>
