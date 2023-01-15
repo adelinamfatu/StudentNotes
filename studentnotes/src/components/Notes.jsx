@@ -5,11 +5,40 @@ import { useNavigate, useSearchParams, createSearchParams } from "react-router-d
 import { useEffect, useState } from "react";
 import ReactMarkdown from 'react-markdown';
 import remove_icon from '../images/remove_icon.png'
-
-//adaugare modal pt utilizator - e sigur daca vrea sa stearga notita?
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Note({items, mode}) {
     const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(false);
+    const [id, setId] = useState('');
+    const [userJSON, setUserJSON] = useState('');
+
+
+    const toggleShowModal = () => {
+        setShowModal(!showModal);
+      };
+  
+      const ModalNotes = ({ show, onCloseButtonClick }) => {
+          if (!show) {
+            return null;
+          }
+        
+          return (
+            <div className="modal-wrapper-notes">
+              <div className="modal-notes">
+              <div className="title-notes">Atenție!</div>
+                <div className="body-notes">
+                  Sunteți sigur că doriți să ștergeți notița?
+                </div>
+                <div className="footer-notes">
+                 <button onClick={onCloseButtonClick} id="modalNuBtn">Nu</button> 
+                  <button onClick={deleteGroupNotes} id="modalDaBtn">Da</button>
+                </div>
+              </div>
+            </div>
+          );
+        };
 
     function deleteGroupNotes(noteId, userJSON) {
         var url = "http://localhost:8000/groups/remove/note/" + noteId;
@@ -35,8 +64,11 @@ function Note({items, mode}) {
         request.onreadystatechange = () => 
         { 
             if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-                //toast de stergere cu succes
-                //refresh la pagina    
+                toast.success('Notița a fost ștearsă cu succes!',
+                {position:toast.POSITION.TOP_RIGHT})
+            setTimeout(() => {
+                window.location.reload(false);
+            }, 2000);    
             }
         }
         request.send(null);
@@ -74,13 +106,15 @@ function Note({items, mode}) {
                                     <ReactMarkdown id="mark" children={item.content}/>
                                 </div>
                         </div>
-
+                        <ModalNotes show={showModal} onCloseButtonClick={toggleShowModal} />
                         <div id="btn_delete" onClick=
                         {() => 
                             {
                                 var user = localStorage.getItem('user');
-                                var userJSON = JSON.parse(user);
-                                deleteGroupNotes(item.id, userJSON);
+                                setUserJSON(JSON.parse(user));
+                                setShowModal(!showModal);
+                                setId(item.id);
+                                //deleteGroupNotes(item.id, userJSON);
                             }}>
                             <img src={remove_icon}></img>
                         </div>
@@ -171,7 +205,7 @@ const Notes = () => {
                 <div className="listOfNotes">
                     {notes && <Note items={notes} mode={mode}/>}
                 </div>
-                
+                <ToastContainer/>
             </div>
         )                   
 }
