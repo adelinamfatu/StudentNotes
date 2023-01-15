@@ -40,8 +40,8 @@ function Note({items, mode}) {
           );
         };
 
-    function deleteGroupNotes(noteId, userJSON) {
-        var url = "http://localhost:8000/groups/remove/note/" + noteId;
+    function deleteGroupNotes() {
+        var url = "http://localhost:8000/groups/remove/note/" + id;
                             
         var request = new XMLHttpRequest();
         request.open("DELETE", url, false); 
@@ -49,14 +49,14 @@ function Note({items, mode}) {
         request.onreadystatechange = () => 
         { 
             if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-                deleteNote(noteId, userJSON);
+                deleteNote(id, userJSON);
             }
         }
         request.send(null);
     }
 
-    function deleteNote(noteId, userJSON) {
-        var url = "http://localhost:8000/notes/remove/" + noteId;
+    function deleteNote() {
+        var url = "http://localhost:8000/notes/remove/" + id;
                             
         var request = new XMLHttpRequest();
         request.open("DELETE", url, false); 
@@ -114,7 +114,6 @@ function Note({items, mode}) {
                                 setUserJSON(JSON.parse(user));
                                 setShowModal(!showModal);
                                 setId(item.id);
-                                //deleteGroupNotes(item.id, userJSON);
                             }}>
                             <img src={remove_icon}></img>
                         </div>

@@ -13,7 +13,6 @@ const CreateNote = () => {
   const navigate = useNavigate();
   var titleRef = useRef(null);
   var contentRef = useRef(null);
-  const [selectedSubject, setSelectedSubject] = useState();
   const [subjects, setSubjects] = useState();
   const [subjectId, setSubjectId] = useState('');
   const [searchParams] = useSearchParams();
@@ -45,11 +44,11 @@ const CreateNote = () => {
 
     useEffect(() => {
         var user = localStorage.getItem('user');
-        setSelectedSubject('default');
         if(!user) {
             navigate('/login');
         }
         else {
+          setSubjectId('default');
             var userJSON = JSON.parse(user);
             var url = "http://localhost:8000/subjects/" + userJSON["user"].email;
             
@@ -75,7 +74,7 @@ const CreateNote = () => {
     titleRef.current.value = JSON.parse(request.responseText).title;
     setContent(JSON.parse(request.responseText).content);
     setNote(JSON.parse(request.responseText).content);
-    setSelectedSubject(JSON.parse(request.responseText).subjectId);
+    setSubjectId(JSON.parse(request.responseText).subjectId);
   }
 
   const discardNote = () => {
@@ -126,6 +125,7 @@ const CreateNote = () => {
         }
     }
     request.send(json);
+    console.log(json);
 }
 
   const submit = (event) => {
@@ -162,10 +162,10 @@ const CreateNote = () => {
                   ref={titleRef}/>
                   
                 <select className="subjectsSelect" 
-                  value={selectedSubject} 
+                  value={subjectId} 
                   onChange={handleSubjectChange}
                   >
-                  <option value="default" disabled>
+                  <option value="default" key={-1} disabled>
                     -- Selectează materia --
                   </option>
                   {subjects && getSubject()}

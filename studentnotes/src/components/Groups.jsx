@@ -5,20 +5,20 @@ import NavigationBar from "./NavigationBar";
 import { useNavigate, createSearchParams } from "react-router-dom";
 import remove_icon from '../images/remove_icon.png'
 
-
-
 function Group({items}) {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
+    const [id, setId] = useState('');
+    const [userJSON, setUserJSON] = useState('');
 
     const toggleShowModal = () => {
         setShowModal(!showModal);
       };
   
-      const ModalGroups = ({ show, onCloseButtonClick }) => {
-          if (!show) {
-            return null;
-          }
+    const ModalGroups = ({ show, onCloseButtonClick }) => {
+        if (!show) {
+        return null;
+        }
         
           return (
             <div className="modal-wrapper-groups">
@@ -29,13 +29,46 @@ function Group({items}) {
                 </div>
                 <div className="footer-groups">
                  <button onClick={onCloseButtonClick} id="modalNuBtn">Nu</button> 
-                  <button id="modalDaBtn">Da</button>
+                  <button id="modalDaBtn" onClick={deleteGroupNotesAndUsers}>Da</button>
                 </div>
               </div>
             </div>
           );
         };
 
+        function deleteGroupNotesAndUsers() {
+            var url = "http://localhost:8000/groups/remove/note/" + id;
+                                
+            var request = new XMLHttpRequest();
+            request.open("DELETE", url, false); 
+            request.setRequestHeader("x-access-token", userJSON["user"].token);
+            request.onreadystatechange = () => 
+            { 
+                if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                    deleteGroup(id, userJSON);
+                }
+            }
+            request.send(null);
+        }
+    
+        function deleteGroup() {
+            var url = "http://localhost:8000/notes/remove/" + id;
+                                
+            var request = new XMLHttpRequest();
+            request.open("DELETE", url, false); 
+            request.setRequestHeader("x-access-token", userJSON["user"].token);
+            request.onreadystatechange = () => 
+            { 
+                if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                    /*toast.success('Notița a fost ștearsă cu succes!',
+                        {position:toast.POSITION.TOP_RIGHT})
+                    setTimeout(() => {
+                        window.location.reload(false);
+                    }, 2000);  */  
+                }
+            }
+            request.send(null);
+        }
 
     return (
         <>
@@ -58,7 +91,10 @@ function Group({items}) {
                         <div id="btn_delete" onClick=
                         {() => 
                             {
+                                var user = localStorage.getItem('user');
+                                setUserJSON(JSON.parse(user));
                                 setShowModal(!showModal);
+                                setId(item.id);
                             }}>
                             <img src={remove_icon}></img>
                         </div>
