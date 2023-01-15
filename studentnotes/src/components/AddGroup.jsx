@@ -147,8 +147,8 @@ const AddGroup = () => {
 
     return (  
         <div className='AddNote'> 
-            <NavigationBar />
             <NavigationAboutMe />
+            <NavigationBar />
             <div className="newNote"> 
                     <h1 id="group_new">Grup nou</h1>
                     <form id="subject" onSubmit={submit}>

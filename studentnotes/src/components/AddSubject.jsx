@@ -83,8 +83,8 @@ const AddSubject = () => {
     
         return (  
             <div className='AddNote'> 
-                <NavigationBar />
                 <NavigationAboutMe />
+                <NavigationBar />
                 <div className="newNote"> 
                     <h1 id="sub_new">Materie nouă</h1>
                     <form id="subject" onSubmit={submit}>

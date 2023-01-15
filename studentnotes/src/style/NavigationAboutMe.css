@@ -1,9 +1,9 @@
 .NavigationAboutMe{
     display: flex;
     position: absolute;
-    top: 80px;
     width: 120px;
     height: 100%;
+
     box-shadow: -5px 10px 15px rgba(43, 43, 43, 0.25);
     border-right: 3px solid black;
     background-image: url('../images/background_navbar.jpg');
@@ -14,7 +14,7 @@
     position: absolute;
     align-items: top;
     font-size: 12px;
-    padding-top: 35px;
+    padding-top: 110px;
     padding-left: 10px;
     line-height: 10px;
     justify-content: flex-start;

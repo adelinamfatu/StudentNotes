@@ -8,9 +8,9 @@
   
   .view {
     background-size: "cover";
-    height: 110vh; 
+    height: 100%; 
+    position: absolute;
     width: 100%;
-    margin-top: 0px;
     font-size:50px;
     background-repeat:no-repeat;
     background-image: linear-gradient(75deg,#ddf3e6, #99dbad 50%, #ddf3e6);
@@ -65,7 +65,7 @@
     border: 2px solid black;
     /* width: 580px;
     height: 480px; */
-    height: 70%;
+    height: 65%;
     width: 70%;
 
     word-wrap: break-word;

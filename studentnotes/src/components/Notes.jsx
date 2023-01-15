@@ -118,8 +118,8 @@ const Notes = () => {
 
         return (  
             <div className='Notes'> 
-                <NavigationBar />
                 <NavigationAboutMe />
+                <NavigationBar />
                 <div className="allNotes"> 
                     <h1 className="myNotes">Notițele mele</h1>
                     <button onClick={addNote} id="addCurs">+</button>

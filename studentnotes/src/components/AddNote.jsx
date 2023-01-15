@@ -17,8 +17,8 @@ const AddNote = () => {
 
         return (  
             <div className='AddNote'> 
-                <NavigationBar />
                 <NavigationAboutMe />
+                <NavigationBar />
                 <div className="newNote"> 
                     <h1 id="not_new">Notiță nouă</h1>
                     

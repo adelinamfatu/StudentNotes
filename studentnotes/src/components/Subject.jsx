@@ -134,8 +134,8 @@ const Subject = () => {
     
         return (  
             <div className='CourseDex'> 
-                <NavigationBar />
                 <NavigationAboutMe />
+                <NavigationBar />
                 <div className="cursuri"> 
                     <h1 className="mySubjects">Materiile mele</h1>
                     <button onClick={addSubject} id="addCurs">+</button>

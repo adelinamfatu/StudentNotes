@@ -29,7 +29,7 @@
 #textPar {
     float: left;
     width: 45%;
-    height: 500px;
+    height: 50%;
 
     font-size: 15px;
     resize: none;
@@ -40,7 +40,7 @@
     background-color: #9ED5C5;
     border: 2px solid black;
 
-    height: 500px;
+    height: 50%;
     width: 45%;
 
     word-wrap: break-word;

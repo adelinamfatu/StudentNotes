@@ -34,8 +34,8 @@ const Profile = () => {
 
         return (
             <div className='Profile'>
-                <NavigationBar />
                 <NavigationAboutMe />
+                <NavigationBar />
                      
                 <div className="studentProfile">      
                     <h1 className="myProfile">Profilul meu</h1>

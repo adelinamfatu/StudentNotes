@@ -67,8 +67,8 @@ const Groups = () => {
     
         return (
             <div className='Groups'>
-                <NavigationBar />
                 <NavigationAboutMe />
+                <NavigationBar />
 
                 <div className="studentGroups"> 
                     <h1 className="myGroups">Grupurile mele</h1>

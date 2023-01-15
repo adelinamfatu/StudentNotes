@@ -5,9 +5,6 @@ import ReactMarkdown from 'react-markdown';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
-//sa nu se poata mari textarea-ul
-//centrare pe mijloc tot dreptunghiul alb
-
 const CreateNote = () => { 
   const [content, setContent] = useState('');
   const [note, setNote] = useState('');

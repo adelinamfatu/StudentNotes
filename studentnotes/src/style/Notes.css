@@ -8,7 +8,8 @@
   
   .Notes {
     background-size: "cover";
-    height: 110vh; 
+    height: 100%; 
+    position: absolute;
     width: 100%;
     margin-top: 0px;
     background-repeat:no-repeat;
