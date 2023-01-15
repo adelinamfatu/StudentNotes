@@ -64,12 +64,6 @@ function List({items}) {
         var request = new XMLHttpRequest();
         request.open("DELETE", url, false); 
         request.setRequestHeader("x-access-token", userJSON["user"].token);
-        request.onreadystatechange = () => 
-        { 
-            if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-                
-            }
-        }
         request.send(null);
     }
 

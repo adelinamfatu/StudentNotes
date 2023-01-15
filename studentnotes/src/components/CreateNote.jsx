@@ -27,6 +27,7 @@ const CreateNote = () => {
       return null;
     }
   
+    //Modal body
     return (
       <div className="modal-wrapper-instructions">
         <div className="modal-instructions">
@@ -57,12 +58,15 @@ const CreateNote = () => {
             request.setRequestHeader("x-access-token", userJSON["user"].token);
             request.send(null);
             setSubjects(JSON.parse(request.responseText));
+
+            //Verify if the user wants to create a new note or edit an existing one
             if(searchParams.get("id")) {
               populateData(user);
             }
         }
     }, [])
 
+  //Populate the fields with the row from the database
   function populateData(user) {
     var userJSON = JSON.parse(user);
     var url = "http://localhost:8000/notes/id/" + searchParams.get("id");
@@ -82,7 +86,6 @@ const CreateNote = () => {
   };
 
   const saveNote = () => {
-    //verificare ca e selectat ceva
     var user = localStorage.getItem('user');
     var title = titleRef.current.value;
     var content = contentRef.current.value;
@@ -112,6 +115,7 @@ const CreateNote = () => {
     }
   }
 
+  //Sending the note to the database
   function sendNote(userJSON, json, method, url) {
     var request = new XMLHttpRequest();
     request.open(method, url, true); 
@@ -132,6 +136,7 @@ const CreateNote = () => {
     event.preventDefault();
   }
 
+  //Handle note content change and add it to the markdown container
   const handleContentChange = event => {
     setContent(event.target.value);
     setNote((event.target.value));
@@ -141,6 +146,7 @@ const CreateNote = () => {
     setSubjectId(event.target.value);
   }
 
+  //Get subjects to map select options
   function getSubject() {
     return subjects.map((subject) => {
       return <option key={subject.id} value={subject.id}>{subject.title} 

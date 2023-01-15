@@ -89,6 +89,7 @@ app.use((error, req, res, next) => {
     res.status(500).json({ message: 'Server error'})
 });
 
+//Connection with the database
 app.listen(8000, async () => {
     try {
       await sequelize.authenticate();

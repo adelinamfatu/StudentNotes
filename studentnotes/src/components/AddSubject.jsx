@@ -7,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import img1 from '../images/img2.jpg';
 
-
 const AddSubject = () => {
     var titleRef = useRef(null);
     var tagRef = useRef(null);
@@ -24,6 +23,7 @@ const AddSubject = () => {
         navigate('/subjects');
     };
 
+    //Verify if title and tag respect the formats
     const verifyTitleAndTag = (title, tag) => {
         if(/[A-Z]/.test(title[0]) &&
             /^[A-Z]+$/.test(tag)) {
@@ -48,10 +48,11 @@ const AddSubject = () => {
         }
         else {
             toast.error('Datele introduse nu respectă formatul',
-            {position:toast.POSITION.TOP_RIGHT});        }
+                {position:toast.POSITION.TOP_RIGHT});        
+        }
     }
 
-
+    //Sending the subject to the database
     function sendSubject(userJSON, json) {
         var url = "http://localhost:8000/subjects/add";
         var request = new XMLHttpRequest();
@@ -63,14 +64,13 @@ const AddSubject = () => {
             if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
                 toast.success('Materie creata cu succes',
                     {position:toast.POSITION.TOP_RIGHT});
-                    document.getElementById("subject").reset();
+                document.getElementById("subject").reset();
 
             }
             else if(request.readyState === XMLHttpRequest.DONE && request.status != 200) {
                 toast.error('Materia exista deja',
                     {position:toast.POSITION.TOP_RIGHT});
-                    document.getElementById("subject").reset();
-
+                document.getElementById("subject").reset();
             }
         }
         request.send(json);
@@ -80,7 +80,6 @@ const AddSubject = () => {
         event.preventDefault();
     }
 
-    
         return (  
             <div className='AddNote'> 
                 <NavigationAboutMe />

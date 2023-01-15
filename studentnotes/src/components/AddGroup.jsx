@@ -8,9 +8,6 @@ import { createRef } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-//rotunjire colturi select-uri
-//daca se poate schimba optiunile sa scriem in romana in loc de "No options available" cand sunt toate optiunile alese
-
 const AddGroup = () => {
     const navigate = useNavigate();
     const [users, setUsers] = useState();
@@ -25,7 +22,9 @@ const AddGroup = () => {
             navigate('/login');
         }
         else {
+            //Get users for users multiselect
             makeUsersRequest(user);
+            //Get notes for notes multiselect
             makeNotesRequest(user);
         }
     }, []);
@@ -62,17 +61,12 @@ const AddGroup = () => {
     }
 
     const saveGroup = () => {
-        //verificare ca nu sunt goale campurile si afisare toast de eroare
         var user = localStorage.getItem('user');
         var userJSON = JSON.parse(user);
-        toast.success('Grupul a fost creat cu succes!',
-        {position:toast.POSITION.TOP_RIGHT}); 
         sendGroup(userJSON);
-        setTimeout(() => {
-            navigate('/groups');
-           }, 2000);
     }
 
+    //Sending the group to the database
     function sendGroup(userJSON) {
         var name = nameRef.current.value;
         var json = '{' + '"name":' + '"' + name + '"}'; 
@@ -88,12 +82,17 @@ const AddGroup = () => {
                 groupId = JSON.parse(request.responseText).id;
                 sendGroupUser(userJSON, groupId);
                 sendGroupNote(userJSON, groupId);
-                
+                toast.success('Grupul a fost creat cu succes!',
+                    {position:toast.POSITION.TOP_RIGHT}); 
+                setTimeout(() => {
+                    navigate('/groups');
+                }, 2000);
             }
         }
         request.send(json);
     }
 
+    //Sending the users added to the group to the database
     function sendGroupUser(userJSON, groupId) {
         var users = usersRef.current.getSelectedItems();
         
@@ -119,6 +118,7 @@ const AddGroup = () => {
         request.send(json);
     }
 
+    //Sending the notes added to the group to the database
     function sendGroupNote(userJSON, groupId) {
         var notes = notesRef.current.getSelectedItems();
         
@@ -136,12 +136,6 @@ const AddGroup = () => {
         request.open("POST", url, true); 
         request.setRequestHeader("Content-Type", "application/json");
         request.setRequestHeader("x-access-token", userJSON["user"].token);
-        request.onreadystatechange = () => 
-        { 
-            if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-                
-            }
-        }
         request.send(json);
     }
 

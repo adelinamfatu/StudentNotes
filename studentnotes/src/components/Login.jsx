@@ -20,6 +20,7 @@ const Login = () => {
         }, 2000);
     };
 
+    //Sending user information to the server to generate token and crypt the password
     const persistToken = async (email, password) => {
         const user = { email : email, hashPassword : password };
         await axios.post(
@@ -44,6 +45,7 @@ const Login = () => {
         });
       };
 
+    //Verify if the user information is respecting the format
     const verifyLoginInformation = () => {
         var email = emailRef.current.value;
         if(email.includes("@stud.ase.ro")) 

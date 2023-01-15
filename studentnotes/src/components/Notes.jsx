@@ -14,7 +14,6 @@ function Note({items, mode}) {
     const [id, setId] = useState('');
     const [userJSON, setUserJSON] = useState('');
 
-
     const toggleShowModal = () => {
         setShowModal(!showModal);
       };
@@ -40,6 +39,7 @@ function Note({items, mode}) {
           );
         };
 
+    //Removing the notes from the group
     function deleteGroupNotes() {
         var url = "http://localhost:8000/groups/remove/note/" + id;
                             
@@ -55,6 +55,7 @@ function Note({items, mode}) {
         request.send(null);
     }
 
+    //Deleting the note from the database
     function deleteNote() {
         var url = "http://localhost:8000/notes/remove/" + id;
                             
@@ -177,14 +178,6 @@ const Notes = () => {
     const addNote = () => {
         navigate('/addnote');
     };
-
-    const showAlphabetically = () => {
-
-    }
-
-    const showByDate = () => {
-
-    }
 
         return (  
             <div className='Notes'> 

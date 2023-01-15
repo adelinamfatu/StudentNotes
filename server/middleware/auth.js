@@ -3,6 +3,8 @@ require('dotenv').config()
 
 const config = process.env;
 
+//Verify if user is logged by using the token
+
 const verifyToken = (req, res, next) => {
   const token =
     req.body.token || req.query.token || req.headers["x-access-token"];
