@@ -51,17 +51,16 @@
 }
 
 .functGroup{
-  background-color: #DEF5E5;
-  position: relative;
+  background-image: url('../images/folder5.png');
+  background-repeat: no-repeat;
   width: 200pt;
-  margin: 15pt 30pt;
-  border-radius: 10px;
-  box-shadow: 4px 4px rgb(69, 63, 63); 
-  font-size: 25px; 
-  cursor: pointer;
-  height: 150px;
-  width: 200pt;
+  height: 250px;
   resize: none;
+  cursor: pointer;
+  margin: 15pt 30pt;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
 }
 
 .listOfGroups {
