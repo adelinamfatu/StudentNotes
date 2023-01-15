@@ -6,8 +6,36 @@ import { useNavigate, createSearchParams } from "react-router-dom";
 import remove_icon from '../images/remove_icon.png'
 
 
+
 function Group({items}) {
     const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(false);
+
+    const toggleShowModal = () => {
+        setShowModal(!showModal);
+      };
+  
+      const ModalGroups = ({ show, onCloseButtonClick }) => {
+          if (!show) {
+            return null;
+          }
+        
+          return (
+            <div className="modal-wrapper-groups">
+              <div className="modal-groups">
+              <div className="title-groups">Atenție!</div>
+                <div className="body-groups">
+                   Sunteți sigur că doriți să ștergeți grupul?
+                </div>
+                <div className="footer-groups">
+                 <button onClick={onCloseButtonClick} id="modalNuBtn">Nu</button> 
+                  <button id="modalDaBtn">Da</button>
+                </div>
+              </div>
+            </div>
+          );
+        };
+
 
     return (
         <>
@@ -26,11 +54,11 @@ function Group({items}) {
                                 
                             {item.group.name} 
                         </div>
-
+                        <ModalGroups show={showModal} onCloseButtonClick={toggleShowModal} />
                         <div id="btn_delete" onClick=
                         {() => 
                             {
-                            //delete note
+                                setShowModal(!showModal);
                             }}>
                             <img src={remove_icon}></img>
                         </div>

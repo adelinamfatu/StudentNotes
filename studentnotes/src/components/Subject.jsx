@@ -7,8 +7,8 @@ import remove_icon from '../images/remove_icon.png'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-//schimbare culoare butoane modal
-//stilizare modal
+
+
 
 function List({items}) {
     const navigate = useNavigate();
@@ -28,12 +28,13 @@ function List({items}) {
         return (
           <div className="modal-wrapper">
             <div className="modal">
+            <div className="title">Atenție!</div>
               <div className="body">
-                Stergerea materiei va rezulta in stergerea tuturor notitelor asociate. Doriti sa continuati?
+                Ștergerea materiei va rezulta în ștergerea tuturor notițelor asociate. Doriți să continuați?
               </div>
               <div className="footer">
-                <button onClick={deleteNotes}>Da</button>
-                <button onClick={onCloseButtonClick}>Nu</button> 
+               <button onClick={onCloseButtonClick} id="modalNuBtn">Nu</button> 
+                <button onClick={deleteNotes} id="modalDaBtn">Da</button>
               </div>
             </div>
           </div>
