@@ -4,6 +4,8 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import ReactMarkdown from 'react-markdown';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import instructiuni from '../images/instructiuni.JPG'
+
 
 const CreateNote = () => { 
   const [content, setContent] = useState('');
@@ -15,6 +17,31 @@ const CreateNote = () => {
   const [subjects, setSubjects] = useState();
   const [subjectId, setSubjectId] = useState('');
   const [searchParams] = useSearchParams();
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleShowModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const ModalInstructions = ({ show, onCloseButtonClick }) => {
+    if (!show) {
+      return null;
+    }
+  
+    return (
+      <div className="modal-wrapper-instructions">
+        <div className="modal-instructions">
+        <div className="title-instructions">Instrucțiuni</div>
+          <div className="body-instructions">
+            <img src={instructiuni} id="istructions-img"></img>
+          </div>
+          <div className="footer-instructions">
+            <button onClick={onCloseButtonClick}>Închideți</button> 
+          </div>
+        </div>
+      </div>
+    );
+  };
 
     useEffect(() => {
         var user = localStorage.getItem('user');
@@ -144,6 +171,14 @@ const CreateNote = () => {
                   {subjects && getSubject()}
                 </select>
               </div>
+              <ModalInstructions show={showModal} onCloseButtonClick={toggleShowModal} />
+              <button id="instructions" onClick=
+                         {() => 
+                            {
+                              setShowModal(!showModal);
+                            }} >
+                        Instrucțiuni
+              </button>
               <div>
                 <textarea id='textPar'
                   placeholder="Editeaza paragraf..."
