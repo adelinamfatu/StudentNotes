@@ -38,7 +38,7 @@ function Note({items, mode}) {
                                 <br></br>
                                 
                                 <div id="paragraph">
-                                    <ReactMarkdown children={item.content}/>
+                                    <ReactMarkdown id="mark" children={item.content}/>
                                 </div>
                         </div>
 

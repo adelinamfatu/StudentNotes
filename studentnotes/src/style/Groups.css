@@ -8,6 +8,7 @@
     background-repeat:no-repeat;
     background-image: linear-gradient(75deg,#ddf3e6, #99dbad 50%, #ddf3e6);
     text-align: center;
+    display: block;
   }
 
 .myGroups {
