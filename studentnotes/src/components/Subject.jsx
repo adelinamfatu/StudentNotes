@@ -31,12 +31,47 @@ function List({items}) {
               </div>
               <div className="footer">
                <button onClick={onCloseButtonClick} id="modalNuBtn">Nu</button> 
-                <button onClick={deleteNotes} id="modalDaBtn">Da</button>
+                <button onClick={getNotes} id="modalDaBtn">Da</button>
               </div>
             </div>
           </div>
         );
       };
+
+    function getNotes() {
+        var url = "http://localhost:8000/notes/subjects/" + id;
+                            
+        var request = new XMLHttpRequest();
+        request.open("GET", url, false); 
+        request.setRequestHeader("x-access-token", userJSON["user"].token);
+        request.onreadystatechange = () => 
+        { 
+            if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                //deleteNotes();
+                var notes = JSON.parse(request.responseText);
+                for(var i = 0; i < notes.length; i++) {
+                    deleteGroupNote(notes[i].id);
+                }
+                deleteNotes();
+            }
+        }
+        request.send(null);
+    }
+
+    function deleteGroupNote(noteId) {
+        var url = "http://localhost:8000/groups/remove/note/" + noteId;
+                            
+        var request = new XMLHttpRequest();
+        request.open("DELETE", url, false); 
+        request.setRequestHeader("x-access-token", userJSON["user"].token);
+        request.onreadystatechange = () => 
+        { 
+            if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                
+            }
+        }
+        request.send(null);
+    }
 
     function deleteNotes() {
         var url = "http://localhost:8000/notes/remove/subject/" + id;
