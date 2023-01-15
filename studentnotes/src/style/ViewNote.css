@@ -63,9 +63,7 @@
 #mark_down {
     background-color: #9ED5C5;
     border: 2px solid black;
-    /* width: 580px;
-    height: 480px; */
-    height: 65%;
+    height: 40vh;
     width: 70%;
 
     word-wrap: break-word;

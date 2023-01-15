@@ -133,6 +133,7 @@ const CreateNote = () => {
                 <input type="text" name="title" id="titleinput" 
                   placeholder="-- Titlu --" 
                   ref={titleRef}/>
+                  
                 <select className="subjectsSelect" 
                   value={selectedSubject} 
                   onChange={handleSubjectChange}
@@ -143,7 +144,7 @@ const CreateNote = () => {
                   {subjects && getSubject()}
                 </select>
               </div>
-              <div >
+              <div>
                 <textarea id='textPar'
                   placeholder="Editeaza paragraf..."
                   name="content"

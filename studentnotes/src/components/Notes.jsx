@@ -14,40 +14,42 @@ function Note({items, mode}) {
             {
                 items.map(item => (
                     <div className="noteItem">
-                    <div className="functNote" key={item.id} onClick={() => {
-                        if(mode === 'g') {
-                            navigate({
-                                pathname: "/viewnote",
-                                search: createSearchParams({
-                                    id: item.id
-                                }).toString()
-                            });
-                        }
-                        else {
-                            navigate({
-                                pathname: "/editnote",
-                                search: createSearchParams({
-                                    id: item.id
-                                }).toString()
-                            });
-                        }
-                    }}>
-                        {item.title} 
-                        <br></br>
-                        {item.subject.title}
-                        <br></br>
-                        <div id="paragraph">
-                        <ReactMarkdown children={item.content}/>
+                        <div className="functNote" key={item.id} onClick={() => {
+                                if(mode === 'g') {
+                                    navigate({
+                                        pathname: "/viewnote",
+                                        search: createSearchParams({
+                                            id: item.id
+                                        }).toString()
+                                    });
+                                }
+                                else {
+                                    navigate({
+                                        pathname: "/editnote",
+                                        search: createSearchParams({
+                                            id: item.id
+                                        }).toString()
+                                    });
+                                }
+                            }}>
+                                {item.title} 
+                                <br></br>
+                                {item.subject.title}
+                                <br></br>
+                                
+                                <div id="paragraph">
+                                    <ReactMarkdown children={item.content}/>
+                                </div>
+                        </div>
+
+                        <div id="btn_delete" onClick=
+                        {() => 
+                            {
+                            //delete note
+                            }}>
+                            <img src={remove_icon}></img>
                         </div>
                     </div>
-                     <div id="btn_delete" onClick=
-                     {() => 
-                         {
-                           //delete note
-                         }}>
-                        <img src={remove_icon}></img>
-                     </div>
-                     </div>
                 ))
             }
         </>

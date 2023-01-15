@@ -4,6 +4,7 @@ import NavigationAboutMe from "./NavigationAboutMe";
 import NavigationBar from "./NavigationBar";
 import { useNavigate, createSearchParams } from "react-router-dom";
 import remove_icon from '../images/remove_icon.png'
+import folder from '../images/folder1.png'
 
 
 function Group({items}) {
@@ -14,24 +15,25 @@ function Group({items}) {
             {
                 items.map(item => (
                     <div className="groupsList">
-                    <div className="functGroup" key={item.group.id} onClick=
-                    {() => {
-                        navigate({
-                            pathname: "/notes",
-                            search: createSearchParams({
-                                groupId: item.group.id
-                            }).toString()
-                        });
-                    }}>
-                        {item.group.name} 
-                    </div>
-                    <div id="btn_delete" onClick=
-                     {() => 
-                         {
-                           //delete note
-                         }}>
-                        <img src={remove_icon}></img>
-                     </div>
+                        <div className="functGroup" key={item.group.id} onClick=
+                        {() => {
+                            navigate({
+                                pathname: "/notes",
+                                search: createSearchParams({
+                                    groupId: item.group.id
+                                }).toString()
+                            });
+                        }}>
+                            {item.group.name} 
+                        </div>
+
+                        <div id="btn_delete" onClick=
+                        {() => 
+                            {
+                            //delete note
+                            }}>
+                            <img src={remove_icon}></img>
+                        </div>
                     </div>
                 ))
             }
