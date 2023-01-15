@@ -20,8 +20,7 @@ const AddNote = () => {
                 <NavigationAboutMe />
                 <NavigationBar />
                 <div className="newNote"> 
-                    <h1 id="not_new">Notiță nouă</h1>
-                    
+                    <h1 id="not_new">Notiță</h1>
                         <div>
                             <br></br>
                             <div className="create">

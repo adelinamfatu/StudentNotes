@@ -52,4 +52,21 @@ router.post("/add/note", async(req, res, next) => {
     }
 });
 
+//delete group notes
+router.delete("/remove/note/:id", async(req, res, next) =>{
+  try {
+    const groupnotes = await GroupNote.findAll({ where: { noteId: req.params.id} }); 
+    if (groupnotes) {
+      await GroupNote.destroy({ where: { noteId: req.params.id} });
+      return res.status(200).json("Group notes deleted successfully!");
+    } else {
+      return res
+        .status(404)
+        .json({ error: `Notes with id ${req.params.id} not found` });
+    }
+  } catch (error) {
+   next(error);
+  }
+});
+
 module.exports = router;

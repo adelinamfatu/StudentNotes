@@ -6,8 +6,41 @@ import { useEffect, useState } from "react";
 import ReactMarkdown from 'react-markdown';
 import remove_icon from '../images/remove_icon.png'
 
+//adaugare modal pt utilizator - e sigur daca vrea sa stearga notita?
+
 function Note({items, mode}) {
     const navigate = useNavigate();
+
+    function deleteGroupNotes(noteId, userJSON) {
+        var url = "http://localhost:8000/groups/remove/note/" + noteId;
+                            
+        var request = new XMLHttpRequest();
+        request.open("DELETE", url, false); 
+        request.setRequestHeader("x-access-token", userJSON["user"].token);
+        request.onreadystatechange = () => 
+        { 
+            if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                deleteNote(noteId, userJSON);
+            }
+        }
+        request.send(null);
+    }
+
+    function deleteNote(noteId, userJSON) {
+        var url = "http://localhost:8000/notes/remove/" + noteId;
+                            
+        var request = new XMLHttpRequest();
+        request.open("DELETE", url, false); 
+        request.setRequestHeader("x-access-token", userJSON["user"].token);
+        request.onreadystatechange = () => 
+        { 
+            if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                //toast de stergere cu succes
+                //refresh la pagina    
+            }
+        }
+        request.send(null);
+    }
 
     return (
         <>
@@ -45,7 +78,9 @@ function Note({items, mode}) {
                         <div id="btn_delete" onClick=
                         {() => 
                             {
-                            //delete note
+                                var user = localStorage.getItem('user');
+                                var userJSON = JSON.parse(user);
+                                deleteGroupNotes(item.id, userJSON);
                             }}>
                             <img src={remove_icon}></img>
                         </div>
