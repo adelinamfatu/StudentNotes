@@ -4,7 +4,6 @@ import NavigationAboutMe from "./NavigationAboutMe";
 import NavigationBar from "./NavigationBar";
 import { useNavigate, createSearchParams } from "react-router-dom";
 import remove_icon from '../images/remove_icon.png'
-import folder from '../images/folder3.png'
 
 
 function Group({items}) {
