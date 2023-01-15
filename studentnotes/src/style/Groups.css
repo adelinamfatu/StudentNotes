@@ -1,7 +1,7 @@
 
   .Groups {
-    background-size: "cover";
-    height: 100%; 
+    background-size: cover;
+    min-height: 100%; 
     position: absolute;
     width: 100%;
     margin-top: 0px;
@@ -67,8 +67,6 @@
 .listOfGroups {
   padding-left: 10%;
 }
-
-
 
 
 .modal-groups {

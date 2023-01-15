@@ -4,6 +4,7 @@ import NavigationAboutMe from "./NavigationAboutMe";
 import NavigationBar from "./NavigationBar";
 import { useNavigate, createSearchParams } from "react-router-dom";
 import remove_icon from '../images/remove_icon.png';
+import exit from '../images/exit1.png';
 import { ToastContainer, toast } from 'react-toastify';
 
 function Group({items}) {
@@ -82,7 +83,7 @@ function Group({items}) {
                                 setShowModal(!showModal);
                                 setId(item.group.id);
                             }}>
-                            <img src={remove_icon}></img>
+                            <img src={exit}></img>
                         </div>
                     </div>
                 ))

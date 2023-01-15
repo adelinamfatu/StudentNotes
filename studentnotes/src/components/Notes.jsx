@@ -193,11 +193,6 @@ const Notes = () => {
                 <div className="allNotes"> 
                     <h1 className="myNotes">Notițele mele</h1>
                     <button onClick={addNote} id="addCurs">+</button>
-                    <div id='namedatabtn'>
-                    <text>Filtrare după: </text>
-                        <button onClick={showAlphabetically} id="namealph">Nume</button>
-                        <button onClick={showByDate} id="date">Dată</button>
-                    </div>
  
                 </div>
 
