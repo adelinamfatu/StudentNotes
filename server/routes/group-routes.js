@@ -69,4 +69,23 @@ router.delete("/remove/note/:id", async(req, res, next) =>{
   }
 });
 
+//remove group notes
+router.delete("/remove/:email/:groupId", async(req, res, next) =>{
+  try {
+    const groupuser = await GroupUser.findAll({ where: { userEmail: req.params.email,
+      groupId: req.params.groupId} }); 
+    if (groupuser) {
+      await GroupUser.destroy({ where: { userEmail: req.params.email,
+        groupId: req.params.groupId} });
+      return res.status(200).json("Group user deleted successfully!");
+    } else {
+      return res
+        .status(404)
+        .json({ error: `Group with id ${req.params.groupId} not found` });
+    }
+  } catch (error) {
+   next(error);
+  }
+});
+
 module.exports = router;

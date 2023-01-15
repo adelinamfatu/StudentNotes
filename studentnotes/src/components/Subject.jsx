@@ -7,9 +7,6 @@ import remove_icon from '../images/remove_icon.png'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
-
 function List({items}) {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);

@@ -3,7 +3,8 @@ import '../style/Groups.css';
 import NavigationAboutMe from "./NavigationAboutMe";
 import NavigationBar from "./NavigationBar";
 import { useNavigate, createSearchParams } from "react-router-dom";
-import remove_icon from '../images/remove_icon.png'
+import remove_icon from '../images/remove_icon.png';
+import { ToastContainer, toast } from 'react-toastify';
 
 function Group({items}) {
     const navigate = useNavigate();
@@ -25,46 +26,32 @@ function Group({items}) {
               <div className="modal-groups">
               <div className="title-groups">Atenție!</div>
                 <div className="body-groups">
-                   Sunteți sigur că doriți să ștergeți grupul?
+                   Sunteți sigur că doriți să ieșiți din grup?
                 </div>
                 <div className="footer-groups">
                  <button onClick={onCloseButtonClick} id="modalNuBtn">Nu</button> 
-                  <button id="modalDaBtn" onClick={deleteGroupNotesAndUsers}>Da</button>
+                  <button id="modalDaBtn" onClick={removeUserFromGroup}>Da</button>
                 </div>
               </div>
             </div>
           );
         };
 
-        function deleteGroupNotesAndUsers() {
-            var url = "http://localhost:8000/groups/remove/note/" + id;
+        function removeUserFromGroup() {
+            var url = "http://localhost:8000/groups/remove/" + userJSON["user"].email + "/" + id;
                                 
+            console.log(url);
             var request = new XMLHttpRequest();
             request.open("DELETE", url, false); 
             request.setRequestHeader("x-access-token", userJSON["user"].token);
             request.onreadystatechange = () => 
             { 
                 if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-                    deleteGroup(id, userJSON);
-                }
-            }
-            request.send(null);
-        }
-    
-        function deleteGroup() {
-            var url = "http://localhost:8000/notes/remove/" + id;
-                                
-            var request = new XMLHttpRequest();
-            request.open("DELETE", url, false); 
-            request.setRequestHeader("x-access-token", userJSON["user"].token);
-            request.onreadystatechange = () => 
-            { 
-                if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-                    /*toast.success('Notița a fost ștearsă cu succes!',
+                    toast.success('Ați părăsit grupul cu succes!',
                         {position:toast.POSITION.TOP_RIGHT})
                     setTimeout(() => {
                         window.location.reload(false);
-                    }, 2000);  */  
+                    }, 2000);
                 }
             }
             request.send(null);
@@ -84,7 +71,6 @@ function Group({items}) {
                                     }).toString()
                                 });
                             }}>
-                                
                             {item.group.name} 
                         </div>
                         <ModalGroups show={showModal} onCloseButtonClick={toggleShowModal} />
@@ -94,7 +80,7 @@ function Group({items}) {
                                 var user = localStorage.getItem('user');
                                 setUserJSON(JSON.parse(user));
                                 setShowModal(!showModal);
-                                setId(item.id);
+                                setId(item.group.id);
                             }}>
                             <img src={remove_icon}></img>
                         </div>
@@ -104,7 +90,6 @@ function Group({items}) {
         </>
     )
 }
-
 
 const Groups = () => {
     const navigate = useNavigate();
@@ -135,15 +120,14 @@ const Groups = () => {
             <div className='Groups'>
                 <NavigationAboutMe />
                 <NavigationBar />
-
                 <div className="studentGroups"> 
                     <h1 className="myGroups">Grupurile mele</h1>
                     <button onClick={addGroup} id="addGroup">+</button>
                 </div>
-
                 <div className='listOfGroups'>
                     {groups && <Group items={groups}/>}
                 </div>
+                <ToastContainer />
             </div>  
         )      
     }
