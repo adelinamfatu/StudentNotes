@@ -1,18 +1,18 @@
-# Tehnologii Web - Aplicatie pentru gestionarea notitelor unui student
-1.	Pentru inceput, vom avea o prima pagina care va cuprinde formularul de login (autentificare) folosind contul institutional cu terminatia „@stud.ase.ro”, urmat de un buton „Conecteaza-te” care va face trecerea in contul studentului, urmand sa-si gestioneze notitele.
-2.	In cazul in care contul nu este inregistrat in baza de date, vom avea un buton „Nu ai un cont? Inregistreaza-te aici!” sub butonul  „Conecteaza-te”.
-3.	In urma apasarii acestui buton, se va deschide un formular de inregistrare unde studentului i se vor cere anumite date personale, cum ar fi: numele, prenumele complet, facultatea de care apartine si specializarea, mail-ul institutional si parola pe care doreste sa o aiba.
-4.	Parola va trebui sa se incadreze intr-un anumit standard, de exemplu: sa aiba minim 6 caractere.
-5.	Obligatoriu: crearea contului va fi posibila doar daca mail-ul are terminatia „@stud.ase.ro” si daca nu exista deja in baza de date, daca numele si prenumele incep cu majuscule si nu contin cifre si daca parola introdusa in campul “Parola” corespunde cu cea din campul “Confirma parola”.
-6.	Vom avea un meniu in partea de sus a paginii pe orizontal ce va continue informatii precum: numele si prenumele studentului, facultatea, specializarea.
-7.	Vom avea un meniu in partea dreapta a paginii pe vertical ce va contine butoanele:
-•	Profil
-•	Materii
-•	Notite
-•	Grupuri
-7.	Primul buton va fi “Profil”. In urma apasarii acestui buton, studentul va fi redirectionat pe o pagina ce va continue numele complet, email-ul, facultatea si specializarea.
-8.	Al doilea buton va fi “Materii”. In urma apasarii acestui buton, studentul va fi redirectionat pe o pagina ce va contine denumirea tuturor materiilor adaugate de el sub forma de lista. In dreptul fiecarui element din lista, va exista o iconita, care ii permite studentului in urma apasarii acesteia sa stearga materia. Odata cu stergerea materiei, se vor sterge si notitele asociate. Prin click pe o materie se vor afisa notitele aferente. Deasupra listei va fi un titlu “Materiile mele”. In dreptul acestui titlu, va exista un buton “+” ce il va redirectiona pe o pagina noua destinata adaugarii de materii noi. Aceasta pagina contine un titlu “Materie noua”, un buton “Renunta” ce ii va permite sa renunte la materia noua si un buton “Salveaza” pentru a o salva si adauga in lista. Totodata, contine si un formular pentru introducerea denumirii materiei si a prescurtarii acesteia.
-9.	Al treilea buton va fi „Notite”. In urma apasarii acestui buton, studentul va fi redirectionat pe o pagina ce va contine toate notitele  adaugate de el sub forma de lista. Sub fiecare element din lista, va exista o iconita, care ii permite studentului, in urma apasarii acesteia, sa stearga notita. Prin click pe notita, utilizatorul o poate edita. Deasupra listei va fi un titlu „Notitele mele”. In dreptul acestui titlu, va exista un buton “+” ce il va redirectiona pe o pagina noua destinata adaugarii de notite noi. Aceasta pagina contine un titlu “Notita noua”, un buton “Renunta” ce ii va permite sa renunte la notita noua si un buton “Salveaza” pentru a o salva si adauga in lista. Totodata, contine si un formular pentru introducerea titlului, a materiei si a continutului. Exista si un buton “Instructiuni” ce va deschide o fereastra cu instructiuni.
-10.	Al patrulea buton, “Grupuri” va deschide o pagina ce contine lista de grupuri. Fiecare grup are o iconita asociata, ce ii permite utilizatorului sa stearga grupul. Pagina contine si un buton “+” pentru adaugarea de grupuri noi. Acest buton deschide o pagina noua ce contine un formular pentru crearea unui grup. Grupurile contin notite partajate intre utilizatori. Daca utilizatorul da click pe o notita care ii apartine, o poate edita. Daca notita nu ii apartine, va putea doar sa o vizualizeze.
-11. Schema bazei de date:
+# Student Note Management Application
+This project is a web application designed to facilitate the management of student notes. It allows students to organize their notes by subjects, create and edit notes, and collaborate with peers through shared groups.
+
+# Features:
+- User Authentication: Users can log in using their institutional accounts with the domain "@stud.ase.ro". New users can register for an account with the required personal information.
+- Profile Management: Once logged in, students can view and edit their profile information, including their full name, email, faculty, and specialization.
+- Subject Management: Students can create, edit, and delete subjects to categorize their notes. Each subject can have multiple associated notes.
+- Note Management: Users can create, edit, and delete notes within each subject. Notes contain a title, content, and optional tags for easy organization and retrieval.
+- Group Collaboration: Users can create and join groups to collaborate with peers on shared notes. Group members can view and edit notes within the group.
+
+# Technologies Used:
+- Frontend: React
+- Backend: Node.js
+- Database: SQLite
+- ORM: Sequelize
+
+Database schema:
 ![ERD](https://user-images.githubusercontent.com/102324614/211157419-df127eba-af37-41a1-b9f0-565d916ec29e.svg)
